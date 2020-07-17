@@ -58,9 +58,12 @@
   <script src="plugins/anime.min.js"></script>
 
   <style>
-    .body {
+    body {
       width: 100%;
       height: 100%;
+      margin: 0px;
+      max-height: 100vh;
+      overflow: hidden;;
     }
 
     #mainHolder {
@@ -193,7 +196,7 @@
         overflow: scroll !important;
         /* height: 10000px !important; */
         width: 100% !important;
-        pointer-events: none;
+        /* pointer-events: none; */
         transition: height .4s ease-out;
         display: none;
         opacity: 0;
@@ -391,7 +394,7 @@
       padding: 15px;
     }
     .heroImage {
-      opacity: 1;
+      opacity: 0;
       /* opacity: .5; */
       transition: opacity 1s ease-out;
       padding-right: 30px;
@@ -474,7 +477,8 @@
     #mainContentSection {
       position: absolute;
       overflow: hidden;
-      height: 80%;
+      /* height: 80%; */
+      height: 0;
       width: 100%;
       pointer-events: none;
       transition: height .4s ease-out;
@@ -558,15 +562,6 @@
       z-index: 11000;
       background: var(--color-text);
     }
-    #overlayDiv{
-      position: absolute;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0);
-      z-index: 1;
-      pointer-events: none;
-
-    }
     .closeButton{
       position: absolute;
       width: 36;
@@ -626,7 +621,9 @@
     #projectNavContainer{
       position: relative;
       /* overflow: hidden; */
+      overflow: scroll;
       height: 100%;
+      max-height: 100vh;
       width: 100%;
     }
     #projectHolder {
@@ -653,19 +650,37 @@
       color: rgb(208, 208, 208);
       font-size: 10vw;
       display: contents;
+
+    }
+    .projectNameHoverClass{
+      color: rgb(208, 208, 208);
       transition: color .5s ease-out;
     }
-
-    .projectNameText:hover {
+    .projectNameHoverClass:hover{
       color: black;
     }
+    /* .projectNameText:hover {
+      color: black;
+    } */
     #myGradCanv {
       position: absolute;
       width: 100vw;
       height: 100vh;
       z-index: 0
     }
+    /* .testHeightEasingClass{
+      transition: height .5s;
+    } */
+    #projectNavContainer::-webkit-scrollbar {
+      display: none;
+      -webkit-overflow-scrolling: touch; /* Lets it scroll lazy */
+    }
 
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .example {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
   </style>
   <!-- 3D Canvas -->
   <style>
@@ -727,7 +742,7 @@
     </div>
 
     <!-- <p id="galleryTitle"></p> -->
-    <div id='mainContentSection'>
+    <div id='mainContentSection' class = 'testHeightEasingClass'>
       <div class="testholder">
             <div class="closeButton" id = 'galleryCloseButton' onclick = "closeProject()"></div>
         <div class="main-wrapper" data-js="main-wrapper">
@@ -741,134 +756,120 @@
 
       <!-- HORIZONTAL SLIDER SCRIPT -->
       <script>
-        // setWidth();
-        (function($) {
+              (function($) {
 
           var types = ['DOMMouseScroll', 'mousewheel'];
 
           if ($.event.fixHooks) {
-            for (var i = types.length; i;) {
-              $.event.fixHooks[types[--i]] = $.event.mouseHooks;
-            }
+              for ( var i=types.length; i; ) {
+                  $.event.fixHooks[ types[--i] ] = $.event.mouseHooks;
+              }
           }
 
           $.event.special.mousewheel = {
-            setup: function() {
-              if (this.addEventListener) {
-                for (var i = types.length; i;) {
-                  this.addEventListener(types[--i], handler, false);
-                }
-              } else {
-                this.onmousewheel = handler;
-              }
-            },
+              setup: function() {
+                  if ( this.addEventListener ) {
+                      for ( var i=types.length; i; ) {
+                          this.addEventListener( types[--i], handler, false );
+                      }
+                  } else {
+                      this.onmousewheel = handler;
+                  }
+              },
 
-            teardown: function() {
-              if (this.removeEventListener) {
-                for (var i = types.length; i;) {
-                  this.removeEventListener(types[--i], handler, false);
-                }
-              } else {
-                this.onmousewheel = null;
+              teardown: function() {
+                  if ( this.removeEventListener ) {
+                      for ( var i=types.length; i; ) {
+                          this.removeEventListener( types[--i], handler, false );
+                      }
+                  } else {
+                      this.onmousewheel = null;
+                  }
               }
-            }
           };
 
           $.fn.extend({
-            mousewheel: function(fn) {
-              return fn ? this.bind("mousewheel", fn) : this.trigger("mousewheel");
-            },
+              mousewheel: function(fn) {
+                  return fn ? this.bind("mousewheel", fn) : this.trigger("mousewheel");
+              },
 
-            unmousewheel: function(fn) {
-              return this.unbind("mousewheel", fn);
-            }
+              unmousewheel: function(fn) {
+                  return this.unbind("mousewheel", fn);
+              }
           });
 
 
           function handler(event) {
-            var orgEvent = event || window.event,
-              args = [].slice.call(arguments, 1),
-              delta = 0,
-              returnValue = true,
-              deltaX = 0,
-              deltaY = 0;
-            event = $.event.fix(orgEvent);
-            event.type = "mousewheel";
+              var orgEvent = event || window.event, args = [].slice.call( arguments, 1 ), delta = 0, returnValue = true, deltaX = 0, deltaY = 0;
+              event = $.event.fix(orgEvent);
+              event.type = "mousewheel";
 
-            // Old school scrollwheel delta
-            if (orgEvent.wheelDelta) {
-              delta = orgEvent.wheelDelta / 120;
-            }
-            if (orgEvent.detail) {
-              delta = -orgEvent.detail / 3;
-            }
+              // Old school scrollwheel delta
+              if ( orgEvent.wheelDelta ) { delta = orgEvent.wheelDelta/120; }
+              if ( orgEvent.detail     ) { delta = -orgEvent.detail/3; }
 
-            // New school multidimensional scroll (touchpads) deltas
-            deltaY = delta;
+              // New school multidimensional scroll (touchpads) deltas
+              deltaY = delta;
 
-            // Gecko
-            if (orgEvent.axis !== undefined && orgEvent.axis === orgEvent.HORIZONTAL_AXIS) {
-              deltaY = 0;
-              deltaX = -1 * delta;
-            }
+              // Gecko
+              if ( orgEvent.axis !== undefined && orgEvent.axis === orgEvent.HORIZONTAL_AXIS ) {
+                  deltaY = 0;
+                  deltaX = -1*delta;
+              }
 
-            // Webkit
-            if (orgEvent.wheelDeltaY !== undefined) {
-              deltaY = orgEvent.wheelDeltaY / 120;
-            }
-            if (orgEvent.wheelDeltaX !== undefined) {
-              deltaX = -1 * orgEvent.wheelDeltaX / 120;
-            }
+              // Webkit
+              if ( orgEvent.wheelDeltaY !== undefined ) { deltaY = orgEvent.wheelDeltaY/120; }
+              if ( orgEvent.wheelDeltaX !== undefined ) { deltaX = -1*orgEvent.wheelDeltaX/120; }
 
-            // Add event and delta to the front of the arguments
-            args.unshift(event, delta, deltaX, deltaY);
+              // Add event and delta to the front of the arguments
+              args.unshift(event, delta, deltaX, deltaY);
 
-            return ($.event.dispatch || $.event.handle).apply(this, args);
+              return ($.event.dispatch || $.event.handle).apply(this, args);
           }
 
         })(jQuery);
 
         // EXTEND jQuery
-        $.js = function(el) {fffffwetAAA
+        $.js = function (el) {
+          return $('[data-js=' + el + ']')
+        };
+
         var mainWrapper = $.js('main-wrapper');
-        // setElemAttribute(mainWrapper, 'id', 'theMainWrapper')
         var sectionWrapper = $.js('sections-wrapper');
-        console.log(mainWrapper.firstChild);
+
         var vW = $(window).width();
-        // console.log('VW', vW)
 
         mainWrapper.mousewheel(function(event, delta) {
-          this.scrollLeft -= (delta * 50);
+                  this.scrollLeft -= (delta * 50);
 
-          event.preventDefault();
-        });
+                  event.preventDefault();
+              });
 
         Draggable.create(mainWrapper, {
-          type: 'scrollLeft',
-          // throwProps: true,
-          cursor: 'ew-resize'
+        type: 'scrollLeft',
+        throwProps: true,
+        cursor: 'ew-resize'
         });
 
         function setWidth() {
-          var section = $.js('section');
-          var totalWidth = 0;
+        var section = $.js('section');
+        var totalWidth = 0;
 
-          section.each(function() {
-            totalWidth += parseInt($(this).width(), 10);
-          });
-          console.log(totalWidth);
+        section.each(function() {
+          totalWidth += parseInt($(this).width(), 10);
+        });
 
-          sectionWrapper.css('width', '' + (totalWidth + 1) + 'px');
+        sectionWrapper.css('width', ''+ (totalWidth + 1) +'px');
         }
 
-        // setWidth();
+        setWidth();
 
         $(window).on('resize', function() {
-          setWidth();
+        setWidth();
 
         });
-      </script>
 
+      </script>
       <!-- PAPER.JS SCRIPT -->
       <script>
         // var path;
@@ -1016,7 +1017,52 @@
         //     path.scale(10);
         //   }
         //
-        // )
+        // )projectTextNames
+        // $(document).ready(function() {
+        //     var $yourDiv = $("#projectTextNames");
+        //     $(window).scroll(function(){
+        //         $yourDiv.stop().animate({"marginTop":($(window).scrollTop() + 500) + "px"}, "1000" );
+        //     });
+        // });
+        var scrollCount = 1;
+        var lastScrollTop = 0;
+        // $(window).bind('mousewheel', function(event) {
+        //       if (event.originalEvent.wheelDelta >= 0) {
+        //           console.log('Scroll up');
+        //           scrollCount = scrollCount + 2;
+        //           $('#projectTextNames').css('top', scrollCount)
+        //       }
+        //       else {
+        //           scrollCount--
+        //           $('#projectTextNames').css('top', scrollCount)
+        //           console.log('Scroll down');
+        //       }
+        //   });
+          // window.addEventListener('mousewheel', function(e){
+          //     // myDiv = document.getElementById('projectTextNames');
+          //   // console.log(this.oldScroll > this.scrollY);
+          //     // this.oldScroll = this.scrollY;
+          //     var st = $(window).scrollTop();
+          //     if (st > lastScrollTop){
+          //          // downscroll code
+          //          // console.log('down');
+          //      } else {
+          //        // console.log('up');
+          //         // upscroll code
+          //      }//
+          //      lastScrollTop = st;
+          //   if(e.wheelDelta<0 && scrollCount<50){
+          //     scrollCount= scrollCount + 2;
+          //   }
+          //
+          //   else if(e.wheelDelta>0 && scrollCount>1){
+          //     scrollCount--;
+          //   }
+          //   // document.querySelector('.number').innerHTML = scrollCount;
+          //   console.log(scrollCount);
+          //   $('#projectTextNames').css('top', scrollCount)
+          // });
+
         $(document).ready(function() {
               console.log($(window).width());
           });
@@ -1124,18 +1170,14 @@
            height:0, opacity:0}, "fast");
              // });
           $(projectSection).css('pointer-events', 'none')
-          $(galleryCloseButton).animate({'height': '0%'})
+          $(galleryCloseButton).animate({'height': '0%'}, 'easein')
           $('#projectTextNames').animate({'top': '0'})
+          $('.heroImage').each(function(){
+            $(this).animate({opacity: 0})
+          })
           // $(projectNav).css('display', 'none')
-          // $(overlayDiv).css()
-          // if (overlayVisible == true) {
-            $(overlayDiv).css('background-color', 'rgba(0, 0, 0, 0)')
-          // }
-          // if (overlayVisible == false) {
-            // $(overlayDiv).css('background-color', 'rgba(0, 0, 0, 0)')
-          // }
         }
-        initializePlugins();
+         initializePlugins();
 
         function setCVLink(aboutProjectObjArray) {
           let firstObj = aboutProjectObjArray[0]
@@ -1217,6 +1259,7 @@
                 z = z +1;
                 if (z < curSubProjects.length+2){
                   totalWidth += parseInt($(this).outerWidth(true),10)
+                  $(loadedImage).animate({opacity: 1})
                   // totalHeight += parseInt($(this).height()(true),10)
                   // totalHeight += parseInt($(this).height())
                   // console.log($(this), '$(THIS).HEIGHT()', $(this).height())
@@ -1228,7 +1271,6 @@
               $(firstMainWrapperChild).css('padding-right', 0)
               if ($(window).width() > mobileWidth){
                 let imgWidth = $(loadedImage).outerWidth()
-                console.log('IMGWIDTH', imgWidth)
                 $(paddingContainer).width(imgWidth)
                 console.log($(loadedImage).outerWidth());
                   $(sectionContainer).width(totalWidth)
@@ -1414,6 +1456,7 @@
         function generateProjectStructure(projName, index, projData) {
           let projectNameContainer = createClassIdAppend(projectBar, 'span', 'projectNameContainer', 'projectNameContainer_'+index)
           let projectNavText = createClassIdAppend(projectNameContainer, 'P', 'projectNameText', 'projectTextHolder')
+          $(projectNavText).toggleClass('projectNameHoverClass')
           projectNavText.addEventListener('mouseenter', function(event){
             // console.log('got hover');
             // path.scale(1.1)
@@ -1609,10 +1652,11 @@
         function pullUpProjectGallery(e){
           $(window).scrollTop($('#navbar').offset().top);
           $(projectSection).animate({'opacity':1});
-          $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)+50)}, 1000, function(){
+          $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)+50)}, 'slow', 'swing', function(){
 
               $(projectSection).css('pointer-events', 'all')
-              $(projectSection).animate({'height': '100%'})
+              // $(projectSection).animate({'height': '100%'}, 2000)
+              $(projectSection).css('height', '100%')
               $('#galleryCloseButton').animate({'opacity':'1'})
               $(mainWrapperElem).css('display', 'flex')
               $(mainWrapperElem).css('height', '100%')
