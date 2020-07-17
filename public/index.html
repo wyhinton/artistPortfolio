@@ -438,7 +438,7 @@
 
     .descriptionParagraph {
       text-align: justify;
-      transition: color 1s ease-out;
+      transition: color .5s ease-out;
     }
 
     .img_div {
@@ -688,6 +688,7 @@
       width: 100vw;
       height: 100vh;
       display: block;
+
     }
   </style>
   <!-- Video Landing -->
@@ -708,6 +709,22 @@
       object-fit: fill;
       height: 100vh;
     }
+  </style>
+  <!-- temp styles -->
+  <style>
+  #bottomGradient{
+    /* linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%); */
+    /* height: 2vh; */
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d0d0d0",GradientType=1);
+    width: 100%;
+  }
   </style>
 
   <body>
@@ -753,6 +770,10 @@
           </div>
         </div>
       </div>
+    </div>
+    <div id="bottomGradient">
+
+    </div>
 
       <!-- HORIZONTAL SLIDER SCRIPT -->
       <script>
@@ -1163,15 +1184,22 @@
         function closeProject() {
           // $(mainWrapperElem).css('display', 'none')
           // $(projectSection).css('height', '0')
-          $(projectSection).animate({'height': '0'})
+          // $(projectSection).animate({'height': '0'})\
+          $(projectSection).stop().animate({
+           top: 100,
+            height:0, opacity:0}, 1000, 'easeInOutCirc', function(){
+              // $(projectSection).animate({'height': '0%'}, 1000, 'easeInOutQuad')
+              $('#projectTextNames').animate({'top': '0'}, 800, 'easeInOutCirc')
+            });
+
+
+          // })
           // $(".cause_button").on('mouseleave',function(){
-         $(projectSection).stop().animate({
-          top: 100,
-           height:0, opacity:0}, "fast");
+
              // });
           $(projectSection).css('pointer-events', 'none')
-          $(galleryCloseButton).animate({'height': '0%'}, 'easein')
-          $('#projectTextNames').animate({'top': '0'})
+          // $(galleryCloseButton).animate({'height': '0%'}, 1000, 'easeInOutQuad')
+          // $('#projectTextNames').animate({'top': '0'})
           $('.heroImage').each(function(){
             $(this).animate({opacity: 0})
           })
@@ -1652,7 +1680,7 @@
         function pullUpProjectGallery(e){
           $(window).scrollTop($('#navbar').offset().top);
           $(projectSection).animate({'opacity':1});
-          $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)+50)}, 'slow', 'swing', function(){
+          $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)+50)}, 2000, 'easeInOutCirc', function(){
 
               $(projectSection).css('pointer-events', 'all')
               // $(projectSection).animate({'height': '100%'}, 2000)

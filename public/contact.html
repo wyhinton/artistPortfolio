@@ -17,8 +17,11 @@
   <style>
    body{
       background-color: rgb(208, 208, 208);
-     margin: 0;
-     height: 100%
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      max-height: 100vh;
+      overflow: hidden;
    }
     * {
     padding: 0;
@@ -112,8 +115,9 @@
       height: 0px;
     }
   </style>
-  <style>
   <!-- NAV STYLE -->
+  <style>
+
       nav {
         height: 4rem;
         width: 100%;
@@ -270,10 +274,14 @@
           transition: 0.2s;
         }
       }
-    </style>
-
-
   </style>
+  <style>
+    #activePageSection{
+    -webkit-text-fill-color: black;
+    }
+  </style>
+
+
   <body>
 
     <div id="navContainer" >
@@ -285,8 +293,8 @@
           <a href= 'index.html' class = 'logoLink'>  <label href ='index.html' class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label></a>
           <!-- <label class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label> -->
           <ul class="navbar__ul">
-            <li><a class = 'pageLink' id = "activePageSection" onclick="revealProjectSection()"><i id=indicatorSymbole> </i>Projects</a></li>
-            <li><a class = 'pageLink' href="contact.html">Contact</a></li>
+            <li><a class = 'pageLink' onclick="revealProjectSection()"><i id=indicatorSymbole> </i>Projects</a></li>
+            <li><a class = 'pageLink' id = "activePageSection" href="contact.html">Contact</a></li>
             <li><a class = 'pageLink' href="about.html">About</a></li>
             <li><a class = 'pageLink' id='cvLink' target="_blank">CV</a></li>
           </ul>
@@ -322,6 +330,22 @@
       </div> -->
   </div>
   <script>
+  $('.pageLink').each(function(){
+    console.log(this.id);
+    if (this.id !== 'activePageSection') {
+      $(this).hover(
+         function() {
+           $( this ).css('text-decoration', 'underline');
+           // $( this ).css('color', 'black');
+           // $( this ).css('-webkit-text-fill-color', 'rgb(0, 208, 208)');
+           // -webkit-text-fill-color: rgb(208, 208, 208);
+           // %(this)
+         }, function() {
+           $( this ).css('text-decoration', 'none')
+         }
+       );
+    }
+  })
     var warningText = document.querySelector('#warningArea')
     var submitButton = document.querySelector('#submitButton');
     var nameInput = document.querySelector('#name');

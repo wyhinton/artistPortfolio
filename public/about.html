@@ -17,7 +17,13 @@
     body{
        background-color: rgb(208, 208, 208);
       margin: 0;
-      height: 100%
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        /* max-height: 100vh; */
+        /* overflow: hidden; */
+      /* webkit-scro */
+       scroll-behavior: smooth;
     }
       * {
       padding: 0;
@@ -349,6 +355,9 @@
     .logoLink{
       text-decoration: none;
     }
+    .pageLink{
+
+    }
 
   </style>
 
@@ -361,10 +370,10 @@
           </label>
           <a href= 'index.html' class = 'logoLink'>  <label href ='index.html' class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label></a>
           <ul class="navbar__ul">
-            <li><a href = 'index.html' ><i id=indicatorSymbole> </i>Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a id = "activePageSection"  href="about.html">About</a></li>
-            <li><a id='cvLink' target="_blank">CV</a></li>
+            <li><a class = 'pageLink' href = 'index.html' ><i id=indicatorSymbole> </i>Projects</a></li>
+            <li><a class = 'pageLink' href="contact.html">Contact</a></li>
+            <li><a class = 'pageLink' id = "activePageSection"  href="about.html">About</a></li>
+            <li><a class = 'pageLink' id='cvLink' target="_blank">CV</a></li>
           </ul>
         </nav>
       </div>
@@ -386,6 +395,24 @@
         </div>
     </div>
     <script type="text/javascript">
+    $('.pageLink').each(function(){
+      console.log(this.id);
+      if (this.id !== 'activePageSection') {
+        $(this).hover(
+           function() {
+             $( this ).css('text-decoration', 'underline');
+             // $( this ).css('color', 'black');
+             // $( this ).css('-webkit-text-fill-color', 'rgb(0, 208, 208)');
+             // -webkit-text-fill-color: rgb(208, 208, 208);
+             // %(this)
+           }, function() {
+             $( this ).css('text-decoration', 'none')
+           }
+         );
+      } else {
+           $( this ).css('-webkit-text-fill-color', 'black');
+      }
+    })
     const aboutAssetURL = 'https://spreadsheets.google.com/feeds/cells/17-59RkABiXT4-odN7PGxUOVX1CWOBQb3t-SzqBkG5q0/1/public/full?alt=json'
     var artistStatementElem = document.getElementById('artistStatement');
     var aboutPicture = document.getElementById('aboutPicture');
