@@ -1,0 +1,508 @@
+<!-- enter your email address instead of your@email.com -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <title>Ayla Gizlice - About</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.13.1/typewriter.min.js" integrity="" crossorigin="anonymous"></script> -->
+    <!-- <script> src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.13.1/typewriter.min.js"</script> -->
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pragati+Narrow">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+  </head>
+  <style>
+    body{
+       background-color: rgb(208, 208, 208);
+      margin: 0;
+      height: 100%
+    }
+      * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .bodyDiv {
+      display: inline-flex;
+      justify-content: center;
+      padding-left: 107px;
+      padding-top: 85px;
+      background-color:  rgb(255, 186, 68);
+      width: 100%;
+    }
+
+    .formHolder {
+    justify-content: center;
+    text-align: center
+
+    }
+    .input{
+
+    }
+    .rightGraphicHolder{
+      width: 50%;
+      background-color: black;
+      height: 100%;
+    }
+    #submitButton{
+      border-radius: 42px;
+      border: 2px black solid;
+    }
+  </style>
+  <style>
+    .body {
+      width: 100%;
+      height: 100%;
+    }
+
+    #mainHolder {
+      background-color: rgb(255, 186, 68);
+      width: 100%;
+      height: 1000px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .projectImage {
+      width: 200px;
+      position: absolute;
+      opacity: 0;
+    }
+
+  </style>
+  <!-- NAV BAR -->
+  <style>
+    nav {
+      font-family: 'Pragati Narrow';
+      height: 4rem;
+      width: 100%;
+      text-transform: uppercase;
+      /* position: fixed; */
+    }
+
+    nav .navbar__hamburger-btn {
+      font-size: 2rem;
+      /* color: black; */
+      color: #7f7f7f
+      float: right;
+      line-height: 4rem;
+      margin-right: 2rem;
+      cursor: pointer;
+      display: none;
+      position: absolute;
+      margin: 0;
+    }
+
+    .navbar__logo {
+      line-height: 4rem;
+      margin-left: 3rem;
+      font-family: 'Pragati Narrow';
+      font-size: 45px;
+      text-transform: capitalize;
+      color: #d59494;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: black;
+    }
+
+    nav ul {
+      float: right;
+      margin-top: 0;
+      margin-bottom: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      float: right;
+      width: 53vw;
+      width: fit-content;
+      right: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      line-height: 4rem;
+      margin: 0 1rem;
+    }
+
+    nav ul li a {
+      color: black;
+          font-size: 1.8rem;
+          padding: 0.5rem 0.8rem;
+          border-radius: 0.2rem;
+          letter-spacing: 0px;
+          text-decoration: none;
+          -webkit-text-fill-color: rgb(208, 208, 208);
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: black;
+          font-family: 'Pragati Narrow';
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+      transition: 0.2s;
+      -webkit-text-fill
+
+    }
+    .navBarSection{
+      position: fixed;
+      z-index: 10;
+    }
+    #navContainer{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      z-index: 100;
+      background: rgb(255,255,255);
+      background: -moz-linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 49%, rgba(208,208,208,1) 100%);
+      background: -webkit-linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 49%, rgba(208,208,208,1) 100%);
+      background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 49%, rgba(208,208,208,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d0d0d0",GradientType=1);
+    }
+   </style>
+  <!-- /* Phone Settins */ -->
+  <style>
+
+    @media only screen and (max-width: 768px) {
+
+      .main-wrapper {
+        width: 100vw;
+        height: 90vh;
+        background-color: rgb(208, 208, 208);
+        overflow: auto;
+        padding-top: 10px;
+        transition: background-color .5s ease-out;
+        position: absolute;
+        /* background-color: red; */
+        display: block;
+        z-index: 5;
+        transition: height .5s ease-out;
+      }
+      #mainContentSection {
+        position: absolute;
+        overflow: hidden;
+        height: 2000px !important;
+        width: 100%;
+        pointer-events: none;
+        transition: height .4s ease-out;
+        display: none;
+        opacity: 0;
+      }
+      .sectionElementContainer{
+        flex-direction: column !important;
+        height: 100% !important;
+      }
+      .heroImage{
+        padding: 0px !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+      /* #sectionContainer{
+        padding-left: 10px !important;
+        width: 100vw !important;
+      } */
+      .descriptionDiv{
+        max-width: 100% !important;
+        width: 100vw !important;
+      }
+      .img_div{
+        padding: 0px !important;
+        width: 100vw !important;
+      }
+      .imageContainerPadding{
+        width: 100% !important;
+      }
+      .singleImageContainer{
+
+        padding: 0px !important;
+      }
+      .descriptionPaddingContainer{
+        height: 236px !important;
+      }
+      .testToDisplayImage{
+        width: 100vw !important;
+        width: 100vw !important;
+      }
+      .sectionContainer{
+        max-width: 90% !important;
+        /* background-color: red !important; */
+      }
+      .pageTitle{
+        font-size: 4em !important;
+      }
+      nav .navbar__hamburger-btn {
+        display: block;
+        position: fixed;
+        top: 0px;
+        right: 10px;
+      }
+      .navbar__logo{
+        position: absolute !important;
+        width: 200px !important;
+        left: 10px !important;
+        margin: 0 !important;
+        top: 0 !important;
+      }
+      nav ul {
+
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #00d1ff;
+        left: -100%;
+        text-align: center;
+        transition: all 0.8s;
+        margin-right: 0px;
+        padding-left: 0px;
+      }
+
+      nav ul li {
+        display: block;
+
+        margin: 5rem 0;
+        line-height: 30px;
+        width: 100%;
+      }
+
+      nav ul li a {
+        font-size: 2rem;
+        color: black;
+      }
+
+      nav ul li a:hover,
+      a.active {
+        background: #00fff0;
+        transition: 0.2s;
+      }
+    }
+
+
+  </style>
+  <!-- Body Style -->
+  <style>
+    .aboutBodyDiv{
+      justify-content: center;
+      align-items: center;
+      display: block;
+      text-align: justify;
+      /* padding: 20px; */
+      padding: 10px;
+      padding-top: 50px;
+      opacity: 0;
+      transition: opacity .5s ease-out;
+    }
+    #aboutParagraph{
+      /* text-align: left */
+      /* margin-left: 20px; */
+      /* margin-right: 20px; */
+    }
+    .sectionContainer
+    {
+      margin: auto;
+      max-width: 50%;
+      /* padding-left: 20%; */
+      /* padding-right: 20%; */
+    }
+
+    #aboutPicture
+    {
+      /* padding: 10px; */
+      padding-top: 10px;
+      padding-bottom: 10px;
+      width: 100%;
+      border-radius: 1000px;
+
+    }
+    #artistStatement{
+      /* background-color: grey; */
+      /* font-size: 12px;     */
+      /* font-size: 23px; */
+      font-size: 19px;
+      /* border-top: 1px solid black; */
+      border-bottom: 1px solid black;
+      padding-bottom: 2vh;
+      padding-top: 4vh;
+      /* opacity: 0; */
+    }
+    .pageTitle{
+      text-align: center;
+      -webkit-text-fill-color: rgb(208, 208, 208);
+      -webkit-text-stroke-width: 1px;
+      /* font-size: 5vw; */
+      -webkit-text-stroke-color: black;
+      font-size: calc(12px + 8.5vw);
+    }
+    #sectionContainer{
+      /* display: none; */
+    }
+    #aboutParagraph{
+    /* font-size: 23px; */
+    font-size: 19px;
+    border-bottom: 1px solid black;
+    padding-bottom: 2vh;
+    }
+    .logoLink{
+      text-decoration: none;
+    }
+
+  </style>
+
+  <body>
+    <div id="navContainer">
+      <div class="navBarSection">
+        <nav class="navbar" id="navbar">
+          <label for="check" class="navbar__hamburger-btn">
+            <i class="fas fa-bars"></i>
+          </label>
+          <a href= 'index.html' class = 'logoLink'>  <label href ='index.html' class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label></a>
+          <ul class="navbar__ul">
+            <li><a href = 'index.html' ><i id=indicatorSymbole> </i>Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a id = "activePageSection"  href="about.html">About</a></li>
+            <li><a id='cvLink' target="_blank">CV</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class = "aboutBodyDiv" id = 'pageContentContainer'>
+
+      <div class = 'sectionContainer'>
+      <!-- <h1 id = 'pageTitle' class = 'pageTitle'>Artist Statement</h1> -->
+        <!-- <h1 class = 'pageTitle'>Artist Statement</h1> -->
+        <p id="artistStatement">artist statment here</p>
+      </div>
+        <div class="sectionContainer">
+            <!-- <h2 class = 'pageTitle' id = 'aboutTitle' >About</h2> -->
+            <img id = 'aboutPicture' src = 'data/ProfileImages/Profile_3_Small.jpg'>
+            <p id = 'aboutParagraph'>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript">
+    const aboutAssetURL = 'https://spreadsheets.google.com/feeds/cells/17-59RkABiXT4-odN7PGxUOVX1CWOBQb3t-SzqBkG5q0/1/public/full?alt=json'
+    var artistStatementElem = document.getElementById('artistStatement');
+    var aboutPicture = document.getElementById('aboutPicture');
+    var aboutParagraph = document.getElementById('aboutParagraph');
+    var app = document.getElementById('artistStatement');
+    var aboutData;
+
+
+    // typewriter.typeString('Hello World!')
+    //     .pauseFor(2500)
+    //     .deleteAll()
+    //     .typeString('Strings can be removed')
+    //     .pauseFor(2500)
+    //     .deleteChars(7)
+    //     .typeString('<strong>altered!</strong>')
+    //     .pauseFor(2500)
+    //     .start();
+    let aboutContents = generateObjectFromSpreadData('https://spreadsheets.google.com/feeds/cells/17-59RkABiXT4-odN7PGxUOVX1CWOBQb3t-SzqBkG5q0/1/public/full?alt=json')
+
+    var realProjObjs = generateObjectFromSpreadData(aboutAssetURL).then(function(returnData) {
+      console.log(returnData)
+      aboutData = returnData[0]
+      setElemAttribute(aboutPicture, 'src', aboutData.About_Picture)
+      setElemAttribute(artistStatementElem, 'innerHTML', aboutData.Artist_Statement)
+      setElemAttribute(aboutParagraph, 'innerHTML', aboutData.About_Statement)
+      // $(artistStatementElem).css('opacity', '1')
+      $('#pageContentContainer').css('opacity', '1')
+      // $('#pageContentContainer').fadeIn()
+
+    });
+    setTimeout(()=>{
+      // console.log(aboutContents);
+      // setData(aboutContents)
+      // let tempData = aboutData[0]
+      // setElemAttribute(aboutPicture, 'src', tempData.About_Picture)
+
+    }, 2000)
+
+    function setData(googleSheetDataObj){
+      console.log(googleSheetDataObj);
+      let setData = aboutContents[0]
+      console.log(setData);
+      setElemAttribute(artistStatementElem, 'innerHTML', setData.Artist_Statement)
+      setElemAttribute(aboutParagraph, 'innerHTML', setData.About_Statement)
+    }
+
+    function setElemAttribute(elem, attr, content) {
+      elem[attr] = content
+    }
+
+    function generateObjectFromSpreadData(url) {
+      // const response = await fetch('')
+      let myCellContentArr = []
+      let finalProjObs = []
+      let starts = []
+      let ranges = []
+      let testProjArray = []
+
+      return $.getJSON(url).then(function(data) {
+
+        let cells = data.feed.entry;
+        console.log('CELLS', cells)
+        let numRows = parseInt(data.feed.gs$rowCount.$t)
+        let numCols = parseInt(data.feed.gs$colCount.$t)
+        let totalNumCels = numRows * numCols;
+
+        for (var i = 0; i < numRows; i++) {
+          let range = numCols * i;
+          starts.push(range)
+        }
+
+        for (var i = 0; i < starts.length; i++) {
+          let curStart = starts[i]
+          let curRange = []
+          curRange[0] = curStart
+          curRange[1] = curStart + numCols
+          ranges.push(curRange)
+        }
+
+        for (var i = 0; i < ranges.length; i++) {
+          let curRange = ranges[i]
+          let projArray = cells.slice(curRange[0], curRange[1])
+          let contentArray = []
+          for (var j = 0; j < projArray.length; j++) {
+            let curCell = projArray[j]
+            let curContent = curCell.content.$t;
+            contentArray.push(curContent)
+          }
+          myCellContentArr.push(contentArray)
+        }
+
+        for (var i = 0; i < cells.length; i++) {
+          let curCell = cells[i]
+        }
+
+        let headerCells = cells.filter(obj => {
+          return obj.gs$cell.row === "1"
+        })
+
+        let headerNames = headerCells.map(a => a.content.$t)
+        let testObj = {}
+        for (var i = 1; i < myCellContentArr.length; i++) {
+          let curContentArray = myCellContentArr[i]
+          let contentObjHolder = {}
+          for (var j = 0; j < headerNames.length; j++) {
+            let curPropToAdd = headerNames[j]
+            contentObjHolder[curPropToAdd] = curContentArray[j]
+
+          }
+          finalProjObs.push(contentObjHolder)
+        }
+
+        return finalProjObs
+      })
+    }
+
+    </script>
+
+  </body>
+</html>
