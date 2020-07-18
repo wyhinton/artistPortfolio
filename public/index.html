@@ -271,6 +271,9 @@
       .landingVideo{
         object-fit: contain !important;
       }
+      .body{
+        overflow: visible;
+      }
 
       nav .navbar__hamburger-btn {
         display: block;
@@ -610,8 +613,10 @@
     .projectNameContainer{
       width: 100%;
       display: flex;
-      justify-content: center;
+      /* justify-content: center; */
+      position: relative;
 
+      height: 200px;
     }
 
 
@@ -649,7 +654,9 @@
       -webkit-text-stroke: 1px black;
       color: rgb(208, 208, 208);
       font-size: 10vw;
-      display: contents;
+      /* display: contents; */
+      position: absolute;
+      bottom: 0;
 
     }
     .projectNameHoverClass{
@@ -702,6 +709,7 @@
       -moz-transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
       -o-transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
       transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
+      z-index: 10;
     }
 
     .landingVideo{
@@ -1116,18 +1124,18 @@
           hamburgerVisible = !hamburgerVisible
 
         }
-        // $('.pageLink').each(function(){
-        //   console.log(this.id);
-        //   if (this.id !== 'activePageSection') {
-        //     $(this).hover(
-        //        function() {
-        //          $( this ).css('text-decoration', 'underline');
-        //        }, function() {
-        //          $( this ).css('text-decoration', 'none')
-        //        }
-        //      );
-        //   }
-        // })
+        $('.pageLink').each(function(){
+          console.log(this.id);
+          if (this.id !== 'activePageSection') {
+            $(this).hover(
+               function() {
+                 $( this ).css('text-decoration', 'underline');
+               }, function() {
+                 $( this ).css('text-decoration', 'none')
+               }
+             );
+          }
+        })
         // $(window).on('resize', function() {
         //     if($(window).width() < 600) {
         //       $(mainWrapperElem).unbind('mousewheel')
@@ -1262,36 +1270,55 @@
         }
 
         // function sumWidthOfAllSections()
+
+        function waitForImageToLoad(imageElement){
+              return new Promise(resolve=>{imageElement.onload = resolve})
+            }
+        //
+        //     var myImage = document.getElementById('myImage');
+        //     var newImageSrc = "https://pmchollywoodlife.files.wordpress.com/2011/12/justin-bieber-bio-photo1.jpg?w=620"
+        //
+        //     myImage.src = newImageSrc;
+        //     waitForImageToLoad(myImage).then(()=>{
+        //       // Image have loaded.
+        //       console.log('Loaded lol')
+        // });
+
+        function sumeWidth(image){
+          let paddingContainer = image.parentNode.parentNode.parentNode;
+          let imgWidth = $(e.target).width()
+
+        }
+
         function onProjectImageLoad(e){
 
           let loadedImage = e.target;
+
           let parentContainer = loadedImage.parentNode.parentNode;
 
           let imgWidth = $(e.target).width()
           let paddingContainer = loadedImage.parentNode.parentNode.parentNode;
 
           let currentTotalWidth = $(sectionContainer).width()
-          console.log('CURRENTTOTALWIDTH', currentTotalWidth)
-          console.log('NUM PICS TO LOAD', numPicsToLoad);
           completedImgLoads++
-          console.log('COMPLETEDIMGLOADS', completedImgLoads)
-          // cl
-          console.log(e.target.complete);
+
+          // console.log(e.target.complete);
+          waitForImageToLoad(e.target).then(()=>{console.log('got loaded')})
           setTimeout(()=>{
           if (completedImgLoads == numPicsToLoad) {
-                console.log('right num of images loaded');
+                // console.log('right num of images loaded');
               totalWidth= 0;
               let z = 0;
-              console.log('num of sections', $('.section').length);
+              // console.log('num of sections', $('.section').length);
               $('.section').each(function(index){
                 z = z +1;
                 if (z < curSubProjects.length+2){
-                  totalWidth += parseInt($(this).outerWidth(true),10)
+                  totalWidth += parseInt($(this).outerWidth(true),10)+500;
+                  console.log('TOTALWIDTH', totalWidth)
                   $(loadedImage).animate({opacity: 1})
                   // totalHeight += parseInt($(this).height()(true),10)
                   // totalHeight += parseInt($(this).height())
                   // console.log($(this), '$(THIS).HEIGHT()', $(this).height())
-                  // console.log(());
                   totalHeight = z*($(this).height())
 
                 }
@@ -1319,15 +1346,11 @@
             let newTotalWidth = $(sectionContainer).width()
             // console.log('NEWTOTALWIDTH', newTotalWidth)
           }
-          // else {
-            // let newTotalWidth = '100vw'
-            // console.log('SHOULD FORMAT FOR MOBILE');
           // }
 
 
-        }, 2000)
+        }, 3000)
           console.log(totalHeight);
-            // $(paddingContainer).width(imgWidth)
           }
 
         function generateImageObj(parentElem, index, propName) {
@@ -1485,14 +1508,6 @@
           let projectNameContainer = createClassIdAppend(projectBar, 'span', 'projectNameContainer', 'projectNameContainer_'+index)
           let projectNavText = createClassIdAppend(projectNameContainer, 'P', 'projectNameText', 'projectTextHolder')
           $(projectNavText).toggleClass('projectNameHoverClass')
-          projectNavText.addEventListener('mouseenter', function(event){
-            // console.log('got hover');
-            // path.scale(1.1)
-          })
-          projectNavText.addEventListener('mouseout', function(event){
-            // console.log('got out');
-            // path.scale(0.9)
-          })
           setElemAttribute(projectNavText, 'innerHTML', projName)
           projectNavText.addEventListener('click', handleProjNavClick)
 
@@ -1617,38 +1632,6 @@
 
         }
 
-        // function setImgObjContent(imgArray, subProjectDataObj){
-        //   for (var i = 0; i < imgArray.length; i++) {
-        //       let curImgObj = imgArray[i]
-        //       let displayImage = curImgObj.dispImage
-        //       let lightBoxLink = curImgObj.lightBoxLink
-        //       if (i = 0) {
-        //         if (subProjectDataObj.Picture_Link_1_Small == 'empty') {
-        //           let paddingContainer = displayImage.parentNode.parentNode.parentNode
-        //           $(paddingContainer).width(0);
-        //         }
-        //         if (subProjectDataObj.Picture_Link_1_Small !== 'empty') {
-        //           setElemAttribute(displayImage, 'src', subProjectDataObj.Picture_Link_1_Small)
-        //           setElemAttribute(lightBoxLink, 'href', subProjectDataObj.Picture_Link_1_Large)
-        //         }
-        //       }
-        //     if (i = 1)
-        //     if (subProjectDataObj.Picture_Link_2_Small == 'empty') {
-        //       let paddingContainer = displayImage.parentNode.parentNode.parentNode
-        //       $(paddingContainer).width(0);
-        //     }
-        //     if (subProjectDataObj.Picture_Link_2_Small !== 'empty') {
-        //       setElemAttribute(displayImage, 'src', subProjectDataObj.Picture_Link_2_Small)
-        //       setElemAttribute(lightBoxLink, 'href', subProjectDataObj.Picture_Link_2_Large)
-        //     }
-        //   }
-        // }
-        // setElemAttribute(firstLightBoxLink, 'href', curSubProjObj.Picture_Link_1_Large)
-        // setElemAttribute(secondLightBoxLink, 'href', curSubProjObj.Picture_Link_2_Large)
-        // showTopDescription(hiddenDescriptionDiv,descriptionDiv)
-        // setImgObjContent(curHTMLSect.imgObj1, 'Picture_Link_1_Small', 'Picture_Link_1_Large', curSubProjObj)
-        // setImgObjContent(curHTMLSect.imgObj2, 'Picture_Link_2_Small', 'Picture_Link_2_Large', curSubProjObj)
-
         function setImgObjContent(imgObj, linkProp, linkPropLarge, subProjectDataObj){
 
           let displayImage = imgObj.dispImage
@@ -1683,7 +1666,6 @@
           $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)+50)}, 2000, 'easeInOutCirc', function(){
 
               $(projectSection).css('pointer-events', 'all')
-              // $(projectSection).animate({'height': '100%'}, 2000)
               $(projectSection).css('height', '100%')
               $('#galleryCloseButton').animate({'opacity':'1'})
               $(mainWrapperElem).css('display', 'flex')
@@ -1701,9 +1683,6 @@
 
         }
 
-        function manageGalleryWidth(){
-
-        }
         function returnCorrespondingProjectDataObj(e){
           let projectDataObjToFind = {}
 
@@ -1717,14 +1696,12 @@
         }
 
         function showBottomImage(hidden, visible, dispImage){
-          // console.log(dispImage);
           $(hidden).css('zIndex', 1)
           $(visible).css('zIndex', 0)
           $(visible).css('display', 'none')
           $(hidden).css('display', 'flex')
           $(visible).width('0')
           $(hidden).animate({'width': '1600px'}, function(){
-            // $(visible).width('0')
           })
         }
 
@@ -1733,11 +1710,6 @@
           $(visible).css({zIndex: 1})
           $(hidden).css('display', 'none')
           $(visible).css('display', 'flex')
-          // $(hidden).css({opacity: 0})
-          // $(hidden).width('0')
-          // $(visible).animate({width: '600px'}, function(){
-          //   $(hidden).width('0')
-          // })
           $(visible).animate({width: '100%'}, function(){
             $(hidden).width('0')
           })
@@ -1747,7 +1719,6 @@
           $(hidden).css({zIndex: 1})
           $(visible).css('display', 'none')
           $(hidden).css('display', 'flex')
-          // $(hidden).css('display', 'flex')
           $(hidden).animate({width: descriptionWidth}, function(){
               $(hidden).css({color: 'rgb(0, 0, 0)' })
               $(hidden).css({zIndex: 1})
