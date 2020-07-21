@@ -8,10 +8,13 @@
     <title>Ayla Gizlice - Contact</title>
     <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Alegreya">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pragati+Narrow">
+    <link rel="stylesheet" href= "navStyle.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r99/three.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="plugins/GLTFLoader.js"></script>
     <script src="plugins/OrbitControls.js"></script>
+    <script src="navbar.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin = "anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <style>
@@ -36,7 +39,7 @@
     label {
       cursor: pointer;
       font-size: 10vw;
-      -webkit-text-fill-color: rgb(208, 208, 208);
+      /* -webkit-text-fill-color: rgb(208, 208, 208); */
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: black;
     }
@@ -118,84 +121,8 @@
   <!-- NAV STYLE -->
   <style>
 
-      nav {
-        height: 4rem;
-        width: 100%;
-        text-transform: uppercase;
-        /* position: fixed; */
-      }
-
-      nav .navbar__hamburger-btn {
-        font-size: 2rem;
-        /* color: black; */
-        color: #7f7f7f
-        float: right;
-        line-height: 4rem;
-        margin-right: 2rem;
-        cursor: pointer;
-        display: none;
-        position: absolute;
-      }
-
-      .navbar__logo {
-        line-height: 4rem;
-        margin-left: 3rem;
-        font-family: 'Pragati Narrow';
-        font-size: 45px;
-        text-transform: capitalize;
-        color: #d59494;
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: black;
-      }
-
-      nav ul {
-        float: right;
-        margin-right: 1rem;
-        margin-top: 0;
-        margin-bottom: 0;
-        position: fixed;
-        right: 0;
-        top: 0;
-      }
-
-      nav ul li {
-        display: inline-block;
-        line-height: 4rem;
-        margin: 0 1rem;
-      }
-
-      nav ul li a {
-        color: black;
-        font-size: 1.8rem;
-        padding: 0.5rem 0.8rem;
-        border-radius: 0.2rem;
-        letter-spacing: 0px;
-        text-decoration: none;
-        -webkit-text-fill-color: rgb(208, 208, 208);
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: black;
-        font-family: 'Pragati Narrow';
-      }
-
-      nav ul li a:hover {
-        /* text-decoration: underline; */
-        transition: 0.2s;
-        -webkit-text-fill
-
-      }
-      .navBarSection{
-        position: fixed;
-        z-index: 10;
-      }
       #navContainer{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100px;
-        z-index: 100;
-
-
+        opacity: 1;
       }
       .emptyNavContainer{
         /* background-color: rgba(255, 255, 255, 0); */
@@ -219,59 +146,21 @@
       {
         margin: auto;
         max-width: 50%;
-        /* padding-left: 20%; */
-        /* padding-right: 20%; */
       }
 
       @media (max-width: 768px) {
         .sectionContainer{
           max-width: 90% !important;
-          /* background-color: red !important; */
         }
         .bodyDiv{
           padding-left: 5% !important;
           padding-right: 5% !important;
         }
-        .navBarSection{
-          position: absolute !important;
-        }
         .pageTitle{
           font-size: 4em !important;
         }
-
         nav .navbar__hamburger-btn {
-          display: block;
-        }
-
-        nav ul {
-          position: fixed;
-          width: 100%;
-          height: 100vh;
-          background: #00d1ff;
-          left: -100%;
-          text-align: center;
-          transition: all 0.8s;
-          margin-right: 0px;
-          padding-left: 0px;
-        }
-
-        nav ul li {
-          display: block;
-
-          margin: 5rem 0;
-          line-height: 30px;
-          width: 100%;
-        }
-
-        nav ul li a {
-          font-size: 2rem;
-          color: black;
-        }
-
-        nav ul li a:hover,
-        a.active {
-          background: #00fff0;
-          transition: 0.2s;
+          top: 0;
         }
       }
   </style>
@@ -287,12 +176,12 @@
     <div id="navContainer" >
       <div class="navBarSection">
         <nav class="navbar" id="navbar">
-          <label for="check" class="navbar__hamburger-btn">
-            <i class="fas fa-bars"></i>
+          <label for="check" class="navbar__hamburger-btn" onclick = 'showHamburgerNavSection()'>
+            <i class="fas fa-circle"></i>
           </label>
           <a href= 'index.html' class = 'logoLink'>  <label href ='index.html' class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label></a>
           <!-- <label class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label> -->
-          <ul class="navbar__ul">
+          <ul class="navbar__ul" id = 'navBarListContainer'>
             <li><a class = 'pageLink' href = 'index.html'>Projects</a></li>
             <li><a class = 'pageLink' id = "activePageSection" href="contact.html">Contact</a></li>
             <li><a class = 'pageLink' href="about.html">About</a></li>
@@ -305,95 +194,36 @@
       <h1 class = 'pageTitle'>Contact</h1>
      <canvas id="c" width="300" height="300"></canvas>
       <div class = "sectionContainer">
-        <!-- <form action="https://formspree.io/agizlice1@gmail.com" method="post" id = 'contactform'> -->
-        <!-- <form id = 'contactform' action="https://formspree.io/agizlice1@gmail.com" method="POST"> -->
        <form action="https://formbucket.com/f/buk_a3mEU5pwgBTyfN9NDTMs3TM5" method="post" id = 'contactform'>
-        <!-- <form id = 'contactform' action="https://formspree.io/agizlice1@gmail.com" method="POST"> -->
-
-            <!-- <label for="name">NAME</label> -->
             <input type="text" name="name" id="name" placeholder="NAME" required>
-
-            <!-- <label for="email">Email</label> -->
             <input type="email" id="email" name="_replyto" placeholder="EMAIL" title="Enter your email address">
-
-            <!-- <label for="comments">Message</label> -->
             <textarea name="comments" id="comments" placeholder="MESSAGE"></textarea>
-            <div id="warningArea">
-
-            </div>
+            <div id="warningArea"></div>
             <input type="submit" value="Send" id = "submitButton" >
             <p id="my-form-status"></p>
         </form>
       </div>
 
-      <script>
-        // window.addEventListener("DOMContentLoaded", function() {
-        //
-        //   // get the form elements defined in your form HTML above
-        //
-        //   var form = document.getElementById("my-form");
-        //   var button = document.getElementById("my-form-button");
-        //   var status = document.getElementById("my-form-status");
-        //
-        //   // Success and Error functions for after the form is submitted
-        //
-        //   function success() {
-        //     form.reset();
-        //     button.style = "display: none ";
-        //     status.innerHTML = "Thanks!";
-        //   }
-        //
-        //   function error() {
-        //     status.innerHTML = "Oops! There was a problem.";
-        //   }
-        //
-        //   // handle the form submission event
-        //
-        //   form.addEventListener("submit", function(ev) {
-        //     ev.preventDefault();
-        //     var data = new FormData(form);
-        //     ajax(form.method, form.action, data, success, error);
-        //   });
-        // });
-        //
-        // // helper function for sending an AJAX request
-        //
-        // function ajax(method, url, data, success, error) {
-        //   var xhr = new XMLHttpRequest();
-        //   xhr.open(method, url);
-        //   xhr.setRequestHeader("Accept", "application/json");
-        //   xhr.onreadystatechange = function() {
-        //     if (xhr.readyState !== XMLHttpRequest.DONE) return;
-        //     if (xhr.status === 200) {
-        //       success(xhr.response, xhr.responseType);
-        //     } else {
-        //       error(xhr.status, xhr.response, xhr.responseType);
-        //     }
-        //   };
-        //   xhr.send(data);
-        // }
-      </script>
-      <!-- <div class = "rightGraphicHolder">
-
-      </div> -->
   </div>
   <script>
-  $('.pageLink').each(function(){
-    console.log(this.id);
-    if (this.id !== 'activePageSection') {
-      $(this).hover(
-         function() {
-           $( this ).css('text-decoration', 'underline');
-           // $( this ).css('color', 'black');
-           // $( this ).css('-webkit-text-fill-color', 'rgb(0, 208, 208)');
-           // -webkit-text-fill-color: rgb(208, 208, 208);
-           // %(this)
-         }, function() {
-           $( this ).css('text-decoration', 'none')
-         }
-       );
-    }
-  })
+      $('.pageLink').each(function(){
+        console.log(this.id);
+        if (this.id !== 'activePageSection') {
+          $(this).hover(
+             function() {
+               $( this ).css('text-decoration', 'underline');
+               // $( this ).css('color', 'black');
+               // $( this ).css('-webkit-text-fill-color', 'rgb(0, 208, 208)');
+               // -webkit-text-fill-color: rgb(208, 208, 208);
+               // %(this)
+             }, function() {
+               $( this ).css('text-decoration', 'none')
+             }
+           );
+        }
+      })
+
+
     var warningText = document.querySelector('#warningArea')
     var submitButton = document.querySelector('#submitButton');
     var nameInput = document.querySelector('#name');
