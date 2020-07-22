@@ -8,7 +8,7 @@
     <meta name = "description" content ="Ayla Gizlice is a Turkish-American artist born in Raleigh, NC.">
     <meta name = "keywords" content = "Artist, Sculpture, Raleigh, Turkish, Ceramics">
     <meta name = "author" content = "Webb Hinton">
-    <meta property="og:image" content="NaturaNaturansPreview.jpg">
+    <meta property="og:image" content="data/NaturaNaturansPreview.jpg">
     <meta http-equiv = 'X-UA-Compatible' content = 'ie-edge'>
 
 
@@ -108,6 +108,7 @@
         transition: height .4s ease-out;
         display: none;
         opacity: 0;
+        z-index: 110;
       }
 
       .sectionElementContainer{
@@ -606,16 +607,32 @@
   #seoH1{
     display: none;
   }
+  .fa-circle{
+    position: absolute;
+    left: -20px;
+    right: 0;
+  }
+  #newCloseButton{
+    position: absolute;
+    top: 2px;
+    font-size: 17px;
+    right: 3px;
+    opacity: 0;
+  }
+
   </style>
 
   <body>
     <h1 id = 'seoH1'> Ayla Gizlice Artwork></h1>
+    <label type="check" class="navbar__hamburger-btn" >
+      <i class="fas fa-circle" id = 'navButton' onclick = "showHamburgerNavSection()">
+        <i class="fas fa-times" id = 'newCloseButton' aria-hidden="true" onclick = 'closeProject()'></i>
+      </i>
+    </label>
     <div id="navContainer" >
       <div class="navBarSection">
         <nav class="navbar" id="navbar">
-          <label type="check" class="navbar__hamburger-btn" onclick = "showHamburgerNavSection()">
-            <i class="fas fa-circle"></i>
-          </label>
+
           <label class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label>
           <ul class="navbar__ul" id = 'navBarListContainer'>
             <li><a class = 'pageLink' id = "activePageSection" onclick="revealProjectSection()"><i id=indicatorSymbole> </i>Projects</a></li>
@@ -887,6 +904,7 @@
         //GALLERY
         // var galleryTitle = document.getElementById('galleryTitle');
         var galleryCloseButton = document.getElementById('galleryCloseButton');
+        var newCloseButton = document.getElementById('newCloseButton');
 
         //GALLERY DIMENSION SETTING VARS
         var numPicsToLoad;
@@ -905,6 +923,7 @@
         var bottomVisible = false;
         var overlayVisible = false;
         var hamburgerVisible = false;
+        var galleryActive = false;
         var activeProjectNavText;
         var testTest
         var placeHolderParagraph =
@@ -929,6 +948,7 @@
 
         $(document).ready(function() {
               if (w < mobileWidth) {
+
                 $('#landingArea').fadeOut()
                 $('#navContainer').animate({opacity:1}, 'easeOutSine')
                 $('#projectTextNames').animate({top:0}, 1000)
@@ -942,11 +962,11 @@
               $('#landingVideo').width($(window).width());
           });
 
-
         function keepActiveProjectNameAligned(container, winWidth) {
 
 
         }
+
         $(window).resize(function(e){
           if ($(window).width() <  w) {
             console.log('got smaller');
@@ -1001,17 +1021,14 @@
 
         function showHamburgerNavSection() {
           console.log('hamburger clicked');
-
-          if (window.innerWidth < mobileWidth && hamburgerVisible == false) {
+          if (w < mobileWidth && hamburgerVisible == false) {
             $('#navBarListContainer').animate({'right': '0%'})
           }
 
-
-          if (window.innerWidth < mobileWidth && hamburgerVisible == true) {
+          if (w < mobileWidth && hamburgerVisible == true) {
             $('#navBarListContainer').animate({'right': '-100%'})
           }
           hamburgerVisible = !hamburgerVisible
-
         }
 
         var realProjObjs = generateObjectFromSpreadData(projectAssetSheetURL).then(function(returnData) {
@@ -1029,38 +1046,47 @@
         var aboutPage = generateObjectFromSpreadData(aboutAssetSheetURL).then(function(returnData){setCVLink(returnData)});
 
         function closeProject() {
-          if (window.innerWidth  > mobileWidth){
-              $(projectSection).stop().animate({
-               top: 100,
-                height:0, opacity:0}, 500, 'easeOutCirc', function(){
-                  $('#projectTextNames').animate({'top': '0'}, 800, 'easeInOutCirc')
-                  $('#tempVideo').remove()
-                });
+
+          // newCloseButton.onclick = ""
+          newCloseButton.removeEventListener('click', closeProject)
+          document.querySelector('#navButton').addEventListener('click', showHamburgerNavSection)
+          // document.querySelector('#navButton').onclick = "showHamburgerNavSection()";
 
 
-              $(projectSection).css('pointer-events', 'none')
-              $('.heroImage').each(function(){
-                $(this).animate({opacity: 0})
+          $(newCloseButton).animate({opacity: 0})
+
+            if (window.innerWidth  > mobileWidth){
+                $(projectSection).stop().animate({
+                 top: 100,
+                  height:0, opacity:0}, 500, 'easeOutCirc', function(){
+                    $('#projectTextNames').animate({'top': '0'}, 800, 'easeInOutCirc')
+                    $('#tempVideo').remove()
+                  });
+
+
+                $(projectSection).css('pointer-events', 'none')
+                $('.heroImage').each(function(){
+                  $(this).animate({opacity: 0})
+                })
+            }
+
+            if (window.innerWidth < mobileWidth){
+
+              // $('#projectTextNames').animate({opacity: '0'}, 500, 'easeOutCirc')
+
+              // $(mainWrapperElem).animate({'top': '800px'}, 1000,'easeInQuad', function(){$('#tempVideo').remove()})
+              $(mainWrapperElem).animate({opacity: 0}, 300,'easeInQuad', function(){
+                $('#tempVideo').remove()
+                $('#projectTextNames').animate({'top': '0'}, 500, 'easeOutSine')
+              // $(mainWrapperElem).animate({'top': '800px'})
               })
-          }
+              $(projectSection).css('pointer-events', 'none')
+              $(galleryCloseButton).animate({opacity: 0})
+              // $(mainWrapperElem).css('pointer')
 
-          if (window.innerWidth < mobileWidth){
-
-            // console.log('below mobile width');
-            // $('#projectTextNames').animate({opacity: '0'}, 500, 'easeOutCirc')
-
-            // $(mainWrapperElem).animate({'top': '800px'}, 1000,'easeInQuad', function(){$('#tempVideo').remove()})
-            $(mainWrapperElem).animate({opacity: 0}, 300,'easeInQuad', function(){
-              $('#tempVideo').remove()
-              $('#projectTextNames').animate({'top': '0'}, 500, 'easeOutSine')
-            // $(mainWrapperElem).animate({'top': '800px'})
-            })
-            $(projectSection).css('pointer-events', 'none')
-            $(galleryCloseButton).animate({opacity: 0})
-            // $(mainWrapperElem).css('pointer')
-
-            // $(mainWrapperElem).css('top', '800px')
-          }
+              // $(mainWrapperElem).css('top', '800px')
+            }
+              // $(newCloseButton).animate({opacity: 0})
 
         }
 
@@ -1468,7 +1494,13 @@
         function pullUpProjectGallery(e){
           $(window).scrollTop($('#navbar').offset().top);
           $(projectSection).animate({'opacity':1});
-          $(mainWrapperElem).animate({'top':100}, 3000, 'easeOutQuad');
+          if (w > mobileWidth) {
+              $(mainWrapperElem).animate({'top':100}, 3000, 'easeOutQuad');
+          } else {
+            $(mainWrapperElem).animate({'top':0}, 3000, 'easeOutQuad');
+            $('#mainContentSection').animate({'top':0}, 3000, 'easeOutQuad');
+          }
+
 
           $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)+50)}, 2000, 'easeInOutCirc', function(){
               $(projectSection).css('pointer-events', 'all')
@@ -1549,6 +1581,12 @@
         }
 
         function handleProjNavClick(e) {
+          $(newCloseButton).animate({opacity: 1})
+          // document.querySelector('#navButton').onclick = ""
+          // $(newCloseButton).onclick = "closeProject()"
+          newCloseButton.addEventListener('click', closeProject)
+          document.querySelector('#navButton').removeEventListener('click', showHamburgerNavSection)
+
           curActiveSectionWidth = 0;
           totalHeight = 0;
           numPicsToLoad = 0;
@@ -1556,10 +1594,8 @@
           let curTotalSectionsWrapperWidth = $(mainWrapperElem).width()
           $(sectionContainer).scrollLeft(1000)
           $(mainWrapperElem).animate({opacity: 1}, 1000,'easeInQuad')
-          // $(e.target.firstChild).css('width', '100%')
 
           let parentContainer = document.querySelector('#projectTextNames');
-          // $(.projectN)
           let clickedProjNav = e.target;
           $(clickedProjNav).css('zIndex', 100)
           curProjectObj = returnCorrespondingProjectDataObj(e)

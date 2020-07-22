@@ -5,7 +5,7 @@ nav {
   /* position: fixed; */
 }
 
-nav .navbar__hamburger-btn {
+ .navbar__hamburger-btn {
   font-size: 2rem;
   /* color: black; */
   color: #7f7f7f
@@ -92,13 +92,13 @@ nav ul li a:hover {
     .navBarSection{
       position: absolute !important;
     }
-    nav .navbar__hamburger-btn {
+    .navbar__hamburger-btn {
 
       display: block;
-      position: fixed;
-      right: -21px;
-      top: 18px;
       z-index: 1000;
+      position: absolute;
+      right: 7px;
+      top: 15px;
     }
     .fa-circle:before {
       content: "\f111";
@@ -107,7 +107,7 @@ nav ul li a:hover {
       font-size: 22px;
       color: rgb(208, 208, 208);
     }
-    nav .navbar__hamburger-btn :active {
+    .navbar__hamburger-btn :active {
       color: rgb(84, 84, 84);
     }
     nav ul {
