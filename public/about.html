@@ -2,15 +2,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <title>Ayla Gizlice - About</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+    <meta name = "keywords" content = "Artist, Sculpture, Raleigh, Turkish, Ceramics">
+    <meta name = "author" content = "Webb Hinton">
+    <meta property="og:image" content="data/NaturaNaturansPreview.jpg">
+    <meta http-equiv = 'X-UA-Compatible' content = 'ie-edge'>
+    <link rel="icon" href="favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.13.1/typewriter.min.js" integrity="" crossorigin="anonymous"></script> -->
-    <!-- <script> src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.13.1/typewriter.min.js"</script> -->
-    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
-    <script src="navbar.js"></script>
+    <script src="plugins/easingScript.js" charset="utf-8"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin = "anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pragati+Narrow">
     <link rel="stylesheet" href="navStyle.css">
     <!-- <link rel="stylesheet" href="style.css"> -->
@@ -85,9 +96,6 @@
   #navContainer{
     opacity: 1;
   }
-  nav .navbar__hamburger-btn {
-    top: 0;
-  }
 
     @media only screen and (max-width: 768px) {
 
@@ -123,10 +131,6 @@
         width: 100% !important;
         height: auto !important;
       }
-      /* #sectionContainer{
-        padding-left: 10px !important;
-        width: 100vw !important;
-      } */
       .descriptionDiv{
         max-width: 100% !important;
         width: 100vw !important;
@@ -227,35 +231,37 @@
     .logoLink{
       text-decoration: none;
     }
-    .pageLink{
-
+    a{
+      text-decoration: none;
     }
-
   </style>
 
   <body>
-    <div id="navContainer">
+    <label type="check" class="navbar__hamburger-btn" >
+      <i class="fas fa-circle" id = 'navButton'>
+        <div id = 'innerNavButtonCircle'></div>
+
+        <i class="fas fa-times" id = 'newCloseButton' aria-hidden="true" onclick = 'closeProject()'></i>
+      </i>
+    </label>
+    <div id="navContainer" >
       <div class="navBarSection">
         <nav class="navbar" id="navbar">
-          <label for="check" class="navbar__hamburger-btn" onclick = 'showHamburgerNavSection()'>
-            <i class="fas fa-circle"></i>
-          </label>
-          <a href= 'index.html' class = 'logoLink'>  <label href ='index.html' class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label></a>
+
+          <a href = 'home.html'><label class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label></a>
           <ul class="navbar__ul" id = 'navBarListContainer'>
-            <li><a class = 'pageLink' href = 'index.html' ><i id=indicatorSymbole> </i>Projects</a></li>
+            <li><a class = 'pageLink' href = 'home.html' >Projects</a></li>
             <li><a class = 'pageLink' href="contact.html">Contact</a></li>
-            <li><a class = 'pageLink' id = "activePageSection"  href="about.html">About</a></li>
+            <li><a class = 'pageLink' href="about.html" id = "activePageSection" >About</a></li>
             <li><a class = 'pageLink' id='cvLink' target="_blank">CV</a></li>
           </ul>
         </nav>
       </div>
     </div>
-
     <div class = "aboutBodyDiv" id = 'pageContentContainer'>
 
       <div class = 'sectionContainer'>
       <h1 id = 'pageTitle' class = 'pageTitle'>Artist Statement</h1>
-        <!-- <h1 class = 'pageTitle'>Artist Statement</h1> -->
         <p id="artistStatement">artist statment here</p>
       </div>
         <div class="sectionContainer">
@@ -267,6 +273,27 @@
         </div>
     </div>
     <script type="text/javascript">
+    function showHamburgerNavSection() {
+      console.log('hamburger clicked');
+
+      if (w < mobileWidth && hamburgerVisible == false) {
+        $('#navBarListContainer').animate({'right': '0%'}, 500, 'easeOutCirc')
+        $('#innerNavButtonCircle').animate({height: 13, width: 13}, 500, 'easeOutQuad')
+      }
+
+      if (w < mobileWidth && hamburgerVisible == true) {
+        $('#navBarListContainer').animate({'right': '-100%'})
+        $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutSine')
+      }
+      hamburgerVisible = !hamburgerVisible
+    }
+    var navButton = document.getElementById('navButton');
+    navButton.addEventListener('mouseup', showHamburgerNavSection)
+    var w = window.innerWidth;
+    var mobileWidth = 768
+    var hamburgerVisible = false;
+
+
     $('.pageLink').each(function(){
       console.log(this.id);
       if (this.id !== 'activePageSection') {

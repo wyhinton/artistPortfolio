@@ -73,38 +73,105 @@ nav ul li a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 250px;
   z-index: 100;
   opacity: 0;
+  pointer-events: none;
 }
+  p#mobileProjectNameDisplay {
+      display: none;
+  }
 .emptyNavContainer{
-  /* background-color: rgba(255, 255, 255, 0); */
   background: -moz-linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
   background: -webkit-linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
   background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d0d0d0",GradientType=1);
 }
 @media (max-width: 768px) {
+    #newCloseButton{
+      position: absolute; */
+      top: 2px;
+      font-size: 17px;
+      /* right: 3px; */
+      opacity: 0;
+      left: 50%;
+      position: absolute;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      transition: all .5s ease-out; .
+      transform-origin: 50% 50%;
+
+    }
+    .activeCloseButton{
+      -webkit-transform: scale(1) !important;
+      transform: scale(1) translate(-50%, -50%) !important;
+      transform-origin: 50% 50%;
+    }
+    i#newCloseButton{
+      font-size: 13px;
+      transform-origin: 50% 50%;
+    }
+    #innerNavButtonCircle{
+      /* left: 50%; */
+      position: absolute;
+      /* top: 39%; */
+      /* transform: translate(-50%, -50%); */
+      color: black;
+      position: absolute;
+      font-size: 10px;
+      /* right: 6px; */
+      width: 9px;
+      top: 6px;
+      right: 6px;
+      height: 9px;
+      border-radius: 6px;
+      background-color: black;
+      opacity: 1;
+    }
+    .fa-circle-o{
+      color: black;
+    }
+    i#navButton{
+      position: relative;
+      top: 50%;
+      right: 50%;
+      height: 26px;
+      display: grid;
+
+    }
+    p#mobileProjectNameDisplay {
+      display: block;
+      font-size: 50px;
+      line-height: initial;
+      margin: 0;
+      color: rgb(208, 208, 208);
+      text-align: center;
+      border-bottom: 5px double black;
+      -webkit-text-stroke: 1px black;
+      padding-bottom: 10px;
+    }
     .navbar__logo{
       margin: 12px !important;
-      font-size: 26px !important;
+      font-size: 34px !important;
     }
     .navBarSection{
       position: absolute !important;
     }
     .navbar__hamburger-btn {
-
       display: block;
       z-index: 1000;
       position: absolute;
-      right: 7px;
-      top: 15px;
+      right: -14px;
+      top: 20px;
     }
     .fa-circle:before {
       content: "\f111";
       -webkit-text-stroke: 1px black;
       color: rgb(208, 208, 208);
       font-size: 22px;
+      height: 22px;
       color: rgb(208, 208, 208);
     }
     .navbar__hamburger-btn :active {
@@ -117,7 +184,7 @@ nav ul li a:hover {
       background: #5d5d5da6;
       right: -100%;
       text-align: center;
-      transition: all 0.8s;
+      /* transition: all 0.8s; */
       margin-right: 0px;
       padding-left: 0px;
     }
@@ -128,9 +195,12 @@ nav ul li a:hover {
       line-height: 30px;
       width: 100%;
     }
+
+
     nav ul li a {
       font-size: 2rem;
       color: black;
+
     }
     nav ul li a:hover,
     a.active {
