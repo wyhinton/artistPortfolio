@@ -3,6 +3,7 @@
 
 var mobileWidth = 768
 var hamburgerVisible = false;
+var cvLinkElem = document.getElementById('cvLink');
 function showHamburgerNavSection() {
   console.log('hamburger clicked');
 
@@ -16,4 +17,26 @@ function showHamburgerNavSection() {
     $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutSine')
   }
   hamburgerVisible = !hamburgerVisible
+}
+
+function setCVLink(aboutProjectObjArray) {
+  let firstObj = aboutProjectObjArray[0]
+  let link = firstObj.CV_Link
+  cvLink.href = link;
+}
+function pageLinkSetup(){
+  $('.pageLink').each(function(){
+    console.log(this.id);
+    if (this.id !== 'activePageSection') {
+      $(this).hover(
+         function() {
+           $( this ).css('text-decoration', 'underline');
+         }, function() {
+           $( this ).css('text-decoration', 'none')
+         }
+       );
+    } else {
+         $( this ).css('-webkit-text-fill-color', 'black');
+    }
+  })
 }

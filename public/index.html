@@ -13,8 +13,8 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin = "anonymous" SameSite ='Strict'></script>
-    <link rel="icon" href="favicon/favicon.ico">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="dataFetch.js" charset="utf-8"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="shortcut icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
@@ -22,6 +22,7 @@
     <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
 
     <script src="plugins/easingScript.js"></script>
+    <script src="plugins/seriously.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
@@ -39,9 +40,11 @@
       width: 100%;
       height: 100%;
       margin: 0px;
+      background-color: rgb(33, 116, 107);
       max-height: 100vh;
       overflow: hidden;
       scroll-behavior: smooth;
+
     }
 
     #mainHolder {
@@ -81,7 +84,7 @@
         transition: height .4s ease-out;
         display: none;
         opacity: 0;
-        z-index: 110;
+
       }
 
       .sectionElementContainer{
@@ -166,11 +169,24 @@
   </style>
    <!-- Global  -->
   <style>
-    body {
-      line-height: 1.1em;
-      background-color: black;
-      max-height: 100vh;
-    }
+
+          /* width */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        /* box-shadow: inset 0 0 5px grey; */
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0);
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: black;
+        border-radius: 10px;
+      }
     img {
       transition: opacity 0.5s linear;
     }
@@ -203,7 +219,9 @@
     .sections {
       /* width: 8000px; */
       width: max-content;
-      padding-left: 35px;
+      /* padding-left: 35px; */
+      padding-right: 10px;
+      padding-left: 10px;
     }
     .section {
       float: left;
@@ -249,7 +267,7 @@
       opacity: 0;
       /* opacity: .5; */
       transition: opacity 1s ease-out;
-      padding-right: 30px;
+      /* padding-right: 30px; */
       overflow: hidden;
       height: 600px;
       float: left;
@@ -304,6 +322,21 @@
       max-height: 600px;
       text-overflow: clip;
       flex-direction: column;
+      /* color: rgba(255, 255, 255, 0); */
+      color: rgb(0, 0, 0);
+      transition: color .5s easeOut;
+      opacity: 1;
+    }
+    .hiddenDescriptionDiv {
+      overflow: hidden;
+      position: absolute;
+      width: 300px;
+      top: 0;
+      transition: color 1s ease-out;
+      /* opacity: 0; */
+    }
+    .descriptionDivBlack{
+      color: black;
     }
 
     #mainContentSection {
@@ -314,6 +347,7 @@
       pointer-events: none;
       transition: height .4s ease-out;
       display: none;
+      z-index: 200;
     }
 
     .singleImageContainer {
@@ -327,17 +361,7 @@
       justify-content: center;
 
     }
-    .descriptionDiv {
-      overflow: hidden;
-    }
-    .hiddenDescriptionDiv {
-      overflow: hidden;
-      position: absolute;
-      color: rgba(0, 0, 0, 0);
-      transition: color 2s ease-out;
-      width: 0;
-      top: 0;
-    }
+
     .testHiddenImg{
       position: absolute;
       top: 0;
@@ -378,12 +402,11 @@
       justify-content: center;
       margin: 0;
       text-align: center;
-      top: 88px;
+      top: 35;
       right: 6px;
       padding: 0;
       margin: 0;
       border-radius: 21px;
-      transition: background-color .4s ease-out;
       z-index: 30;
       color: #7b7b7b;
       opacity: 0;
@@ -490,8 +513,11 @@
       transition: -webkit-transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
       -moz-transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
       -o-transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
-      transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
-      z-index: 10;
+      transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380) opacity .5s ease-out;
+      /* z-index: 10; */
+      /* opacity: 0; */
+      z-index: 0;
+      display: none;
     }
 
     .landingVideo{
@@ -526,6 +552,21 @@
     display: block;
   }
 
+    #topGradient{
+      height: 300px;
+      width: 100%;
+      background: -moz-linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
+      background: -webkit-linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
+      background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d0d0d0",GradientType=1);
+    }
+    .pageLink:hover{
+      text-decoration: underline;
+    }
+    .tempVideo{
+      padding-right: 40px; œ
+    }
+
 
 
   </style>
@@ -540,13 +581,15 @@
         <i class="fas fa-times" id = 'newCloseButton' aria-hidden="true" onclick = 'closeProject()'></i>
       </i>
     </label>
+    <div id="topGradientContainer"></div>
+
     <div id="navContainer" >
       <div class="navBarSection">
         <nav class="navbar" id="navbar">
 
           <label class="navbar__logo" id = 'logoMark' href = >Ayla Gizlice</label>
           <ul class="navbar__ul" id = 'navBarListContainer'>
-            <li><a class = 'pageLink' id = "activePageSection" onclick="revealProjectSection()"><i id=indicatorSymbole> </i>Projects</a></li>
+            <li><a class = 'pageLink' id = "activePageSection" onclick="showMainPage();revealProjectSection();"><i id=indicatorSymbole> </i>Projects</a></li>
             <li><a class = 'pageLink' href="contact.html">Contact</a></li>
             <li><a class = 'pageLink' href="about.html">About</a></li>
             <li><a class = 'pageLink' id='cvLink' target="_blank">CV</a></li>
@@ -556,7 +599,8 @@
     </div>
 
     <div id="landingArea" class = 'landingAreaVideo' isVisible = 'true' onclick = 'showMainPage()' >
-      <video class = "landingVideo" id = 'landingVideo' src = "data/fabricTry2.mov" autoplay = "true" loop = "true" muted autoplay loop playsinline></video>
+      <canvas id="landingCanvas"></canvas>
+      <video class = "landingVideo" id = 'landingVideo' src = "data/fabricTry2.mp4" autoplay = "true" loop = "true" muted autoplay loop playsinline></video>
     </div>
 
     <div id="projectHolder">
@@ -565,9 +609,11 @@
       </div>
     </div>
 
+
+   </div>
     <!-- <p id="galleryTitle"></p> -->
     <div id='mainContentSection' class = 'testHeightEasingClass'>
-      <div class="testholder">
+      <div class="testholder" id = 'testHolder'>
             <div class="closeButton" id = 'galleryCloseButton' onclick = "closeProject()"></div>
         <div class="main-wrapper" data-js="main-wrapper">
          <p id="mobileProjectNameDisplay">
@@ -592,26 +638,19 @@
 
         var projectNames = []
         var allProjObjs = [];
-        var curProjectObj;
         var curSubProjects = []
         var projHTMLObjSections = [];
-        var testSectionNames = [];
         var parentObjCol = [];
 
         //NAV ELEMENTS
         var projectNav = document.getElementById('projectHolder');
         var cvLinkElem = document.getElementById('cvLink')
-        let projectBar = document.getElementById('projectTextNames');
-        var logoMark = document.getElementById('logoMark');
-        var projectNavNameElements = document.getElementsByClassName('projectNameText');
-
         let sectionContainer = document.getElementById('sectionContainer');
         var projectSection = document.getElementById('mainContentSection');
 
         //WHOLE PAGE ELEMENTS
         var landingArea = document.getElementById('landingArea');
-        var overlayDiv = document.getElementById('overlayDiv');
-        var descriptionWidth = '300px'
+
         //GALLERY
         var galleryCloseButton = document.getElementById('galleryCloseButton');
         var newCloseButton = document.getElementById('newCloseButton');
@@ -631,24 +670,23 @@
         var galleryActive = false;
         var activeProjectNavText;
 
-
         var mobileWidth = 768
         var scrollCount = 1;
         var lastScrollTop = 0;
-        var h;
+        var h = window.innerHeight;
         var w;
 
-
         function showMainPage() {
+          managePageLinkHovers();
           $('#landingArea').fadeOut();
+
           $('body').css('background-color', 'rgb(208, 208, 208)')
 
-          $('#navContainer').animate({opacity:1}, 'easeOutSine')
           document.getElementById('activePageSection').click()
           $('#projectTextNames').animate({top:50}, 1000)
           delay = 0;
           $('.projectNameContainer').each(function(){
-               //^^ do for every instance less than the 16th (starting at 0)
+
               $(this).delay(delay).animate({
                   opacity:1
               },1000, 'easeOutQuad');
@@ -658,8 +696,8 @@
 
         $(document).ready(function() {
           $(galleryCloseButton).mouseenter(function () {
-            console.log($(firstMainWrapperChild).offset().top);
           })
+          $('#landingArea').hide().fadeIn(2500)
            h = $(window).height(); // height
            w = $(window).width() // width
 
@@ -684,7 +722,9 @@
         }
 
         $(window).resize(function(e){
-          if (w <  mobileWidth) {
+          if ($(window).width() <  w) {
+            $('#landingVideo').width('90%');
+            // let curLandingVideo
             let curTop = parseInt($('#projectTextNames').css('top'), 10)
             curTop = curTop - 2;
             $('#projectTextNames').css('top', curTop)
@@ -692,14 +732,15 @@
             enableLightBoxes(false)
 
           }
-          if (w >  mobileWidth) {
+          if ($(window).width() >  w) {
+            $('#landingArea').width
             enableLightBoxes(true)
             let curTop = parseInt($('#projectTextNames').css('top'), 10)
             curTop = curTop + 2;
-            console.log('CURTOP', curTop)
+            // console.log('CURTOP', curTop)
             $('#projectTextNames').css('top', curTop)
             w = $(window).width()
-            console.log('got larger');
+            // console.log('got larger');
           }
 
           let windowWidth = $(window).width()
@@ -707,8 +748,8 @@
 
 
           if (windowWidth < mobileWidth) {
-            $(sectionContainer).height = totalHeight
-            $(projectSection).height(totalHeight);
+            // $(sectionContainer).height = totalHeight
+            // $(projectSection).height(totalHeight);
 
           } else {
             $(projectSection).height(800)
@@ -717,24 +758,28 @@
           }
         })
 
-        $('.pageLink').each(function(){
-          console.log(this.id);
-          if (this.id !== 'activePageSection') {
-            $(this).hover(
-               function() {
-                 $( this ).css('text-decoration', 'underline');
-               }, function() {
-                 $( this ).css('text-decoration', 'none')
-               }
-             );
-          }
-        })
+        function managePageLinkHovers(){
+          $('.pageLink').each(function(){
+           $(this).removeClass('pageLink')
+            console.log(this.id);
+            if (this.id !== 'activePageSection') {
+              $(this).hover(
+                 function() {
+                   $( this ).css('text-decoration', 'underline');
+                 }, function() {
+                   $( this ).css('text-decoration', 'none')
+                 }
+               );
+            }
+          })
+        }
 
         var navButton = document.getElementById('navButton');
         navButton.addEventListener('mouseup', showHamburgerNavSection)
 
         var mobileWidth = 768
         var hamburgerVisible = false;
+
         function showHamburgerNavSection() {
           console.log('hamburger clicked');
 
@@ -751,12 +796,10 @@
         }
 
         var realProjObjs = generateObjectFromSpreadData(projectAssetSheetURL).then(function(returnData) {
-          console.log(returnData)
           projectNames = generateNavBarContents(returnData)
 
           for (var i = 0; i < parentObjCol.length; i++) {
             let curParentObj = parentObjCol[i]
-            console.log(curParentObj);
             let projObj = generateProjectStructure(curParentObj.id, i, realProjObjs[i])
             allProjObjs.push(projObj);
           }
@@ -765,14 +808,11 @@
           } else{
             enableLightBoxes(false)
           }
-
-
-
         });
         var aboutPage = generateObjectFromSpreadData(aboutAssetSheetURL).then(function(returnData){setCVLink(returnData)});
 
         function closeProject() {
-
+            $(projectSection).css('height', '0%')
           if (w < mobileWidth && hamburgerVisible == true) {
             $('#navBarListContainer').animate({'right': '-100%'})
             $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutCirc')
@@ -784,13 +824,23 @@
 
 
             if (w  > mobileWidth){
+                $('.heroImage').each(function(index, galleryImage){
+                  // console.log(obj);
+                  let z = index;
+                  $(galleryImage).delay(z*100).animate({opacity: 0}, 1000, 'easeOutQuad')
+                })
+
                 filterBlurNonSelected('empty', false)
                 $(mainWrapperElem).animate({scrollLeft: $(mainWrapperElem).offset().left}, 0);
                 $(projectSection).stop().animate({
-                 top: 100,
-                  height:0, opacity:0}, 500, 'easeOutCirc', function(){
+                 // top: 100,
+                  // height:0,
+                   opacity:0}, 500, 'easeOutCirc', function(){
                     $('#projectTextNames').animate({'top': '0'}, 800, 'easeInOutCirc')
-                    $('#tempVideo').remove()
+                    if (document.getElementById('tempVideo') !== null) {
+                      $('#tempVideo').remove()
+                    }
+
                   });
                 $(projectSection).css('pointer-events', 'none')
 
@@ -818,13 +868,6 @@
             }
         }
 
-        function setCVLink(aboutProjectObjArray) {
-          let firstObj = aboutProjectObjArray[0]
-          let link = firstObj.CV_Link
-
-          setElemAttribute(cvLinkElem, 'href', link)
-        }
-
         for (var i = 0; i < 5; i++) {
           let newSect = generateSection(sectionContainer, i)
           projHTMLObjSections.push(newSect)
@@ -844,8 +887,6 @@
 
           return videoObj;
 
-          // <iframe src="https://player.vimeo.com/video/329954553?title=0&byline=0&portrait=0" width="1067" height="600" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-          // <p><a href="https://vimeo.com/329954553">Three Gallons</a> from <a href="https://vimeo.com/user97300447">Ayla Gizlice</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
         }
         //OBJ CREATION
@@ -878,15 +919,12 @@
 
           setTimeout(()=>{
           if (completedImgLoads == numPicsToLoad) {
-                // console.log('right num of images loaded');
               totalWidth= 0;
               let z = 0;
-              // console.log('num of sections', $('.section').length);
               $('.section').each(function(index){
                 z = z +1;
                 if (z < curSubProjects.length+2){
                   totalWidth += parseInt($(this).outerWidth(true),10)+500;
-                  console.log('TOTALWIDTH', totalWidth)
                   $(loadedImage).delay(z*500).animate({opacity: 1}, 1000, 'easeOutQuad')
 
                 }
@@ -913,7 +951,6 @@
 
 
           }, 3000)
-          console.log(totalHeight);
         }
 
         function generateImageObj(parentElem, index, propName) {
@@ -938,72 +975,6 @@
 
           return imgObj;
 
-        }
-
-        function generateObjectFromSpreadData(url) {
-          // const response = await fetch('')
-          let myCellContentArr = []
-          let finalProjObs = []
-          let starts = []
-          let ranges = []
-          let testProjArray = []
-
-          return $.getJSON(url).then(function(data) {
-
-            let cells = data.feed.entry;
-            console.log('CELLS', cells)
-            let numRows = parseInt(data.feed.gs$rowCount.$t)
-            let numCols = parseInt(data.feed.gs$colCount.$t)
-            let totalNumCels = numRows * numCols;
-
-            for (var i = 0; i < numRows; i++) {
-              let range = numCols * i;
-              starts.push(range)
-            }
-
-            for (var i = 0; i < starts.length; i++) {
-              let curStart = starts[i]
-              let curRange = []
-              curRange[0] = curStart
-              curRange[1] = curStart + numCols
-              ranges.push(curRange)
-            }
-
-            for (var i = 0; i < ranges.length; i++) {
-              let curRange = ranges[i]
-              let projArray = cells.slice(curRange[0], curRange[1])
-              let contentArray = []
-              for (var j = 0; j < projArray.length; j++) {
-                let curCell = projArray[j]
-                let curContent = curCell.content.$t;
-                contentArray.push(curContent)
-              }
-              myCellContentArr.push(contentArray)
-            }
-
-            for (var i = 0; i < cells.length; i++) {
-              let curCell = cells[i]
-            }
-
-            let headerCells = cells.filter(obj => {
-              return obj.gs$cell.row === "1"
-            })
-
-            let headerNames = headerCells.map(a => a.content.$t)
-            let testObj = {}
-            for (var i = 1; i < myCellContentArr.length; i++) {
-              let curContentArray = myCellContentArr[i]
-              let contentObjHolder = {}
-              for (var j = 0; j < headerNames.length; j++) {
-                let curPropToAdd = headerNames[j]
-                contentObjHolder[curPropToAdd] = curContentArray[j]
-
-              }
-              finalProjObs.push(contentObjHolder)
-            }
-
-            return finalProjObs
-          })
         }
 
         function generateNavBarContents(allObjs) {
@@ -1058,6 +1029,7 @@
         }
 
         function generateProjectStructure(projName, index, projData) {
+          let projectBar = document.getElementById('projectTextNames');
           let projectNameContainer = createClassIdAppend(projectBar, 'span', 'projectNameContainer', 'projectNameContainer_'+index)
           let projectNavText = createClassIdAppend(projectNameContainer, 'P', 'projectNameText', 'projectTextHolder')
           $(projectNavText).toggleClass('projectNameHoverClass')
@@ -1199,12 +1171,28 @@
         }
 
         function pullUpProjectGallery(e){
+          // console.log($(document).height())
+          console.log(window.screen.height)
+          let windowOffset;
+          if (window.screen.height >= 1080){
+            console.log('it was 1080');
+            windowOffset = -50
+          }
+          if (window.screen.height < 1080){
+            console.log('it was less tahn 1080');
+            windowOffset = 5
+          }
+
           $(window).scrollTop($('#navbar').offset().top);
           $(projectSection).animate({'opacity':1});
 
           if (w > mobileWidth) {
               $(mainWrapperElem).animate({'top':50}, 3000, 'easeOutQuad');
-              $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)+50)}, 2000, 'easeInOutCirc', function(){
+
+              // console.log('BOUNDING', sectionBoundingBox);
+              // let projContainerOffset = (sectionBoundingBox.top*-1)-50;
+              $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)-windowOffset)}, 2000, 'easeInOutCirc', function(){
+              // $('#projectTextNames').animate({'top': projContainerOffset}, 2000, 'easeInOutCirc', function(){
                   $(projectSection).css('pointer-events', 'all')
                   $(projectSection).css('height', '100%')
                   $('#galleryCloseButton').animate({'opacity':'1'})
@@ -1261,6 +1249,7 @@
           $(visible).css({zIndex: 1})
           $(hidden).css('display', 'none')
           $(visible).css('display', 'flex')
+          $(visible).css('color', 'rgb(0, 0, 0)')
           $(visible).animate({width: '100%', height: '100%'}, function(){
             $(hidden).width('0')
             $(hidden).height('0')
@@ -1271,37 +1260,32 @@
           $(hidden).css({zIndex: 1})
           $(visible).css('display', 'none')
           $(hidden).css('display', 'flex')
-          $(hidden).animate({width: descriptionWidth}, function(){
-              $(hidden).css({color: 'rgb(0, 0, 0)' })
-              $(hidden).css({zIndex: 1})
-              $(visible).width('0')
-              $(visible).css({color: 'rgba(0, 0, 0, 0)'})
-
-          })
+          // $(hidden).css('opacity', 1)
+          $(hidden).toggleClass('hiddenDescriptionDiv')
+          $(visible).toggleClass('hiddenDescriptionDiv')
         }
 
         function showTopDescription(hidden, visible){
+          $(visible).toggleClass('hiddenDescriptionDiv')
+          $(hidden).toggleClass('hiddenDescriptionDiv')
           $(hidden).css({zIndex: 0})
           $(hidden).css('display', 'none')
           $(visible).css('display', 'flex')
-          $(visible).animate({width: descriptionWidth}, function(){
-              $(visible).css({color: 'rgb(0, 0, 0)' })
-              $(hidden).width('0')
-              $(hidden).css({color: 'rgba(0, 0, 0, 0)' })
-            })
+          // console.log();
+
         }
 
         function blurItem(ele, startRadius, endRadius){
                 // Generic function to set blur radius of $ele
             var setBlur = function(ele, radius) {
               // console.log('RADIUS', radius)
-              console.log(radius);
+              // console.log(radius);
                     $(ele).css({
                        "-webkit-filter": "blur("+radius+"px)",
                         "filter": "blur("+radius+"px)",
-                        '-moz-filter':  "blur("+radius+"px)",
-                        '-o-filter': "blur("+radius+"px)",
-                        '-ms-filter': "blur("+radius+"px)",
+                        // '-moz-filter':  "blur("+radius+"px)",
+                        // '-o-filter': "blur("+radius+"px)",
+                        // '-ms-filter': "blur("+radius+"px)",
                         // 'pointer-events': 'none'
                    });
                },
@@ -1322,8 +1306,9 @@
                         }
                     });
                 };
-        tweenBlur(ele, startRadius, endRadius)
+          tweenBlur(ele, startRadius, endRadius)
         }
+
         function filterBlurNonSelected(selectedProject, shouldBlur){
 
            if (shouldBlur == true) {
@@ -1343,11 +1328,8 @@
             }
           }
 
-
-
         function handleProjNavClick(e) {
           $(newCloseButton).animate({opacity: 1})
-
 
           document.querySelector('#mobileProjectNameDisplay').innerHTML = e.target.innerHTML
           newCloseButton.addEventListener('click', closeProject)
@@ -1369,25 +1351,12 @@
           let parentContainer = document.querySelector('#projectTextNames');
           let clickedProjNav = e.target;
           $(clickedProjNav).css('zIndex', 100)
-          curProjectObj = returnCorrespondingProjectDataObj(e)
+          let curProjectObj = returnCorrespondingProjectDataObj(e)
           curSubProjects = curProjectObj.group
           let parentId = clickedProjNav.parentNode.id
           console.log('PARENTID', parentId)
 
           filterBlurNonSelected(clickedProjNav, true)
-          // $('.projectNameContainer').each(function(index, obj){
-          //
-          //   console.log('INDEX', index)
-          //   if (obj.id !== parentId) {
-          //     $(obj).css({
-          //        'filter'         : 'blur(5px)',
-          //        '-webkit-filter' : 'blur(5px)',
-          //        '-moz-filter'    : 'blur(5px)',
-          //        '-o-filter'      : 'blur(5px)',
-          //        '-ms-filter'     : 'blur(5px)'
-          //     });
-          //   }
-          // })
           pullUpProjectGallery(e)
           elevateProjectnNavZIndex(e)
 
@@ -1465,8 +1434,8 @@
                 let videoEmbedElem = curSubProjObj.Video_Link
 
 
-                let myVideoObj = makeVideoPlayerObj(firstImageContainer, curSubProjObj.Video_Link, i)
-                firstImageContainer.parentNode.parentNode.insertAdjacentHTML('afterend', '<iframe title="vimeo-player" id = "tempVideo" src="https://player.vimeo.com/video/329954553" width="1000" height="auto" frameborder="0" allowfullscreen></iframe>')
+                // let myVideoObj = makeVideoPlayerObj(firstImageContainer, curSubProjObj.Video_Link, i)
+                firstImageContainer.parentNode.parentNode.insertAdjacentHTML('afterend', '<iframe title="vimeo-player" id = "tempVideo" src="https://player.vimeo.com/video/329954553?title=0&byline=0&portrait=0" width="1000" height="auto" frameborder="0" allowfullscreen></iframe>')
                 $(imgDiv.firstChild).css('width', 1000)
                 $('#imageContainerPadding1_2').css('width', 1000)
                 $(imgDiv).width('0')
@@ -1492,7 +1461,6 @@
             })
           }
         }
-
 
         //DOM ANIMATION
         function fadeInOut(elemArray, inOrOut, min, max) {
@@ -1539,7 +1507,6 @@
         }
 
         //UTILS
-
         function createClassIdAppend(parentElem, htmlType, className, idName) {
 
           let testPar = parentElem
@@ -1596,12 +1563,15 @@
         }
 
       </script>
-      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin = "anonymous"></script>
+
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin = "anonymous" SameSite = 'None'></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js" crossorigin = "anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" crossorigin = "anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js" crossorigin = "anonymous"></script>
       <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/Draggable-latest-beta.js" charset="utf-8" ></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
       <script src="plugins/lightgallery.min.js"></script>
+      <script src="navbar.js" charset="utf-8"></script>
 
       <script src="horizontalScroll.js" charset="utf-8"></script>
 

@@ -21,10 +21,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="plugins/easingScript.js" charset="utf-8"></script>
+    <script src="navbar.js" charset="utf-8"></script>
+    <script src="dataFetch.js" charset="utf-8"></script>
+    <script src="cvLink.js" charset="utf-8"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin = "anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pragati+Narrow">
     <link rel="stylesheet" href="navStyle.css">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+
   </head>
   <style>
     body{
@@ -93,9 +96,6 @@
   <!-- NAV BAR -->
   <!-- /* Phone Settins */ -->
   <style>
-  #navContainer{
-    opacity: 1;
-  }
 
     @media only screen and (max-width: 768px) {
 
@@ -107,7 +107,6 @@
         padding-top: 10px;
         transition: background-color .5s ease-out;
         position: absolute;
-        /* background-color: red; */
         display: block;
         z-index: 5;
         transition: height .5s ease-out;
@@ -155,7 +154,6 @@
       }
       .sectionContainer{
         max-width: 90% !important;
-        /* background-color: red !important; */
       }
       .pageTitle{
         font-size: 4em !important;
@@ -172,62 +170,60 @@
       align-items: center;
       display: block;
       text-align: justify;
-      /* padding: 20px; */
       padding: 10px;
       padding-top: 50px;
       opacity: 0;
       transition: opacity .5s ease-out;
+      padding-bottom: 2vh;
     }
     #aboutParagraph{
-      /* text-align: left */
-      /* margin-left: 20px; */
-      /* margin-right: 20px; */
+      border-top: 1px solid black;
+      padding-top: 2vh;
+      font-size: 19px;
+      border-bottom: 1px solid black;
+      padding-bottom: 2vh;
+      line-height: 1.4;
     }
-    .sectionContainer
-    {
+    .sectionContainer{
+      padding-top: 2vh;
+      padding-bottom: 2vh;
       margin: auto;
       max-width: 50%;
-      /* padding-left: 20%; */
-      /* padding-right: 20%; */
     }
 
     #aboutPicture
     {
-      /* padding: 10px; */
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 4vh;
+      padding-bottom: 35px;
       width: 100%;
       border-radius: 1000px;
 
     }
+    img#aboutPicture ::after{
+      content:' '
+      width: 10px;
+      background-color: black;
+      height: 50px;
+      margin: auto;
+    }
     #artistStatement{
-      /* background-color: grey; */
-      /* font-size: 12px;     */
-      /* font-size: 23px; */
+      line-height: 1.4;
       font-size: 19px;
-      /* border-top: 1px solid black; */
       border-bottom: 1px solid black;
+      border-top: 1px solid black;
       padding-bottom: 2vh;
-      padding-top: 4vh;
-      /* opacity: 0; */
+      padding-top: 2vh;
     }
     .pageTitle{
       text-align: center;
       -webkit-text-fill-color: rgb(208, 208, 208);
       -webkit-text-stroke-width: 1px;
-      /* font-size: 5vw; */
       -webkit-text-stroke-color: black;
       font-size: calc(12px + 8.5vw);
     }
     #sectionContainer{
-      /* display: none; */
     }
-    #aboutParagraph{
-    /* font-size: 23px; */
-    font-size: 19px;
-    border-bottom: 1px solid black;
-    padding-bottom: 2vh;
-    }
+
     .logoLink{
       text-decoration: none;
     }
@@ -248,9 +244,9 @@
       <div class="navBarSection">
         <nav class="navbar" id="navbar">
 
-          <a href = 'home.html'><label class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label></a>
+          <a href = 'index.html'><label class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label></a>
           <ul class="navbar__ul" id = 'navBarListContainer'>
-            <li><a class = 'pageLink' href = 'home.html' >Projects</a></li>
+            <li><a class = 'pageLink' href = 'index.html' >Projects</a></li>
             <li><a class = 'pageLink' href="contact.html">Contact</a></li>
             <li><a class = 'pageLink' href="about.html" id = "activePageSection" >About</a></li>
             <li><a class = 'pageLink' id='cvLink' target="_blank">CV</a></li>
@@ -265,7 +261,7 @@
         <p id="artistStatement">artist statment here</p>
       </div>
         <div class="sectionContainer">
-            <h2 class = 'pageTitle' id = 'aboutTitle' >About</h2>
+            <!-- <h2 class = 'pageTitle' id = 'aboutTitle' >About</h2> -->
             <img id = 'aboutPicture' src = 'data/ProfileImages/Profile_3_Small.jpg'>
             <p id = 'aboutParagraph'>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -273,41 +269,15 @@
         </div>
     </div>
     <script type="text/javascript">
-    function showHamburgerNavSection() {
-      console.log('hamburger clicked');
+    pageLinkSetup()
+    var aboutPage = generateObjectFromSpreadData(aboutAssetSheetURL).then(function(returnData){setCVLink(returnData)});
 
-      if (w < mobileWidth && hamburgerVisible == false) {
-        $('#navBarListContainer').animate({'right': '0%'}, 500, 'easeOutCirc')
-        $('#innerNavButtonCircle').animate({height: 13, width: 13}, 500, 'easeOutQuad')
-      }
-
-      if (w < mobileWidth && hamburgerVisible == true) {
-        $('#navBarListContainer').animate({'right': '-100%'})
-        $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutSine')
-      }
-      hamburgerVisible = !hamburgerVisible
-    }
     var navButton = document.getElementById('navButton');
     navButton.addEventListener('mouseup', showHamburgerNavSection)
     var w = window.innerWidth;
     var mobileWidth = 768
     var hamburgerVisible = false;
 
-
-    $('.pageLink').each(function(){
-      console.log(this.id);
-      if (this.id !== 'activePageSection') {
-        $(this).hover(
-           function() {
-             $( this ).css('text-decoration', 'underline');
-           }, function() {
-             $( this ).css('text-decoration', 'none')
-           }
-         );
-      } else {
-           $( this ).css('-webkit-text-fill-color', 'black');
-      }
-    })
 
     const aboutAssetURL = 'https://spreadsheets.google.com/feeds/cells/17-59RkABiXT4-odN7PGxUOVX1CWOBQb3t-SzqBkG5q0/1/public/full?alt=json'
     var artistStatementElem = document.getElementById('artistStatement');
@@ -323,7 +293,6 @@
       setElemAttribute(artistStatementElem, 'innerHTML', aboutData.Artist_Statement)
       setElemAttribute(aboutParagraph, 'innerHTML', aboutData.About_Statement)
       $('#pageContentContainer').css('opacity', '1')
-
     });
 
     function setData(googleSheetDataObj){
@@ -402,6 +371,7 @@
     }
 
     </script>
+
 
   </body>
 </html>

@@ -56,6 +56,7 @@ nav ul li a {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   font-family: 'Pragati Narrow';
+  z-index: 101;
 }
 
 nav ul li a:hover {
@@ -73,20 +74,20 @@ nav ul li a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  height: 250px;
+  height: 100;
   z-index: 100;
-  opacity: 0;
-  pointer-events: none;
+  opacity: 1;
+  /* pointer-events: none; */
 }
   p#mobileProjectNameDisplay {
       display: none;
   }
-.emptyNavContainer{
+/* .topGradient{
   background: -moz-linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
   background: -webkit-linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
   background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d0d0d0",GradientType=1);
-}
+} */
 @media (max-width: 768px) {
     #newCloseButton{
       position: absolute; */

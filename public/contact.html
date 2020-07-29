@@ -18,7 +18,6 @@
     <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pragati+Narrow">
     <link rel="stylesheet" href= "navStyle.css">
     <link rel="stylesheet" href= "formStyle.css">
@@ -26,6 +25,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="plugins/easingScript.js" charset="utf-8"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin = "anonymous"></script>
+
+    <script src="dataFetch.js" charset="utf-8"></script>
+
 
   </head>
   <style>
@@ -52,8 +54,8 @@
       padding: 10px;
       padding-top: 85px;
     }
-    #comments{
-      height: 300px;
+    #message{
+      height: 240px;
       width: 100%;
       border: 1px solid;
       border-radius: 1px;
@@ -126,12 +128,18 @@
     #seoH1{
       display: none;
     }
+    h2{
+      justify-content: center;
+      text-align: center;
+      font-style: oblique;
+    }
 
   </style>
 
 
   <body>
     <h1 id = "seoH1">Contact</h1>
+
     <label type="check" class="navbar__hamburger-btn" >
       <i class="fas fa-circle" id = 'navButton'>
         <div id = 'innerNavButtonCircle'></div>
@@ -143,9 +151,9 @@
       <div class="navBarSection">
         <nav class="navbar" id="navbar">
 
-          <a href = 'home.html'><label class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label></a>
+          <a href = 'index.html'><label class="navbar__logo" id = 'logoMark'>Ayla Gizlice</label></a>
           <ul class="navbar__ul" id = 'navBarListContainer'>
-            <li><a class = 'pageLink' href = 'home.html'></i>Projects</a></li>
+            <li><a class = 'pageLink' href = 'index.html'></i>Projects</a></li>
             <li><a class = 'pageLink' href="contact.html" id = "activePageSection" >Contact</a></li>
             <li><a class = 'pageLink' href="about.html">About</a></li>
             <li><a class = 'pageLink' id='cvLink' target="_blank">CV</a></li>
@@ -155,12 +163,13 @@
     </div>
     <div class = "bodyDiv">
       <h1 class = 'pageTitle'>Contact</h1>
+      <h2>agizlice1@gmail.com</h2>
      <canvas id="c" width="300" height="300"></canvas>
-      <div class = "sectionContainer">
-       <form action="https://formbucket.com/f/buk_a3mEU5pwgBTyfN9NDTMs3TM5" method="post" id = 'contactform'>
-            <input type="text" name="name" id="name" placeholder="NAME" required>
+      <div class = "sectionContainer kwes-form">
+       <form class = 'kwes-form' action="https://getform.io/f/156fd3b2-59b7-411b-ac03-6d41698a1cf5" method="POST" id = 'contactform'>
+            <input type="text" name="name" placeholder="NAME" required>
             <input type="email" id="email" name="_replyto" placeholder="EMAIL" title="Enter your email address">
-            <textarea name="comments" id="comments" placeholder="MESSAGE"></textarea>
+            <textarea name="message" id="message" placeholder="MESSAGE"></textarea>
             <div id="warningArea"></div>
             <input type="submit" value="Send" id = "submitButton" >
             <p id="my-form-status"></p>
@@ -175,48 +184,31 @@
   var w = $(window).width() // width
   var mobileWidth = 768
   var hamburgerVisible = false;
-  function showHamburgerNavSection() {
-    console.log('hamburger clicked');
+  const aboutAssetSheetURL = 'https://spreadsheets.google.com/feeds/cells/17-59RkABiXT4-odN7PGxUOVX1CWOBQb3t-SzqBkG5q0/1/public/full?alt=json'
 
-    if (w < mobileWidth && hamburgerVisible == false) {
-      $('#navBarListContainer').animate({'right': '0%'}, 500, 'easeOutCirc')
-      $('#innerNavButtonCircle').animate({height: 13, width: 13}, 500, 'easeOutQuad')
-    }
+  var aboutPage = generateObjectFromSpreadData(aboutAssetSheetURL).then(function(returnData){setCVLink(returnData)});
 
-    if (w < mobileWidth && hamburgerVisible == true) {
-      $('#navBarListContainer').animate({'right': '-100%'})
-      $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutSine')
-    }
-    hamburgerVisible = !hamburgerVisible
-  }
-
-  // var navButton = document.getElementById('navButton');
-  // navButton.addEventListener('mouseup', showHamburgerNavSection)
-
-      $('.pageLink').each(function(){
-        console.log(this.id);
-        if (this.id !== 'activePageSection') {
-          $(this).hover(
-             function() {
-               $( this ).css('text-decoration', 'underline');
-               // $( this ).css('color', 'black');
-               // $( this ).css('-webkit-text-fill-color', 'rgb(0, 208, 208)');
-               // -webkit-text-fill-color: rgb(208, 208, 208);
-               // %(this)
-             }, function() {
-               $( this ).css('text-decoration', 'none')
-             }
-           );
+     $("#contactform").submit(function(e){
+      e.preventDefault();
+      var action = $(this).attr("action");
+      $.ajax({
+        type: "POST",
+        url: action,
+        crossDomain: true,
+        data: new FormData(this),
+        dataType: "json",
+        contentType: "multipart/form-data",
+        processData: false,
+        contentType: false,
+        headers: {
+          "Accept": "application/json"
         }
-      })
-
-
-    // var warningText = document.querySelector('#warningArea')
-    // var submitButton = document.querySelector('#submitButton');
-    // var nameInput = document.querySelector('#name');
-    // var emailInput = document.querySelector('#email');
-    // var commentsInput = document.querySelector('#comments');
-
+      }).done(function() {
+         $('.success').addClass('is-active');
+      }).fail(function() {
+         alert('An error occurred please try again later.')
+      });
+    });
     var message = "";
       window.addEventListener("DOMContentLoaded", function() {
 
@@ -263,125 +255,12 @@
           };
           xhr.send(data);
         }
-    // $("#submitButton").on("click", function() {
-    //     message = $("#contactform").serialize();
-    //     console.log(message);
-    //     $.ajax({
-    //         url: "https://formspree.io/agizlice1@gmail.com",
-    //         // url: "//formspree.io/agizlice1@gmail.com",
-    //         method: "POST",
-    //         data: {message: message},
-    //         dataType: "json"
-    //     });
-    //     alert('Thanks for the email, we\'ll be in touch promptly.');
-    //     return false;
-    // });
+        function setElemAttribute(elem, attr, content) {
+          elem[attr] = content
+        }
+
   </script>
   <!-- THREE.JS -->
-  <script>
-    // function main() {
-    //   var loader = new THREE.GLTFLoader();
-    //   var cameraParams = {
-    //     'fov': 75,
-    //     'aspect': 2,
-    //     'near': 0.1,
-    //     'far': 5,
-    //   }
-    //
-    //   var params = {
-    //     envMap: 'HDR',
-    //     roughness: 0.0,
-    //     metalness: 0.0,
-    //     exposure: 1.0,
-    //     debug: false
-    //   };
-    //
-    //   const canvas = document.querySelector('#c');
-    //
-    //   const renderer = new THREE.WebGLRenderer({
-    //     'canvas': canvas,
-    //     'alpha': true
-    //   });
-    //
-    //   renderer.physicallyCorrectLights = true;
-    //   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    //   // console.log(renderer.alpha);
-    //   const camera = new THREE.PerspectiveCamera(cameraParams.fov, cameraParams.aspect, cameraParams.near, cameraParams.far);
-    //   camera.position.z = 2;
-    //   // console.log(renderer.domElement);
-    //   controls = new THREE.OrbitControls(camera, renderer.domElement);
-    //   const scene = new THREE.Scene();
-    //
-    //   loader.load(
-    //     // resource URL
-    //     'data/frogThreeReadyTry4.glb',
-    //     function(gltf) {
-    //       // gltf.scene.scale = {x: .1, y: .1, z: .1}
-    //       gltf.scene.scale.set(.01, .01, .01) // scale here
-    //       scene.add(gltf.scene);
-    //
-    //       gltf.animations; // Array<THREE.AnimationClip>
-    //       gltf.scene; // THREE.Group
-    //       gltf.scenes; // Array<THREE.Group>
-    //       gltf.cameras; // Array<THREE.Camera>
-    //       gltf.asset; // Object
-    //       gltf.scene
-    //       // console.log(gltf.scene);
-    //     },
-    //     // called while loading is progressing
-    //     function(xhr) {
-    //
-    //       // console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-    //
-    //     },
-    //     // called when loading has errors
-    //     function(error) {
-    //       console.log('An error happened');
-    //     }
-    //     );
-    //
-    //     {
-    //     const color = 0xFFFFFF;
-    //     const intensity = 10;
-    //     const light = new THREE.DirectionalLight(color, intensity);
-    //     light.position.set(-1, 2, 4);
-    //     scene.add(light);
-    //   }
-    //
-    //
-    //   function resizeRendererToDisplaySize(renderer) {
-    //     const canvas = renderer.domElement;
-    //     const width = canvas.clientWidth;
-    //     const height = canvas.clientHeight;
-    //     const needResize = canvas.width !== width || canvas.height !== height;
-    //     if (needResize) {
-    //       renderer.setSize(width, height, false);
-    //     }
-    //     return needResize;
-    //   }
-    //
-    //   function render(time) {
-    //     time *= 0.001;
-    //
-    //     if (resizeRendererToDisplaySize(renderer)) {
-    //       const canvas = renderer.domElement;
-    //       camera.aspect = canvas.clientWidth / canvas.clientHeight;
-    //       camera.updateProjectionMatrix();
-    //     }
-    //
-    //
-    //     renderer.render(scene, camera);
-    //
-    //     requestAnimationFrame(render);
-    //   }
-    //
-    //   requestAnimationFrame(render);
-    //
-    //
-    //
-    // }
-    //
-    // main();
-  </script>
+  <script src="navBar.js" charset="utf-8"></script>
   </body>
 </html>
