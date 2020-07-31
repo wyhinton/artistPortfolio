@@ -12,7 +12,7 @@ $.event.special.mousewheel = {
 setup: function() {
     if ( this.addEventListener ) {
         for ( var i=types.length; i; ) {
-            this.addEventListener( types[--i], handler, false );
+            this.addEventListener( types[--i], handler, false, {passive: true} );
         }
     } else {
         this.onmousewheel = handler;

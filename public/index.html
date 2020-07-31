@@ -1,5 +1,5 @@
-<DOCTYPE html>
-  <html>
+<!doctype html>
+  <html lang = 'en'>
 
   <head>
     <title>Ayla Gizlice</title>
@@ -13,8 +13,10 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"  crossorigin="anonymous"></script>
     <script src="dataFetch.js" charset="utf-8"></script>
+        <link rel="icon" href="favicon/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="shortcut icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
@@ -22,15 +24,15 @@
     <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
 
     <script src="plugins/easingScript.js"></script>
-    <script src="plugins/seriously.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.css">
+    <script src="plugins/transit.min.js" charset="utf-8"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pragati+Narrow">
-    <!-- <link rel="stylesheet" href="https://use.typekit.net/qwm8jod.css"> -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Pragati+Narrow" as= "style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pragati+Narrow&text=ABCDEFGHIJKLMNOPQRSTUVWXYZylaizce">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" SameSite = 'Strict'>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="style.css" SameSite = 'Strict'> -->
     <link rel="stylesheet" type="text/css" media="screen" href="navStyle.css" SameSite = 'Strict'>
 
   </head>
@@ -38,10 +40,10 @@
   <style>
     body {
       width: 100%;
-      height: 100%;
+      height: 100vh;
       margin: 0px;
       background-color: rgb(33, 116, 107);
-      max-height: 100vh;
+      /* max-height: 100vh; */
       overflow: hidden;
       scroll-behavior: smooth;
 
@@ -56,7 +58,6 @@
       justify-content: center;
       flex-direction: column;
     }
-
 
    </style>
   <!-- /* Phone Settins */ -->
@@ -75,6 +76,7 @@
         transition: height .5s ease-out;
         height: fit-content !important;
         padding-bottom: 100px !important;
+
       }
 
       #mainContentSection {
@@ -114,7 +116,7 @@
       .projectNameContainer{
         height: 140px !important;
       }
-      .project__Title{
+      .project__title{
         margin-top: 0 !important;
       }
       .descriptionDiv{
@@ -177,7 +179,6 @@
 
       /* Track */
       ::-webkit-scrollbar-track {
-        /* box-shadow: inset 0 0 5px grey; */
         border-radius: 10px;
         background: rgba(255, 255, 255, 0);
       }
@@ -194,7 +195,6 @@
     .main-wrapper {
       width: 100vw;
       height: 90vh;
-      /* background-color: rgb(208, 208, 208); */
       background-color: rgba(208, 208, 208, 0);
 
       overflow: auto;
@@ -206,6 +206,10 @@
       transition: height .5s ease-out;
       top: 100px;
       flex-direction: column;
+      /* transition: translate 5s ease-out; */
+      transform: translate(0, 0);
+      /* transition: all .5s ease-out; */
+      transition: background-color .5s ease-out, height .5s ease-out, transform 1s ease-out;
     }
     .main-wrapper::after{
       padding-right: 0px !important;
@@ -217,9 +221,7 @@
     .projectDescription {}
 
     .sections {
-      /* width: 8000px; */
       width: max-content;
-      /* padding-left: 35px; */
       padding-right: 10px;
       padding-left: 10px;
     }
@@ -265,9 +267,6 @@
     }
     .heroImage {
       opacity: 0;
-      /* opacity: .5; */
-      transition: opacity 1s ease-out;
-      /* padding-right: 30px; */
       overflow: hidden;
       height: 600px;
       float: left;
@@ -280,7 +279,6 @@
       padding-left: 56px;
       background-color: light-gray;
       position: relative;
-      /* display: none; */
       width: max-content;
       z-index: 5;
     }
@@ -300,7 +298,7 @@
       display: flex;
     }
 
-    .project__Title {
+    .project__title {
       text-align: left;
       border-bottom: 1px solid black;
       margin-bottom: 0px;
@@ -322,7 +320,6 @@
       max-height: 600px;
       text-overflow: clip;
       flex-direction: column;
-      /* color: rgba(255, 255, 255, 0); */
       color: rgb(0, 0, 0);
       transition: color .5s easeOut;
       opacity: 1;
@@ -333,7 +330,6 @@
       width: 300px;
       top: 0;
       transition: color 1s ease-out;
-      /* opacity: 0; */
     }
     .descriptionDivBlack{
       color: black;
@@ -415,11 +411,7 @@
     }
     .closeButton::after {
       font-size: 30px;
-        font-family: 'Material Icons';
-        content: "highlight_off";
-        -webkit-font-feature-settings: 'liga' 1;
-        -moz-font-feature-settings: 'liga' 1;
-        font-feature-settings: 'liga' 1;
+      content: url(data/highlight_off-24px.svg);
     }
     .closeButton:hover{
       color:rgb(185, 185, 185);
@@ -443,6 +435,15 @@
       justify-content: center;
       position: relative;
       height: 200px;
+      transition: all .25s ease-out;
+    }
+    .projectNameContainer-blur{
+      transform: translate3d(0,0,0);
+      will-change: filter;
+      filter: blur(5px);
+      -moz-filter: blur(5px)
+      /* text-shadow: 2px 2px 8px #FF0000; */
+      /* -webkit-text-stroke-color: rgb(195, 195, 195); */
     }
 
 
@@ -452,8 +453,7 @@
     #projectNavContainer{
       position: relative;
       overflow: scroll;
-      height: 100%;
-      max-height: 100vh;
+      height: 100vh;
       width: 100%;
       z-index: 0;
     }
@@ -474,6 +474,9 @@
       display: grid;
       word-break: break-word;
       top: 64px;
+      /* transform: translate(0,0); */
+      transform: translate3d(0,0,0);
+      transition: transform .5s ease-out;
     }
     #projectTextNames::after{
       content:"" ;
@@ -514,8 +517,6 @@
       -moz-transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
       -o-transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
       transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380) opacity .5s ease-out;
-      /* z-index: 10; */
-      /* opacity: 0; */
       z-index: 0;
       display: none;
     }
@@ -530,27 +531,27 @@
   </style>
   <!-- temp styles -->
   <style>
-  #bottomGradient{
-    height: 100px;
-    position: absolute;
-    bottom: 0;
-    background: rgb(255,255,255);
-    background: -moz-linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
-    background: -webkit-linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
-    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d0d0d0",GradientType=1);
-    width: 100%;
-    display: none;
-  }
-  #tempHolder{
-    height: fit-content;
-  }
-  #seoH1{
-    display: none;
-  }
-  #mobileProjectNameDisplay{
-    display: block;
-  }
+    #bottomGradient{
+      height: 100px;
+      position: absolute;
+      bottom: 0;
+      background: rgb(255,255,255);
+      background: -moz-linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
+      background: -webkit-linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d0d0d0",GradientType=1);
+      width: 100%;
+      display: none;
+    }
+    #tempHolder{
+      height: fit-content;
+    }
+    #seoH1{
+      display: none;
+    }
+    #mobileProjectNameDisplay{
+      display: block;
+    }
 
     #topGradient{
       height: 300px;
@@ -564,7 +565,7 @@
       text-decoration: underline;
     }
     .tempVideo{
-      padding-right: 40px; œ
+      padding-right: 40;
     }
 
 
@@ -574,7 +575,6 @@
   <body>
     <h1 id = 'seoH1'> Ayla Gizlice Artwork></h1>
     <label type="check" class="navbar__hamburger-btn" >
-      <!-- <i class="fas fa-circle" id = 'navButton' onclick = "showHamburgerNavSection()"> -->
       <i class="fas fa-circle" id = 'navButton'>
         <div id = 'innerNavButtonCircle'></div>
 
@@ -592,7 +592,7 @@
             <li><a class = 'pageLink' id = "activePageSection" onclick="showMainPage();revealProjectSection();"><i id=indicatorSymbole> </i>Projects</a></li>
             <li><a class = 'pageLink' href="contact.html">Contact</a></li>
             <li><a class = 'pageLink' href="about.html">About</a></li>
-            <li><a class = 'pageLink' id='cvLink' target="_blank">CV</a></li>
+            <li><a class = 'pageLink' id='cvLink' target="_blank" rel ="noreferrer">CV</a></li>
           </ul>
         </nav>
       </div>
@@ -600,25 +600,22 @@
 
     <div id="landingArea" class = 'landingAreaVideo' isVisible = 'true' onclick = 'showMainPage()' >
       <canvas id="landingCanvas"></canvas>
-      <video class = "landingVideo" id = 'landingVideo' src = "data/fabricTry2.mp4" autoplay = "true" loop = "true" muted autoplay loop playsinline></video>
+      <video class = "landingVideo" id = 'landingVideo' src = "data/fabricTry2.mp4" autoplay = "true" muted autoplay loop playsinline></video>
     </div>
 
-    <div id="projectHolder">
+    <!-- <div id="projectHolder"> -->
       <div id="projectNavContainer" onload = "pageScroll()">
         <div id='projectTextNames'></div>
       </div>
-    </div>
+    <!-- </div> -->
 
 
    </div>
-    <!-- <p id="galleryTitle"></p> -->
     <div id='mainContentSection' class = 'testHeightEasingClass'>
       <div class="testholder" id = 'testHolder'>
             <div class="closeButton" id = 'galleryCloseButton' onclick = "closeProject()"></div>
         <div class="main-wrapper" data-js="main-wrapper">
-         <p id="mobileProjectNameDisplay">
-           KUDZU COOKING WORKSHOP
-         </p>
+         <p id="mobileProjectNameDisplay"></p>
           <div class="sections" id="sectionContainer" data-js="sections-wrapper" index="0">
               <section class="section" id='test3dObjSection' data-js="section">
                 <canvas id="c"></canvas>
@@ -666,7 +663,7 @@
         var curActiveSectionWidth = 0;
         var bottomVisible = false;
         var overlayVisible = false;
-        var hamburgerVisible = false;
+        var mobileNavVisible = false;
         var galleryActive = false;
         var activeProjectNavText;
 
@@ -675,6 +672,7 @@
         var lastScrollTop = 0;
         var h = window.innerHeight;
         var w;
+        var activeBrowser;
 
         function showMainPage() {
           managePageLinkHovers();
@@ -685,18 +683,15 @@
           document.getElementById('activePageSection').click()
           $('#projectTextNames').animate({top:50}, 1000)
           delay = 0;
-          $('.projectNameContainer').each(function(){
 
-              $(this).delay(delay).animate({
-                  opacity:1
-              },1000, 'easeOutQuad');
-              delay += 200;
-          });
         }
 
         $(document).ready(function() {
           $(galleryCloseButton).mouseenter(function () {
           })
+          activeBrowser = checkBrowser()
+          console.log('BROWSER', browser)
+
           $('#landingArea').hide().fadeIn(2500)
            h = $(window).height(); // height
            w = $(window).width() // width
@@ -704,27 +699,23 @@
 
           $(firstMainWrapperChild).css('padding-right', '0px')
               if (w < mobileWidth) {
-                $('#landingArea').fadeOut()
+                $('#landingArea').css('display', 'none')
+                showMainPage()
+                setTimeout(revealProjectSection(), 5000)
                 $('#navContainer').animate({opacity:1}, 'easeOutSine')
                 $('#projectTextNames').animate({top:0}, 1000)
                 $('#projectTextNames').fadeIn()
-                document.getElementById('activePageSection').click()
+                // document.getElementById('activePageSection').click()
                 $('body').css('background-color', 'rgb(208, 208, 208)')
+
+                console.log('less than mobile!!');
               }
-              console.log($(window).width());
 
               $('#landingVideo').width($(window).width());
           });
 
-        function keepActiveProjectNameAligned(container, winWidth) {
-
-
-        }
-
         $(window).resize(function(e){
           if ($(window).width() <  w) {
-            $('#landingVideo').width('90%');
-            // let curLandingVideo
             let curTop = parseInt($('#projectTextNames').css('top'), 10)
             curTop = curTop - 2;
             $('#projectTextNames').css('top', curTop)
@@ -737,31 +728,23 @@
             enableLightBoxes(true)
             let curTop = parseInt($('#projectTextNames').css('top'), 10)
             curTop = curTop + 2;
-            // console.log('CURTOP', curTop)
             $('#projectTextNames').css('top', curTop)
             w = $(window).width()
-            // console.log('got larger');
           }
 
           let windowWidth = $(window).width()
           $('#landingVideo').width($(window).width());
 
 
-          if (windowWidth < mobileWidth) {
-            // $(sectionContainer).height = totalHeight
-            // $(projectSection).height(totalHeight);
-
-          } else {
-            $(projectSection).height(800)
-            $(sectionContainer).height(800)
-
-          }
         })
 
+        document.querySelector('#landingVideo').addEventListener('ended', function(e) {
+            e.target.currentTime = 0;
+            e.target.play();
+        }, false);
         function managePageLinkHovers(){
           $('.pageLink').each(function(){
            $(this).removeClass('pageLink')
-            console.log(this.id);
             if (this.id !== 'activePageSection') {
               $(this).hover(
                  function() {
@@ -778,21 +761,21 @@
         navButton.addEventListener('mouseup', showHamburgerNavSection)
 
         var mobileWidth = 768
-        var hamburgerVisible = false;
+        var mobileNavVisible = false;
 
         function showHamburgerNavSection() {
           console.log('hamburger clicked');
 
-          if (w < mobileWidth && hamburgerVisible == false) {
+          if (w < mobileWidth && mobileNavVisible == false) {
             $('#navBarListContainer').animate({'right': '0%'}, 500, 'easeOutCirc')
             $('#innerNavButtonCircle').animate({height: 13, width: 13}, 500, 'easeOutQuad')
           }
 
-          if (w < mobileWidth && hamburgerVisible == true) {
+          if (w < mobileWidth && mobileNavVisible == true) {
             $('#navBarListContainer').animate({'right': '-100%'})
             $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutSine')
           }
-          hamburgerVisible = !hamburgerVisible
+          mobileNavVisible = !mobileNavVisible
         }
 
         var realProjObjs = generateObjectFromSpreadData(projectAssetSheetURL).then(function(returnData) {
@@ -811,60 +794,66 @@
         });
         var aboutPage = generateObjectFromSpreadData(aboutAssetSheetURL).then(function(returnData){setCVLink(returnData)});
 
-        function closeProject() {
-            $(projectSection).css('height', '0%')
-          if (w < mobileWidth && hamburgerVisible == true) {
-            $('#navBarListContainer').animate({'right': '-100%'})
-            $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutCirc')
-            newCloseButton.removeEventListener('click', closeProject)
-            $(newCloseButton).toggleClass('activeCloseButton')
-            navButton.addEventListener('mouseup', showHamburgerNavSection)
-           $(newCloseButton).animate({opacity: 0})
-          }
+        function closeMobileNav(){
+          $('#navBarListContainer').animate({'right': '-100%'})
+          $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutCirc')
+          newCloseButton.removeEventListener('click', closeProject)
+          $(newCloseButton).toggleClass('activeCloseButton')
+          navButton.addEventListener('mouseup', showHamburgerNavSection)
+          $(newCloseButton).animate({opacity: 0})
+        }
 
+        function desktopGalleryCloseAnimation(){
+          $('.heroImage').each(function(index, galleryImage){
+            let delayMult = index;
+            $(galleryImage).delay(delayMult*100).animate({opacity: 0}, 1000, 'easeOutQuad')
+          })
 
-            if (w  > mobileWidth){
-                $('.heroImage').each(function(index, galleryImage){
-                  // console.log(obj);
-                  let z = index;
-                  $(galleryImage).delay(z*100).animate({opacity: 0}, 1000, 'easeOutQuad')
-                })
-
-                filterBlurNonSelected('empty', false)
-                $(mainWrapperElem).animate({scrollLeft: $(mainWrapperElem).offset().left}, 0);
-                $(projectSection).stop().animate({
-                 // top: 100,
-                  // height:0,
-                   opacity:0}, 500, 'easeOutCirc', function(){
-                    $('#projectTextNames').animate({'top': '0'}, 800, 'easeInOutCirc')
-                    if (document.getElementById('tempVideo') !== null) {
-                      $('#tempVideo').remove()
-                    }
-
-                  });
-                $(projectSection).css('pointer-events', 'none')
-
-                $('.heroImage').each(function(){
-                  $(this).animate({opacity: 0})
-                })
-            }
-
-            if (w < mobileWidth){
-              $('#navBarListContainer').animate({'right': '-100%'})
-              $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutCirc')
-              newCloseButton.removeEventListener('click', closeProject)
-              $(newCloseButton).toggleClass('activeCloseButton')
-              navButton.addEventListener('mouseup', showHamburgerNavSection)
-              $(newCloseButton).animate({opacity: 0})
-              $(mainWrapperElem).animate({opacity: 0}, 300,'easeInQuad', function(){
+          filterBlurNonSelected('empty', false)
+          $(mainWrapperElem).animate({scrollLeft: $(mainWrapperElem).offset().left}, 0);
+          $(projectSection).stop().animate({
+             opacity:0}, 500, 'easeOutCirc', function(){
+              $('#projectTextNames').animate({'top': '0'}, 800, 'easeInOutCirc')
+              if (document.getElementById('tempVideo') !== null) {
                 $('#tempVideo').remove()
-                $('#projectTextNames').animate({'top': '0'}, 500, 'easeOutSine')
-              })
-              $(projectSection).css('pointer-events', 'none')
-              $(galleryCloseButton).animate({opacity: 0})
-              setTimeout(function(){
-                $('#mainContentSection').scrollTop(0);
-              }, 500);
+              }
+
+            });
+          $(projectSection).css('pointer-events', 'none')
+
+          $('.heroImage').each(function(){
+            $(this).animate({opacity: 0})
+          })
+        }
+
+        function mobileGalleryCloseAnimation(){
+          $('#navBarListContainer').animate({'right': '-100%'})
+          $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutCirc')
+          newCloseButton.removeEventListener('click', closeProject)
+          $(newCloseButton).toggleClass('activeCloseButton')
+          navButton.addEventListener('mouseup', showHamburgerNavSection)
+          $(newCloseButton).animate({opacity: 0})
+          $(mainWrapperElem).animate({opacity: 0}, 300,'easeInQuad', function(){
+            $('#tempVideo').remove()
+            $('#projectTextNames').animate({'top': '0'}, 500, 'easeOutSine')
+          })
+          $(projectSection).css('pointer-events', 'none')
+          $(galleryCloseButton).animate({opacity: 0})
+          setTimeout(function(){
+            $('#mainContentSection').scrollTop(0);
+          }, 500);
+        }
+
+        function closeProject(){
+          $(projectSection).css('height', '0%')
+          if (w < mobileWidth && mobileNavVisible == true) {
+              closeMobileNav()
+          }
+          else if (w  > mobileWidth){
+             desktopGalleryCloseAnimation()
+          }
+          else if (w < mobileWidth){
+              mobileGalleryCloseAnimation()
             }
         }
 
@@ -1096,13 +1085,6 @@
           return projHTMLObj;
         }
 
-        function getWidthOfActivecurSubProjects(section){
-          let widthToAdd =  $(section).outerWidth(true)
-          console.log(widthToAdd);
-          curActiveSectionWidth = curActiveSectionWidth + widthToAdd;
-          console.log(curActiveSectionWidth);
-        }
-
         function setDescriptionContent(htmlObjdescriptionObj, subProjectDataObj){
           setElemAttribute(htmlObjdescriptionObj.sectionTitle, 'innerHTML', subProjectDataObj.project_name)
           setElemAttribute(htmlObjdescriptionObj.descriptionParagraph, 'innerHTML', subProjectDataObj.project_description)
@@ -1116,7 +1098,6 @@
             subProjectDataObj.Collaborator = ''
             let letInfoString = [subProjectDataObj.Mediums, subProjectDataObj.Year].join('<br>')
             infoParagraph.innerHTML = letInfoString
-            console.log('INFOPARAGRAPH.INNERHTML ', infoParagraph.innerHTML )
             return
 
           } else {
@@ -1170,16 +1151,54 @@
           htmlObj.imgCount = subProjectDataObj.imgCount
         }
 
+        function pullUProjectGalleryDesktop(e, windowOffset){
+          // $(mainWrapperElem).animate({'top':50}, 3000, 'easeOutQuad');
+          // let testOffset = $(mainWrapperElem).offset()
+          // let testOffset = $(mainWrapperElem).offset()
+          // console.log('top off', testOffset.top);
+          // console.log('TOP OFFSET', $(mainWrapperElem).offsetTop);
+          // $(mainWrapperElem).transition({y: '-50px'}, 'slow')
+
+          $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)-windowOffset)}, 2000, 'easeInOutCirc', function(){
+          // $('#projectTextNames').css({y: (e.target.parentNode.offsetTop*-1)-windowOffset})
+          // let amount = (e.target.parentNode.offsetTop*-1)-windowOffset
+          // $('#projectTextNames').css('transform', 'translate(0px,' + amount + 'px)')
+          // $('#projectTextNames').css('transform', 'translate3d(0px,' + amount + 'px, 0px)')
+
+          // console.log('translate(0px,' + amount + 'px)');
+            // console.log('E.TARGET.PARENTNODE.OFFSETTOP*-1', e.target.parentNode.offsetTop*-1)
+              // setTimeout(function(){$(mainWrapperElem).css({y: '-100px'})}, 1000)
+              // $(mainWrapperElem).transition({y: '-200px'}, 1000)
+              // $(mainWrapperElem).css({y: '-200px'})
+              // setTimeout(()=>{$(mainWrapperElem).css('transform', 'translate(0px, -50px)')}, 500)
+              $(mainWrapperElem).css('transform', 'translate(0px, -50px)')
+              $(projectSection).css('pointer-events', 'all')
+              $(projectSection).css('height', '100%')
+              $('#galleryCloseButton').animate({'opacity':'1'})
+              $(mainWrapperElem).css('display', 'flex')
+              $(mainWrapperElem).css('height', '100%')
+              $(projectNav).css('display', 'flex')
+
+          })
+        }
+
+        function pullUpProjectGalleryMobile(e){
+          $(mainWrapperElem).animate({'top':0}, 3000, 'easeOutQuad');
+          $('#mainContentSection').animate({'top':0}, 3000, 'easeOutQuad');
+          $(projectSection).css('pointer-events', 'all')
+          $(projectSection).css('height', '100%')
+          $(mainWrapperElem).css('display', 'flex')
+          $(mainWrapperElem).css('height', '100%')
+          $(projectNav).css('display', 'flex')
+        }
+
         function pullUpProjectGallery(e){
-          // console.log($(document).height())
-          console.log(window.screen.height)
           let windowOffset;
+          console.log('screen height', window.screen.height);
           if (window.screen.height >= 1080){
-            console.log('it was 1080');
             windowOffset = -50
           }
           if (window.screen.height < 1080){
-            console.log('it was less tahn 1080');
             windowOffset = 5
           }
 
@@ -1187,28 +1206,9 @@
           $(projectSection).animate({'opacity':1});
 
           if (w > mobileWidth) {
-              $(mainWrapperElem).animate({'top':50}, 3000, 'easeOutQuad');
-
-              // console.log('BOUNDING', sectionBoundingBox);
-              // let projContainerOffset = (sectionBoundingBox.top*-1)-50;
-              $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)-windowOffset)}, 2000, 'easeInOutCirc', function(){
-              // $('#projectTextNames').animate({'top': projContainerOffset}, 2000, 'easeInOutCirc', function(){
-                  $(projectSection).css('pointer-events', 'all')
-                  $(projectSection).css('height', '100%')
-                  $('#galleryCloseButton').animate({'opacity':'1'})
-                  $(mainWrapperElem).css('display', 'flex')
-                  $(mainWrapperElem).css('height', '100%')
-                  $(projectNav).css('display', 'flex')
-
-              })
+              pullUProjectGalleryDesktop(e, windowOffset)
           } else {
-            $(mainWrapperElem).animate({'top':0}, 3000, 'easeOutQuad');
-            $('#mainContentSection').animate({'top':0}, 3000, 'easeOutQuad');
-            $(projectSection).css('pointer-events', 'all')
-            $(projectSection).css('height', '100%')
-            $(mainWrapperElem).css('display', 'flex')
-            $(mainWrapperElem).css('height', '100%')
-            $(projectNav).css('display', 'flex')
+              pullUpProjectGalleryMobile(e)
           }
         }
 
@@ -1217,7 +1217,6 @@
             $(this).css('zIndex', 0)
           })
           $(e.target.parentNode).css('zIndex', 30)
-
         }
 
         function returnCorrespondingProjectDataObj(e){
@@ -1260,7 +1259,6 @@
           $(hidden).css({zIndex: 1})
           $(visible).css('display', 'none')
           $(hidden).css('display', 'flex')
-          // $(hidden).css('opacity', 1)
           $(hidden).toggleClass('hiddenDescriptionDiv')
           $(visible).toggleClass('hiddenDescriptionDiv')
         }
@@ -1271,8 +1269,6 @@
           $(hidden).css({zIndex: 0})
           $(hidden).css('display', 'none')
           $(visible).css('display', 'flex')
-          // console.log();
-
         }
 
         function blurItem(ele, startRadius, endRadius){
@@ -1282,8 +1278,8 @@
               // console.log(radius);
                     $(ele).css({
                        "-webkit-filter": "blur("+radius+"px)",
+                        '-moz-filter':  "blur("+radius+"px)",
                         "filter": "blur("+radius+"px)",
-                        // '-moz-filter':  "blur("+radius+"px)",
                         // '-o-filter': "blur("+radius+"px)",
                         // '-ms-filter': "blur("+radius+"px)",
                         // 'pointer-events': 'none'
@@ -1314,9 +1310,14 @@
            if (shouldBlur == true) {
              let parentId = selectedProject.parentNode.id
              $('.projectNameContainer').each(function(index, obj){
-               if (obj.id !== parentId) {
-                     blurItem(obj, 0, 5)
+
+               // if (obj.id !== parentId && index < 5) {
+               if (obj.id !== parentId && activeBrowser !== 'Firefox') {
+                    // let testBlurObj = new AnimatedBlur(index, obj, {'steps': 5, 'initialized': true, 'duration':1000} )
+                      // obj.play(AnimatedBlur.BLUR_MODE.BLUR)
+                     // blurItem(obj, 0, 5)
                      $(obj).css('pointer-events', 'none')
+                     $(obj).addClass('projectNameContainer-blur')
                }
              })
            }
@@ -1354,9 +1355,9 @@
           let curProjectObj = returnCorrespondingProjectDataObj(e)
           curSubProjects = curProjectObj.group
           let parentId = clickedProjNav.parentNode.id
-          console.log('PARENTID', parentId)
 
           filterBlurNonSelected(clickedProjNav, true)
+          // setTimeout(pullUpProjectGallery(e), 1000)
           pullUpProjectGallery(e)
           elevateProjectnNavZIndex(e)
 
@@ -1477,6 +1478,18 @@
         }
 
         function revealProjectSection() {
+          console.log('got here!');
+          let test = document.getElementsByClassName('projectNameContainer');
+          console.log('TEST', test)
+
+          $('.projectNameContainer').each(function(){
+            // console.log('change opacity!');
+              $(this).delay(delay).animate({
+                  opacity:1
+              },1000, 'easeOutQuad');
+              delay += 200;
+          });
+         // console.log('got down lower');
           $(activePageSection).css('-webkit-text-fill-color', 'black')
           $('#navContainer').addClass('emptyNavContainer')
           $(landingArea).fadeOut('slow')
@@ -1560,6 +1573,23 @@
 
         function randomInteger(min, max) {
           return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function checkBrowser(){
+            c = navigator.userAgent.search("Chrome");
+            f = navigator.userAgent.search("Firefox");
+            m8 = navigator.userAgent.search("MSIE 8.0");
+            m9 = navigator.userAgent.search("MSIE 9.0");
+            if (c > -1) {
+                browser = "Chrome";
+            } else if (f > -1) {
+                browser = "Firefox";
+            } else if (m9 > -1) {
+                browser ="MSIE 9.0";
+            } else if (m8 > -1) {
+                browser ="MSIE 8.0";
+            }
+            return browser;
         }
 
       </script>
