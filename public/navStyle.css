@@ -111,24 +111,20 @@ nav ul li a:hover {
       transform-origin: 50% 50%;
     }
     i#newCloseButton{
+      color: rgb(33, 116, 107);
       font-size: 13px;
       transform-origin: 50% 50%;
     }
     #innerNavButtonCircle{
-      /* left: 50%; */
       position: absolute;
-      /* top: 39%; */
-      /* transform: translate(-50%, -50%); */
-      color: black;
       position: absolute;
       font-size: 10px;
-      /* right: 6px; */
       width: 9px;
       top: 6px;
       right: 6px;
       height: 9px;
       border-radius: 6px;
-      background-color: black;
+      background-color: rgb(33, 116, 107);
       opacity: 1;
     }
     .fa-circle-o{

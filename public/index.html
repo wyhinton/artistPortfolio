@@ -1,1610 +1,1779 @@
 <!doctype html>
-  <html lang = 'en'>
+<html lang='en'>
 
-  <head>
-    <title>Ayla Gizlice</title>
-    <meta name = "description" content ="Ayla Gizlice is a Turkish-American artist born in Raleigh, NC.">
-    <meta name = "keywords" content = "Artist, Sculpture, Raleigh, Turkish, Ceramics">
-    <meta charset="UTF-8">
-    <meta http-equiv = 'X-UA-Compatible' content = 'ie-edge'>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <meta name = "author" content = "Webb Hinton">
-    <meta property="og:image" content="data/NaturaNaturansPreview.jpg">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"  crossorigin="anonymous"></script>
-    <script src="dataFetch.js" charset="utf-8"></script>
-        <link rel="icon" href="favicon/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="shortcut icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
-    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+<head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    <script src="plugins/easingScript.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.css">
-    <script src="plugins/transit.min.js" charset="utf-8"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Pragati+Narrow" as= "style">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pragati+Narrow&text=ABCDEFGHIJKLMNOPQRSTUVWXYZylaizce">
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="style.css" SameSite = 'Strict'> -->
-    <link rel="stylesheet" type="text/css" media="screen" href="navStyle.css" SameSite = 'Strict'>
-
-  </head>
-
-  <style>
-    body {
-      width: 100%;
-      height: 100vh;
-      margin: 0px;
-      background-color: rgb(33, 116, 107);
-      /* max-height: 100vh; */
-      overflow: hidden;
-      scroll-behavior: smooth;
-
-    }
-
-    #mainHolder {
-      background-color: rgb(255, 186, 68);
-      width: 100%;
-      height: 1000px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-   </style>
-  <!-- /* Phone Settins */ -->
-  <style>
-    @media (max-width: 768px) {
-      .main-wrapper {
-        width: 100vw;
-        background-color: rgb(208, 208, 208);
-        overflow: auto;
-        padding-top: 10px;
-        transition: background-color .5s ease-out;
-        position: absolute;
-        background-color: red;
-        display: block;
-        z-index: 5;
-        transition: height .5s ease-out;
-        height: fit-content !important;
-        padding-bottom: 100px !important;
-
-      }
-
-      #mainContentSection {
-        position: absolute;
-        overflow: scroll !important;
-        width: 100% !important;
-        transition: height .4s ease-out;
-        display: none;
-        opacity: 0;
-
-      }
-
-      .sectionElementContainer{
-        flex-direction: column !important;
-        height: 100% !important;
-      }
-      .heroImage{
-        padding: 0px !important;
-        width: 100% !important;
-        height: auto !important;
-
-      }
-      #projectNavContainer{
-        z-index: 1 !important;
-      }
-
-      #sectionContainer{
-        padding-left: 0px !important;
-        padding-right: 0px !important;
-        width: 100% !important;
-        padding-top: 20px;
-        height: fit-content !important;
-      }
-      .descriptionParagraph{
-        position: initial !important;
-      }
-      .projectNameContainer{
-        height: 140px !important;
-      }
-      .project__title{
-        margin-top: 0 !important;
-      }
-      .descriptionDiv{
-        max-width: 100% !important;
-        width: 100% !important;
-      }
-      .hiddenDescriptionDiv{
-        position: initial !important
-      }
-      .img_div{
-        padding: 0px !important;
-        width: 100vw !important;
-        flex-direction: column !important;
-        align-items: center !important;
-      }
-      .imageContainerPadding{
-        padding-top: 20px;
-        width: 100% !important;
-        min-height: 0px !important;
-      }
-      .singleImageContainer{
-        width: 95% !important;
-        padding: 0px !important;
-        position: initial !important;
-        margin: auto !important;
-
-      }
-      .descriptionPaddingContainer{
-        padding-bottom: 0px !important;
-        padding-right: 23px !important;
-        padding-left: 10px !important ;
-      }
-      #tempVideo{
-        width: 100vw !important;
-        padding-bottom: 50px !important;
-      }
-
-      .section{
-        height: fit-content !important;
-        padding-bottom: 35px !important;
-      }
-
-      .landingVideo{
-        object-fit: contain !important;
-      }
-      .body{
-        overflow: visible;
-      }
+    gtag('config', 'G-LYL235LN22');
+  </script>
+  <title>Ayla Gizlice</title>
+  <meta name="description" content="Ayla Gizlice is a Turkish-American artist working in Raleigh, NC.">
+  <meta name="keywords" content="Artist, Sculpture, Raleigh, Turkish, Ceramics">
+  <meta charset="UTF-8">
+  <meta http-equiv='X-UA-Compatible' content='ie-edge'>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <meta name="author" content="Webb Hinton">
+  <meta property="og:image" content="data/OGImage.jpg">
+  <meta property="og:title" content="Ayla Gizlice">
+  <meta property="og:description" content="Ayla Gizlice is a Turkish-American artist working in Raleigh, NC.">
 
 
-    }
-  </style>
-   <!-- Global  -->
-  <style>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="shortcut icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
 
-          /* width */
-      ::-webkit-scrollbar {
-        width: 5px;
-      }
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="dataFetch.js" charset="utf-8"></script>
+  <script src="plugins/easingScript.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.css">
+  <script src="plugins/transit.min.js" charset="utf-8"></script>
 
-      /* Track */
-      ::-webkit-scrollbar-track {
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0);
-      }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Pragati+Narrow" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pragati+Narrow&text=ABCDEFGHIJKLMNOPQRSTUVWXYZylaizce">
+  <link rel="stylesheet" type="text/css" media="screen" href="navStyle.css" SameSite='Strict'>
 
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: black;
-        border-radius: 10px;
-      }
-    img {
-      transition: opacity 0.5s linear;
-    }
+</head>
 
+<style>
+  body {
+    width: 100%;
+    height: 100vh;
+    margin: 0px;
+    background-color: rgb(33, 116, 107);
+    /* max-height: 100vh; */
+    overflow: hidden;
+    scroll-behavior: smooth;
+
+  }
+
+  #mainHolder {
+    background-color: rgb(255, 186, 68);
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+</style>
+<!-- /* Phone Settins */ -->
+<style>
+  @media (max-width: 768px) {
     .main-wrapper {
       width: 100vw;
-      height: 90vh;
-      background-color: rgba(208, 208, 208, 0);
-
       overflow: auto;
       padding-top: 10px;
-      transition: background-color .5s ease-out;
       position: absolute;
-      display: none;
+      display: block;
       z-index: 5;
       transition: height .5s ease-out;
-      top: 100px;
-      flex-direction: column;
-      /* transition: translate 5s ease-out; */
-      transform: translate(0, 0);
-      /* transition: all .5s ease-out; */
-      transition: background-color .5s ease-out, height .5s ease-out, transform 1s ease-out;
-    }
-    .main-wrapper::after{
-      padding-right: 0px !important;
-    }
-
-  </style>
-  <!-- Project Gallery -->
-  <style>
-    .projectDescription {}
-
-    .sections {
-      width: max-content;
-      padding-right: 10px;
-      padding-left: 10px;
-    }
-    .section {
-      float: left;
-      height: 78vh;
-      overflow: hidden;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-    }
-
-    /* PROJECT DESCRIPTION */
-    #projectDescriptionSection {
-      width: 100%;
-      border-right: 1px solid black;
-      background-color: rgb(208, 208, 208);
-    }
-    .descriptionPaddingContainer{
-      position: relative;
-      min-width: 300px;
-    }
-    .projInfo{
-      text-align: left;
-      display: block;
-      margin: 0px;
-      font-style: italic;
-    }
-
-    .lightBoxLink {
-      position: relative;
-    }
-    /* PROJECT IMAGE CONTENT */
-    #heroImageCont {
-      width: 80%;
-      height: auto;
-      padding-right: 50px;
-      margin-right: auto;
-      display: flex;
-      padding: 15px;
-    }
-    .heroImage {
-      opacity: 0;
-      overflow: hidden;
-      height: 600px;
-      float: left;
-      padding: 10px;
-      transition: opacity .5s ease-out;
-    }
-
-    #sectionContainer {
-      height: 100%;
-      padding-left: 56px;
-      background-color: light-gray;
-      position: relative;
-      width: max-content;
-      z-index: 5;
-    }
-
-    .sectionElementContainer {
-      display: flex;
-    }
-
-    .descriptionParagraph {
-      text-align: justify;
-      transition: color .5s ease-out;
-    }
-
-    .img_div {
-      padding: 32px;
-      padding-top: 0px;
-      display: flex;
-    }
-
-    .project__title {
-      text-align: left;
-      border-bottom: 1px solid black;
-      margin-bottom: 0px;
-      line-height: 110%;
-      font-size: 30px;
-    }
-
-    #test3dObjSection {
-      display: none;
-      width: 0px;
-    }
-
-    .multipleImageHolder {
-      display: flex;
-    }
-
-    .descriptionDiv {
-      max-width: 300px;
-      max-height: 600px;
-      text-overflow: clip;
-      flex-direction: column;
-      color: rgb(0, 0, 0);
-      transition: color .5s easeOut;
-      opacity: 1;
-    }
-    .hiddenDescriptionDiv {
-      overflow: hidden;
-      position: absolute;
-      width: 300px;
-      top: 0;
-      transition: color 1s ease-out;
-    }
-    .descriptionDivBlack{
-      color: black;
+      height: fit-content !important;
+      padding-bottom: 100px !important;
+      background-color: lightgrey !important;
+      top: 20%;
     }
 
     #mainContentSection {
       position: absolute;
-      overflow: hidden;
-      height: 0;
-      width: 100%;
-      pointer-events: none;
+      overflow: scroll !important;
+      width: 100% !important;
       transition: height .4s ease-out;
       display: none;
-      z-index: 200;
+      opacity: 0;
+      top: 1vh !important;
+
+
+    }
+
+    .sectionElementContainer {
+      flex-direction: column !important;
+      height: 100% !important;
+    }
+
+    .heroImage {
+      padding: 0px !important;
+      width: 100% !important;
+      height: auto !important;
+
+    }
+
+    #projectNavContainer {
+      z-index: 1 !important;
+
+    }
+
+
+    #sectionContainer {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      width: 100% !important;
+      padding-top: 20px;
+      opacity: 0;
+      height: fit-content !important;
+    }
+
+    .descriptionParagraph {
+      position: initial !important;
+    }
+
+    .projectNameContainer {
+      height: 140px !important;
+    }
+
+    .project__title {
+      margin-top: 0 !important;
+    }
+
+    .descriptionDiv {
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+
+    .hiddenDescriptionDiv {
+      position: initial !important
+    }
+
+    .img_div {
+      padding: 0px !important;
+      width: 100vw !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    .imageContainerPadding {
+      padding-top: 0px !important;
+      width: 100% !important;
+      min-height: 0px !important;
     }
 
     .singleImageContainer {
-      overflow: hidden;
-      transition: width 2s ease-out;
-      max-height: 600px;
-      left: 0;
-      padding: 10px;
-      width: auto;
-      position: absolute;
-      justify-content: center;
+      width: 95% !important;
+      /* padding: 0px !important; */
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      padding-top: 0px !important;
+      padding-bottom: 10px !important;
+      position: initial !important;
+      margin: auto !important;
 
     }
 
-    .testHiddenImg{
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      height: 100%;
-      width: 100%;
-    }
-    .testTry2Container{
-      overflow: hidden;
-    }
-    .imageContainerPadding{
-      position: relative;
-      min-height: 600px;
-      transition: width 1s cubic-bezier(0.33, 1, 0.68, 1);
-      overflow: hidden;
-    }
-    .main-wrapper: first-child{
-      padding-right: 0px;
-    }
-    .projectVideo{
-      position: absolute;
-    }
-    .cursor--small {
-      width: 10px;
-      height: 10px;
-      left: -2.5px;
-      top: -2.5px;
-      border-radius: 50%;
-      z-index: 11000;
-      background: var(--color-text);
-    }
-    .closeButton{
-      position: absolute;
-      width: 36;
-      height: 36;
-      align-content: center;
-      justify-content: center;
-      margin: 0;
-      text-align: center;
-      top: 35;
-      right: 6px;
-      padding: 0;
-      margin: 0;
-      border-radius: 21px;
-      z-index: 30;
-      color: #7b7b7b;
-      opacity: 0;
-      transition: opacity .5s ease-out;
-      transition: color .5s ease-out;
-    }
-    .closeButton::after {
-      font-size: 30px;
-      content: url(data/highlight_off-24px.svg);
-    }
-    .closeButton:hover{
-      color:rgb(185, 185, 185);
-    }
-    .closeButton:active{
-      color:rgb(71, 71, 71);
+    .descriptionPaddingContainer {
+      padding-bottom: 0px !important;
+      padding-right: 23px !important;
+      padding-left: 10px !important;
     }
 
-    #galleryTitle{
-      color: rgb(208, 208, 208);
-      font-size: 10vw;
-      display: contents;
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: black;
-      transition: color .5s ease-out;
+    #tempVideo {
+      width: 100vw !important;
+      padding-bottom: 50px !important;
+
     }
-    .projectNameContainer{
-      opacity: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      height: 200px;
-      transition: all .25s ease-out;
+
+    .section {
+      height: fit-content !important;
+      padding-bottom: 35px !important;
     }
-    .projectNameContainer-blur{
-      transform: translate3d(0,0,0);
-      will-change: filter;
-      filter: blur(5px);
-      -moz-filter: blur(5px)
-      /* text-shadow: 2px 2px 8px #FF0000; */
-      /* -webkit-text-stroke-color: rgb(195, 195, 195); */
+
+    .landingVideo {
+      object-fit: contain !important;
+    }
+
+    .body {
+      overflow: visible;
     }
 
 
-  </style>
-  <!-- PROJECT SELECTOR -->
-  <style>
-    #projectNavContainer{
-      position: relative;
-      overflow: scroll;
-      height: 100vh;
-      width: 100%;
-      z-index: 0;
-    }
-    #projectHolder {
-      height: 100vh;
-      width: 100%;
-      position: relative;
-      padding-bottom: 10px;
-      justify-content: space-between;
-      display: none;
-    }
+  }
+</style>
+<!-- Global  -->
+<style>
+  /* width */
+  ::-webkit-scrollbar {
+    display: none;
+    width: 5px;
+  }
 
-    #projectTextNames {
-      position: absolute;
-      width: 100%;
-      top:10;
-      height: 100%;
-      display: grid;
-      word-break: break-word;
-      top: 64px;
-      /* transform: translate(0,0); */
-      transform: translate3d(0,0,0);
-      transition: transform .5s ease-out;
-    }
-    #projectTextNames::after{
-      content:"" ;
-      height: 100px;
-      background-color: rgb(208, 208, 208);
-    }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0);
+  }
 
-    .projectNameText {
-      margin: 0;
-      line-height: initial;
-      -webkit-text-stroke: 1px black;
-      color: rgb(208, 208, 208);
-      font-size: 10vw;
-      position: absolute;
-      bottom: 0;
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+  }
 
-    }
-    .projectNameHoverClass{
-      color: rgb(208, 208, 208);
-      transition: color 2s ease-out;
-    }
-    .projectNameHoverClass:hover{
-      color: black;
-    }
-    #projectNavContainer::-webkit-scrollbar {
-      display: none;
-      -webkit-overflow-scrolling: touch; /* Lets it scroll lazy */
-    }
+  img {
+    transition: opacity 0.5s linear;
+  }
 
-  </style>
-  <!-- 3D Canvas -->
-  <style>
-    #landingArea {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: -webkit-transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
-      -moz-transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
-      -o-transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380);
-      transition: height 800ms cubic-bezier(0.945, -0.055, 1.000, 0.380) opacity .5s ease-out;
-      z-index: 0;
-      display: none;
-    }
+  .main-wrapper {
+    width: 100vw;
+    height: 90vh;
+    background-color: rgba(208, 208, 208, 0);
 
-    .landingVideo{
-      width: 100%;
-      left: 50%;
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-  </style>
-  <!-- temp styles -->
-  <style>
-    #bottomGradient{
-      height: 100px;
-      position: absolute;
-      bottom: 0;
-      background: rgb(255,255,255);
-      background: -moz-linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
-      background: -webkit-linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
-      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 40%, rgba(208,208,208,1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d0d0d0",GradientType=1);
-      width: 100%;
-      display: none;
-    }
-    #tempHolder{
-      height: fit-content;
-    }
-    #seoH1{
-      display: none;
-    }
-    #mobileProjectNameDisplay{
-      display: block;
-    }
+    overflow: auto;
+    padding-top: 10px;
+    transition: background-color .5s ease-out;
+    position: absolute;
+    display: none;
+    z-index: 5;
+    transition: height .5s ease-out;
+    top: 100px;
+    flex-direction: column;
+    /* transition: translate 5s ease-out; */
+    transform: translate(0, 0);
+    /* transition: all .5s ease-out; */
+    transition: background-color .5s ease-out, height .5s ease-out, transform 1s ease-out;
+  }
 
-    #topGradient{
-      height: 300px;
-      width: 100%;
-      background: -moz-linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
-      background: -webkit-linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
-      background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(208,208,208,1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d0d0d0",GradientType=1);
-    }
-    .pageLink:hover{
-      text-decoration: underline;
-    }
-    .tempVideo{
-      padding-right: 40;
-    }
+  .main-wrapper::after {
+    padding-right: 0px !important;
+  }
+</style>
+<!-- Project Gallery -->
+<style>
+  .projectDescription {}
 
+  .sections {
+    width: max-content;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 
+  .section {
+    float: left;
+    height: 78vh;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  </style>
+  }
 
-  <body>
-    <h1 id = 'seoH1'> Ayla Gizlice Artwork></h1>
-    <label type="check" class="navbar__hamburger-btn" >
-      <i class="fas fa-circle" id = 'navButton'>
-        <div id = 'innerNavButtonCircle'></div>
+  /* PROJECT DESCRIPTION */
+  #projectDescriptionSection {
+    width: 100%;
+    border-right: 1px solid black;
+    background-color: rgb(208, 208, 208);
+  }
 
-        <i class="fas fa-times" id = 'newCloseButton' aria-hidden="true" onclick = 'closeProject()'></i>
-      </i>
-    </label>
-    <div id="topGradientContainer"></div>
+  .descriptionPaddingContainer {
+    position: relative;
+    min-width: 300px;
+  }
 
-    <div id="navContainer" >
-      <div class="navBarSection">
-        <nav class="navbar" id="navbar">
+  .projInfo {
+    text-align: left;
+    display: block;
+    margin: 0px;
+    font-style: italic;
+  }
 
-          <label class="navbar__logo" id = 'logoMark' href = >Ayla Gizlice</label>
-          <ul class="navbar__ul" id = 'navBarListContainer'>
-            <li><a class = 'pageLink' id = "activePageSection" onclick="showMainPage();revealProjectSection();"><i id=indicatorSymbole> </i>Projects</a></li>
-            <li><a class = 'pageLink' href="contact.html">Contact</a></li>
-            <li><a class = 'pageLink' href="about.html">About</a></li>
-            <li><a class = 'pageLink' id='cvLink' target="_blank" rel ="noreferrer">CV</a></li>
-          </ul>
-        </nav>
+  .lightBoxLink {
+    position: relative;
+  }
+
+  /* PROJECT IMAGE CONTENT */
+  #heroImageCont {
+    width: 80%;
+    height: auto;
+    padding-right: 50px;
+    margin-right: auto;
+    display: flex;
+    padding: 15px;
+  }
+
+  .heroImage {
+    opacity: 1;
+    /* opacity: 0; */
+    overflow: hidden;
+    /* height: 600px; */
+    height: 90%;
+    float: left;
+    padding: 10px;
+    /* transition: opacity .5s ease-out; */
+    transition: opacity 1s ease-out;
+  }
+
+  #sectionContainer {
+    height: 100%;
+    padding-left: 56px;
+    background-color: light-gray;
+    position: relative;
+    width: max-content;
+    z-index: 5;
+    display: flex;
+    width: fit-content !important;
+    top: 1 %;
+  }
+
+  .sectionElementContainer {
+    display: flex;
+    height: 100%;
+  }
+
+  .descriptionParagraph {
+    text-align: justify;
+    transition: color .5s ease-out;
+  }
+
+  .img_div {
+    padding: 32px;
+    padding-top: 0px;
+    display: flex;
+  }
+
+  .project__title {
+    text-align: left;
+    border-bottom: 1px solid black;
+    margin-bottom: 0px;
+    line-height: 110%;
+    font-size: 30px;
+    margin-top: 20px;
+  }
+
+  #test3dObjSection {
+    display: none;
+    width: 0px;
+  }
+
+  .multipleImageHolder {
+    display: flex;
+  }
+
+  .descriptionDiv {
+    max-width: 300px;
+    max-height: 600px;
+    text-overflow: clip;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+    transition: opacity 5s ease-out;
+    opacity: 1;
+    /* opacity: 0; */
+  }
+
+  .hiddenDescriptionDiv {
+    overflow: hidden;
+    position: absolute;
+    width: 300px;
+    top: 0;
+    /* opacity: 0; */
+    opacity: 1;
+    transition: opacity 3s;
+  }
+
+  #mainContentSection {
+    position: absolute;
+    overflow: hidden;
+    top: 12vh;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    /* display: none; */
+    display: block;
+    z-index: 200;
+    transition: height .4s ease-out, transform 2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .singleImageContainer {
+    overflow: hidden;
+    transition: width 2s ease-out;
+    /* max-height: 600px; */
+    /* width: fit-content !important; */
+    left: 0;
+    padding: 10px;
+    /* width: auto; */
+    /* position: absolute; */
+    justify-content: center;
+
+  }
+
+  .testHiddenImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+  }
+
+  .testTry2Container {
+    overflow: hidden;
+  }
+
+  .imageContainerPadding {
+    position: relative;
+    min-height: 600px;
+    transition: width 1s cubic-bezier(0.33, 1, 0.68, 1);
+    overflow: hidden;
+    display: flex;
+  }
+
+  .main-wrapper: first-child {
+    padding-right: 0px;
+  }
+
+  .projectVideo {
+    position: absolute;
+  }
+
+  .cursor--small {
+    width: 10px;
+    height: 10px;
+    left: -2.5px;
+    top: -2.5px;
+    border-radius: 50%;
+    z-index: 11000;
+    background: var(--color-text);
+  }
+
+  .closeButton {
+    position: absolute;
+    height: 36;
+    margin: 0;
+    top: 10vh;
+    right: 6px;
+    z-index: 30;
+    color: #7b7b7b;
+    opacity: 0;
+    transition: opacity .5s ease-out;
+    transition: color .5s ease-out;
+  }
+
+  .closeButton::after {
+    font-size: 30px;
+    content: url(data/highlight_off-24px.svg);
+  }
+
+  .closeButton:hover {
+    color: rgb(185, 185, 185);
+  }
+
+  .closeButton:active {
+    color: rgb(71, 71, 71);
+  }
+
+  #galleryTitle {
+    color: rgb(208, 208, 208);
+    font-size: 10vw;
+    display: contents;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    transition: color .5s ease-out;
+  }
+
+  .projectNameContainer {
+    opacity: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 200px;
+    transition: all .25s ease-out;
+  }
+
+  .projectNameContainer-blur {
+    transform: translate3d(0, 0, 0);
+    will-change: filter;
+    filter: blur(5px);
+    -moz-filter: blur(5px)
+  }
+</style>
+<!-- PROJECT SELECTOR -->
+<style>
+  #projectNavContainer {
+    position: relative;
+    overflow: scroll;
+    height: 100vh;
+    width: 100%;
+    z-index: 0;
+    padding-bottom: 50px;
+  }
+
+  #projectHolder {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    display: none;
+  }
+
+  #projectTextNames {
+    position: absolute;
+    width: 100%;
+    top: 10;
+    /* height: 100%; */
+    height: fit-content;
+    display: grid;
+    word-break: break-word;
+    top: 64px;
+    /* transform: translate(0,0); */
+    transform: translate3d(0, 0, 0);
+    transition: transform .5s ease-out;
+    padding-bottom: 50px;
+  }
+
+  .projectNameText {
+    margin: 0;
+    line-height: initial;
+    -webkit-text-stroke: 1px black;
+    color: rgb(208, 208, 208);
+    font-size: 9vw;
+    position: absolute;
+    bottom: 0;
+
+  }
+
+  .projectNameHoverClass {
+    color: rgb(208, 208, 208);
+    transition: color .5s ease-out;
+  }
+
+  .projectNameHoverClass:hover {
+    color: black;
+  }
+
+  #projectNavContainer::-webkit-scrollbar {
+    display: none;
+    -webkit-overflow-scrolling: touch;
+    /* Lets it scroll lazy */
+  }
+</style>
+<!-- 3D Canvas -->
+<style>
+  #landingArea {
+    /* position: relative; */
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    transition: opacity 1s ease-out;
+    z-index: 2;
+    display: block;
+
+    opacity: 0;
+  }
+
+  .landingVideo {
+    width: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+<!-- temp styles -->
+<style>
+  #bottomGradient {
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(208, 208, 208, 1) 40%, rgba(208, 208, 208, 1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(208, 208, 208, 1) 40%, rgba(208, 208, 208, 1) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(208, 208, 208, 1) 40%, rgba(208, 208, 208, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#d0d0d0", GradientType=1);
+    width: 100%;
+    display: none;
+  }
+
+  #tempHolder {
+    height: fit-content;
+  }
+
+  #seoH1 {
+    display: none;
+  }
+
+  #mobileProjectNameDisplay {
+    display: block;
+  }
+
+  #topGradient {
+    height: 300px;
+    width: 100%;
+    background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(208, 208, 208, 1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(208, 208, 208, 1) 100%);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(208, 208, 208, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#d0d0d0", GradientType=1);
+  }
+
+  .pageLink:hover {
+    text-decoration: underline;
+  }
+
+  #tempVideo {
+    padding-right: 40px;
+  }
+
+  #navSymbolContainer {
+    display: flex;
+    height: 100%;
+    width: 21px;
+    justify-content: space-between;
+  }
+  #innerNavButtonCircle{
+    background-color: red;
+  }
+</style>
+
+<body>
+  <h1 id='seoH1'> Ayla Gizlice Artwork></h1>
+  <label type="check" class="navbar__hamburger-btn">
+    <i  id='navButton'>
+      <!-- <div id = 'navButton'> -->
+      <div id="navSymbolContainer">
+        <div id='innerNavButtonCircle'></div> <i class="fas fa-times" id='newCloseButton' aria-hidden="true"></i>
       </div>
+      <!-- </div> -->
+    </i>
+  </label>
+  <div id="topGradientContainer"></div>
+
+  <div id="navContainer">
+    <div class="navBarSection">
+      <nav class="navbar" id="navbar">
+
+        <label class="navbar__logo" id='logoMark' href=>Ayla Gizlice</label>
+        <ul class="navbar__ul" id='navBarListContainer'>
+          <li><a class='pageLink' id="activePageSection"><i id=indicatorSymbole> </i>Projects</a></li>
+          <li><a class='pageLink' href="contact.html">Contact</a></li>
+          <li><a class='pageLink' href="about.html">About</a></li>
+          <li><a class='pageLink' id='cvLink' target="_blank" rel="noreferrer">CV</a></li>
+        </ul>
+      </nav>
     </div>
+  </div>
 
-    <div id="landingArea" class = 'landingAreaVideo' isVisible = 'true' onclick = 'showMainPage()' >
-      <canvas id="landingCanvas"></canvas>
-      <video class = "landingVideo" id = 'landingVideo' src = "data/fabricTry2.mp4" autoplay = "true" muted autoplay loop playsinline></video>
-    </div>
+  <div id="landingArea" isVisible='true'>
+    <video class="landingVideo" id='landingVideo' src="data/introVideo.mp4" autoplay="true" muted autoplay loop playsinline></video>
+  </div>
 
-    <!-- <div id="projectHolder"> -->
-      <div id="projectNavContainer" onload = "pageScroll()">
-        <div id='projectTextNames'></div>
-      </div>
-    <!-- </div> -->
+  <!-- <div id="projectHolder"> -->
+  <div id="projectNavContainer" onload="pageScroll()">
+    <div id='projectTextNames'></div>
+  </div>
+  <!-- </div> -->
 
 
-   </div>
-    <div id='mainContentSection' class = 'testHeightEasingClass'>
-      <div class="testholder" id = 'testHolder'>
-            <div class="closeButton" id = 'galleryCloseButton' onclick = "closeProject()"></div>
-        <div class="main-wrapper" data-js="main-wrapper">
-         <p id="mobileProjectNameDisplay"></p>
-          <div class="sections" id="sectionContainer" data-js="sections-wrapper" index="0">
-              <section class="section" id='test3dObjSection' data-js="section">
-                <canvas id="c"></canvas>
-              </section>
-          </div>
+  </div>
+  <div id='mainContentSection' class='testHeightEasingClass'>
+    <div class="testholder" id='testHolder'>
+      <div class="closeButton" id='galleryCloseButton'></div>
+      <div class="main-wrapper" data-js="main-wrapper">
+        <p id="mobileProjectNameDisplay"></p>
+        <div class="sections" id="sectionContainer" data-js="sections-wrapper" index="0">
+          <section class="section" id='test3dObjSection' data-js="section">
+            <canvas id="c"></canvas>
+          </section>
         </div>
       </div>
     </div>
-    <div id="bottomGradient">
+  </div>
+  <!-- <div id="bottomGradient"> -->
 
-    </div>
-
-      <!-- MAIN SCRIPT-->
-      <script>
-        const projectAssetSheetURL = 'https://spreadsheets.google.com/feeds/cells/1ctMIVgrlfw0s9tYHcwuLuGjnrzI1YCaESEF18C4sIxM/1/public/full?alt=json'
-        const aboutAssetSheetURL = 'https://spreadsheets.google.com/feeds/cells/17-59RkABiXT4-odN7PGxUOVX1CWOBQb3t-SzqBkG5q0/1/public/full?alt=json'
-
-        var projectNames = []
-        var allProjObjs = [];
-        var curSubProjects = []
-        var projHTMLObjSections = [];
-        var parentObjCol = [];
-
-        //NAV ELEMENTS
-        var projectNav = document.getElementById('projectHolder');
-        var cvLinkElem = document.getElementById('cvLink')
-        let sectionContainer = document.getElementById('sectionContainer');
-        var projectSection = document.getElementById('mainContentSection');
-
-        //WHOLE PAGE ELEMENTS
-        var landingArea = document.getElementById('landingArea');
-
-        //GALLERY
-        var galleryCloseButton = document.getElementById('galleryCloseButton');
-        var newCloseButton = document.getElementById('newCloseButton');
-
-        //GALLERY DIMENSION SETTING VARS
-        var numPicsToLoad;
-        var completedImgLoads;
-        var totalWidth;
-        var totalHeight;
-        let mainWrapperElem = document.getElementsByClassName('main-wrapper')[0]
-        let firstMainWrapperChild = mainWrapperElem.firstChild
-
-        var curActiveSectionWidth = 0;
-        var bottomVisible = false;
-        var overlayVisible = false;
-        var mobileNavVisible = false;
-        var galleryActive = false;
-        var activeProjectNavText;
-
-        var mobileWidth = 768
-        var scrollCount = 1;
-        var lastScrollTop = 0;
-        var h = window.innerHeight;
-        var w;
-        var activeBrowser;
-
-        function showMainPage() {
-          managePageLinkHovers();
-          $('#landingArea').fadeOut();
-
-          $('body').css('background-color', 'rgb(208, 208, 208)')
-
-          document.getElementById('activePageSection').click()
-          $('#projectTextNames').animate({top:50}, 1000)
-          delay = 0;
-
-        }
-
-        $(document).ready(function() {
-          $(galleryCloseButton).mouseenter(function () {
-          })
-          activeBrowser = checkBrowser()
-          console.log('BROWSER', browser)
-
-          $('#landingArea').hide().fadeIn(2500)
-           h = $(window).height(); // height
-           w = $(window).width() // width
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYL235LN22"></script>
 
 
-          $(firstMainWrapperChild).css('padding-right', '0px')
-              if (w < mobileWidth) {
-                $('#landingArea').css('display', 'none')
-                showMainPage()
-                setTimeout(revealProjectSection(), 5000)
-                $('#navContainer').animate({opacity:1}, 'easeOutSine')
-                $('#projectTextNames').animate({top:0}, 1000)
-                $('#projectTextNames').fadeIn()
-                // document.getElementById('activePageSection').click()
-                $('body').css('background-color', 'rgb(208, 208, 208)')
+  <!-- MAIN SCRIPT-->
+  <script type='module'>
+    import {
+      generateSection,
+      generateProjectStructure
+    } from './htmlObjGeneration.js'
+    const projectAssetSheetURL = 'https://spreadsheets.google.com/feeds/cells/1ctMIVgrlfw0s9tYHcwuLuGjnrzI1YCaESEF18C4sIxM/1/public/full?alt=json'
+    const aboutAssetSheetURL = 'https://spreadsheets.google.com/feeds/cells/17-59RkABiXT4-odN7PGxUOVX1CWOBQb3t-SzqBkG5q0/1/public/full?alt=json'
 
-                console.log('less than mobile!!');
-              }
+    var projectNames = []
+    var allProjObjs = [];
+    var curSubProjects = []
+    var projHTMLObjSections = [];
+    var parentObjCol = [];
 
-              $('#landingVideo').width($(window).width());
-          });
+    //NAV ELEMENTS
+    var projectNav = document.getElementById('projectHolder');
+    var cvLinkElem = document.getElementById('cvLink')
+    let sectionContainer = document.getElementById('sectionContainer');
+    var projectSection = document.getElementById('mainContentSection');
 
-        $(window).resize(function(e){
-          if ($(window).width() <  w) {
-            let curTop = parseInt($('#projectTextNames').css('top'), 10)
-            curTop = curTop - 2;
-            $('#projectTextNames').css('top', curTop)
-            w = $(window).width()
-            enableLightBoxes(false)
+    //WHOLE PAGE ELEMENTS
+    var landingArea = document.getElementById('landingArea');
+    var transformOffset = window.innerHeight * .04 * -1;
 
+    var galleryCloseButton = document.getElementById('galleryCloseButton');
+    var newCloseButton = document.getElementById('newCloseButton');
+
+    //GALLERY DIMENSION SETTING VARS
+    var numPicsToLoad;
+    var completedImgLoads;
+    var totalWidth;
+    var totalHeight;
+    let mainWrapperElem = document.getElementsByClassName('main-wrapper')[0]
+    let firstMainWrapperChild = mainWrapperElem.firstChild
+
+    var curActiveSectionWidth = 0;
+    var bottomVisible = false;
+    var overlayVisible = false;
+    var introVisble = false;
+    var mobileNavVisible = false;
+    var galleryActive = false;
+    var activeProjectNavText;
+
+
+    var scrollCount = 1;
+    var lastScrollTop = 0;
+    var h = window.innerHeight;
+    var w;
+    var activeBrowser;
+
+    $(document).ready(function() {
+
+      generateBlankGallerySections(5)
+      projectsNavCloseFunctionality()
+      loopIntroVideo()
+
+      activeBrowser = checkBrowser()
+      h = $(window).height(); // height
+      w = $(window).width() // width
+
+      $('#landingArea').css('opacity', 1)
+
+      $('#landingArea').mouseup(showProjectsNav)
+      $('#landingArea').mouseup(revealProjectSection)
+      $('#activePageSection').mouseup(showProjectsNav)
+      $('#activePageSection').mouseup(revealProjectSection)
+      $('#innerNavButtonCircle').mouseup(closeProject)
+      $('#galleryCloseButton').mouseup(closeProject)
+      $('.heroImage').each(function() {
+        $(this).on("load", onProjectImageLoad);
+      })
+
+      $(firstMainWrapperChild).css('padding-right', '0px')
+      $('#landingVideo').width($(window).width());
+    });
+
+    function generateBlankGallerySections(numSections) {
+      for (var i = 0; i < numSections; i++) {
+        let newSect = generateSection(sectionContainer, i)
+
+        projHTMLObjSections.push(newSect)
+      }
+    }
+
+    function loopIntroVideo() {
+      document.querySelector('#landingVideo').addEventListener('ended', function(e) {
+        e.target.currentTime = 0;
+        e.target.play();
+      }, false);
+    }
+
+    function mobileDesktop(ifMobile, ifDesktop) {
+      if (w < mobileWidth) {
+        ifMobile
+      } else {
+        ifDesktop
+      }
+    }
+
+    var realProjObjs = generateObjectFromSpreadData(projectAssetSheetURL).then(function(returnData) {
+
+      projectNames = generateNavBarContents(returnData)
+
+      for (var i = 0; i < parentObjCol.length; i++) {
+        let curParentObj = parentObjCol[i]
+        let projObj = generateProjectStructure(curParentObj.id, i, realProjObjs[i])
+        allProjObjs.push(projObj);
+      }
+      mobileDesktop(enableLightBoxes(false), enableLightBoxes(true))
+
+      if (w < mobileWidth) {
+        $('#landingArea').css('display', 'none')
+        showProjectsNav()
+        setTimeout(function() {revealProjectSection()}, 2000)
+        $('#navContainer').animate({opacity: 1}, 'easeOutSine')
+        $('#projectTextNames').animate({top: 0}, 1000)
+        $('#projectTextNames').fadeIn()
+        $('body').css('background-color', 'rgb(208, 208, 208)')
+      }
+      addListenerToClass('.projectNameText', handleProjNavClick)
+
+    });
+
+    var aboutPage = generateObjectFromSpreadData(aboutAssetSheetURL).then(function(returnData) {
+      setCVLink(returnData)
+    });
+
+    function showProjectsNav() {
+      managePageLinkHovers();
+      projectPageEntryAnimation();
+    }
+
+    function addListenerToClass(classSelector, functionName) {
+      $(classSelector).each(function() {
+        $(this).mouseup(functionName)
+      })
+    }
+
+    function projectPageEntryAnimation() {
+      $('#landingArea').css('opacity', 0)
+      $('#landingArea').css('zIndex', -1)
+      $('body').css('background-color', 'rgb(208, 208, 208)')
+      document.getElementById('activePageSection').click()
+      $('#projectTextNames').animate({
+        top: 50
+      }, 1000)
+    }
+
+    function projectsNavCloseFunctionality() {
+
+    }
+
+    $(window).resize(function(e) {
+      if ($(window).width() < w) {
+        let curTop = parseInt($('#projectTextNames').css('top'), 10)
+        curTop = curTop - 2;
+        $('#projectTextNames').css('top', curTop)
+        w = $(window).width()
+        enableLightBoxes(false)
+
+      }
+      if ($(window).width() > w) {
+        $('#landingArea').width
+        enableLightBoxes(true)
+        let curTop = parseInt($('#projectTextNames').css('top'), 10)
+        curTop = curTop + 2;
+        $('#projectTextNames').css('top', curTop)
+        w = $(window).width()
+      }
+
+      let windowWidth = $(window).width()
+      $('#landingVideo').width($(window).width());
+
+
+    })
+
+    function managePageLinkHovers() {
+      $('.pageLink').each(function() {
+        $(this).removeClass('pageLink')
+        // if (this.id !== 'activePageSection') {
+        $(this).hover(
+          function() {
+            $(this).css('text-decoration', 'underline');
+          },
+          function() {
+            $(this).css('text-decoration', 'none')
           }
-          if ($(window).width() >  w) {
-            $('#landingArea').width
-            enableLightBoxes(true)
-            let curTop = parseInt($('#projectTextNames').css('top'), 10)
-            curTop = curTop + 2;
-            $('#projectTextNames').css('top', curTop)
-            w = $(window).width()
-          }
+        );
+        // }
+      })
+    }
 
-          let windowWidth = $(window).width()
-          $('#landingVideo').width($(window).width());
+    var navButton = document.getElementById('navButton');
+    navButton.addEventListener('mouseup', showHamburgerNavSection)
 
+    var mobileNavVisible = false;
 
+    function showHamburgerNavSection() {
+      console.log('hamburger clicked');
+
+      if (w < mobileWidth && mobileNavVisible == false) {
+        $('#navBarListContainer').animate({'right': '0%'}, 500, 'easeOutCirc')
+        $('#innerNavButtonCircle').animate({height: 13,width: 13}, 500, 'easeOutQuad')
+      }
+
+      if (w < mobileWidth && mobileNavVisible == true) {
+        $('#navBarListContainer').animate({
+          'right': '-100%'
         })
+        $('#innerNavButtonCircle').animate({
+          height: 9,
+          width: 9
+        }, 500, 'easeOutSine')
+      }
+      mobileNavVisible = !mobileNavVisible
+    }
 
-        document.querySelector('#landingVideo').addEventListener('ended', function(e) {
-            e.target.currentTime = 0;
-            e.target.play();
-        }, false);
-        function managePageLinkHovers(){
-          $('.pageLink').each(function(){
-           $(this).removeClass('pageLink')
-            if (this.id !== 'activePageSection') {
-              $(this).hover(
-                 function() {
-                   $( this ).css('text-decoration', 'underline');
-                 }, function() {
-                   $( this ).css('text-decoration', 'none')
-                 }
-               );
+    function closeMobileNav() {
+      $('#navBarListContainer').animate({
+        'right': '-100%'
+      })
+      $('#innerNavButtonCircle').animate({
+        height: 9,
+        width: 9
+      }, 500, 'easeOutCirc')
+      newCloseButton.removeEventListener('click', closeProject)
+      $(newCloseButton).toggleClass('activeCloseButton')
+      navButton.addEventListener('mouseup', showHamburgerNavSection)
+      $(newCloseButton).animate({
+        opacity: 0
+      })
+    }
+
+    function desktopGalleryCloseAnimation() {
+      if (activeBrowser == 'Firefox') {
+        $('.projectNameContainer').each(function(index, obj) {
+            $(obj).css('opacity', 1)
+        })
+      }
+
+      // $('.heroImage').each(function(index, galleryImage) {
+      //   let delayMult = index;
+      //   $(galleryImage).delay(delayMult * 100).animate({
+      //     opacity: 0
+      //   }, 1000, 'easeOutQuad')
+      // })
+
+      filterBlurNonSelected('empty', false)
+      $(projectSection).css('transform', 'translate3d(0px, ' + (transformOffset) + 'px, 0px)')
+
+      $(projectSection).stop().animate({
+        opacity: 0
+      }, 500, 'easeOutCirc', function() {
+        $('#projectTextNames').animate({
+          'top': '0'
+        }, 800, 'easeInOutCirc')
+        if (document.getElementById('tempVideo') !== null) {
+          $('#tempVideo').remove()
+        }
+
+      });
+      $(projectSection).css('pointer-events', 'none')
+
+      $('.heroImage').each(function() {$(this).animate({opacity: 0})})
+      setTimeout(()=>{$(mainWrapperElem).animate({scrollLeft: $(mainWrapperElem).offset().left}, 0)}, 2000)
+      enableLightBoxes(false)
+    }
+
+    function mobileGalleryCloseAnimation() {
+      $('#navBarListContainer').animate({
+        'right': '-100%'
+      })
+      $('#innerNavButtonCircle').animate({
+        height: 9,
+        width: 9
+      }, 500, 'easeOutCirc')
+      newCloseButton.removeEventListener('click', closeProject)
+      $(newCloseButton).toggleClass('activeCloseButton')
+      navButton.addEventListener('mouseup', showHamburgerNavSection)
+      $(newCloseButton).animate({
+        opacity: 0
+      })
+      $(mainWrapperElem).animate({
+        opacity: 0
+      }, 300, 'easeInQuad', function() {
+        $('#tempVideo').remove()
+        $('#projectTextNames').animate({
+          'top': '0'
+        }, 500, 'easeOutSine')
+      })
+      $(projectSection).css('pointer-events', 'none')
+      $(galleryCloseButton).animate({
+        opacity: 0
+      })
+      setTimeout(function() {
+        $('#mainContentSection').scrollTop(0);
+      }, 500);
+
+
+    }
+
+    function closeProject() {
+      galleryActive = false;
+      // $(projectSection).css('height', '0%')
+      $(projectSection).css('pointer-events', 'none')
+      if (w < mobileWidth && mobileNavVisible == true) {
+        console.log('got to this point');
+        closeMobileNav()
+
+        mobileGalleryCloseAnimation()
+      } else if (w > mobileWidth) {
+        $(projectSection).css('pointer-events', 'none')
+        desktopGalleryCloseAnimation()
+        enableLightBoxes(false)
+      } else if (w < mobileWidth) {
+        $(projectSection).css('pointer-events', 'none')
+        enableLightBoxes(false)
+        mobileGalleryCloseAnimation()
+      }
+    }
+
+    function makeVideoPlayerObj(parentElem, videoLink, index) {
+      let iframeElem = createClassIdAppend(parentElem, 'video', 'iframe_' + index)
+      setElemAttribute(iframeElem, 'src', videoLink)
+      setElemAttribute(iframeElem, 'width', 1067)
+      setElemAttribute(iframeElem, 'height', 600)
+      setElemAttribute(iframeElem, 'frameborder', 0)
+      setElemAttribute(iframeElem, 'allow', 'autoplay; fullscreen')
+      iframeElem.onload = function() {
+        console.log('Iframe got LOADED');
+      }
+      let videoObj = {
+        'iframeElem': iframeElem
+      }
+
+      return videoObj;
+
+
+    }
+    //OBJ CREATION
+    function generateDescriptionObj(parentElem, index) {
+      let descriptionDiv = createClassIdAppend(parentElem, 'div', 'descriptionDiv', 'descriptionDiv_' + index)
+      let sectionTitle = createClassIdAppend(descriptionDiv, 'H2', 'project__title', 'title_' + index)
+      let projInfo = createClassIdAppend(descriptionDiv, 'P', 'projInfo', 'projInfo_' + index)
+      let descriptionParagraph = createClassIdAppend(descriptionDiv, 'P', 'descriptionParagraph', 'descriptionParagraph_' + index)
+
+      let descriptionObj = {
+        'descriptionDiv': descriptionDiv,
+        'descriptionParagraph': descriptionParagraph,
+        'sectionTitle': sectionTitle,
+        'projInfo': projInfo
+      }
+
+      return descriptionObj;
+    }
+
+    function onProjectImageLoad(e) {
+      // console.log('got loaded!');
+      let loadedImage = e.target;
+      // console.log(e.target);
+      // console.log(loadedImage.style.width);
+
+      // $(loadedImage).on('load', function(img){console.log(img);})
+      // console.log(loadedImage.clientWidth);
+      let parentContainer = loadedImage.parentNode.parentNode;
+
+      let imgWidth = $(e.target).width()
+      let paddingContainer = loadedImage.parentNode.parentNode.parentNode;
+      // setTimeout(()=>{
+      //   parentContainer.width = loadedImage.clientWidth
+      // , 2000)
+      let currentTotalWidth = $(sectionContainer).width()
+      // completedImgLoads++
+      // setTimeout(() => {
+      //   if (completedImgLoads == numPicsToLoad) {
+      //     totalWidth = 0;
+      //     let z = 0;
+      //     $('.section').each(function(index) {
+      //       z = z + 1;
+      //       if (z < curSubProjects.length + 2) {
+      //         totalWidth += parseInt($(this).outerWidth(true), 10) + 500;
+      //         $(loadedImage).delay(z * 500).animate({
+      //           opacity: 1
+      //         }, 1000, 'easeOutQuad')
+      //         // parentContainer.style.width = imgWidth;
+      //         // parentContainer.style.width = imgWidth;
+      //         console.log(parentContainer.style.width);
+      //       }
+      //     });
+      //     $(firstMainWrapperChild).css('padding-right', 0)
+      //     if ($(window).width() > mobileWidth) {
+      //       let imgWidth = $(loadedImage).scrollWidth
+      //       $(paddingContainer).width(imgWidth)
+      //       console.log('IMGWIDTH', imgWidth)
+      //       $(sectionContainer).width(totalWidth)
+      //       let newTotalWidth = $(sectionContainer).width()
+      //       // $(mainWrapperElem.firstChild).css('padding-right', 0)
+      //     }
+      //     if ($(window).width() < mobileWidth) {
+      //       $('#sectionContainer').height(totalHeight);
+      //       $(mainWrapper).height(totalHeight);
+      //       $(mainWrapper.firstChild).height(totalHeight);
+      //
+      //     }
+      //   }
+      //   if ($(window).width() > mobileWidth) {
+      //     let newTotalWidth = $(sectionContainer).width()
+      //   }
+      //   // }
+      //
+      //
+      // }, 3000)
+    }
+
+    function generateImageObj(parentElem, index, propName) {
+      let imagesContainer = createClassIdAppend(parentElem, 'div', 'singleImageContainer', 'singleImageContainer_' + index)
+      let lightBoxLink = createClassIdAppend(imagesContainer, 'a', 'lightBoxLink', 'lightBoxLink_' + index)
+      let dispImage = createClassIdAppend(lightBoxLink, 'img', 'heroImage', 'lightBoxImage_' + index)
+
+      dispImage.setAttribute('data-lightbox', "data/FishKill_2.jpg")
+      dispImage.setAttribute('data-title', 'myCaption')
+      dispImage.setAttribute('alt', 'Ayla Gizlice Art')
+      dispImage.addEventListener("load", onProjectImageLoad);
+
+      lightBoxLink.setAttribute('data-lightbox', 'roadtrip')
+      lightBoxLink.setAttribute('href', 'https://images.unsplash.com/photo-1500322969630-a26ab6eb64cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')
+
+      let imgObj = {
+        'singleImageContainer': imagesContainer,
+        'lightBoxLink': lightBoxLink,
+        'dispImage': dispImage,
+      }
+
+      return imgObj;
+
+    }
+
+    function generateNavBarContents(allObjs) {
+      let allNames = [];
+      let uniqueNames = [];
+
+      for (var i = 0; i < allObjs.length; i++) {
+        let curObj = allObjs[i]
+        if (curObj.category !== 'Main') {
+          allNames.push(curObj.category)
+        } else {
+          allNames.push(curObj.project_name)
+        }
+      }
+
+      uniqueNames = remove_duplicates(allNames)
+
+      for (var i = 0; i < uniqueNames.length; i++) {
+        let curUnique = uniqueNames[i]
+        let set = []
+        let parentHolderObj = {}
+        parentHolderObj.id = curUnique;
+        for (var j = 0; j < allObjs.length; j++) {
+          let curProjObj = allObjs[j]
+
+          getImageCountForSubProject(curProjObj)
+          if (curProjObj.category === curUnique) {
+
+            set.push(curProjObj)
+          }
+        }
+        parentHolderObj.group = set;
+        parentObjCol.push(parentHolderObj)
+      }
+
+      return uniqueNames
+    }
+
+    function getImageCountForSubProject(subProject) {
+      let imgCount = 0;
+
+      if (subProject.Picture_Link_1_Small !== 'empty') {
+        imgCount += 1;
+      }
+      if (subProject.Picture_Link_2_Small !== 'empty') {
+        imgCount += 1;
+      }
+      if (subProject.Picture_Link_3_Small !== 'empty') {
+        imgCount += 1;
+      } else {}
+      subProject.imgCount = imgCount
+    }
+
+
+    function setDescriptionContent(htmlObjdescriptionObj, subProjectDataObj) {
+      console.log(htmlObjdescriptionObj);
+      setElemAttribute(htmlObjdescriptionObj.sectionTitle, 'innerHTML', subProjectDataObj.project_name)
+      setElemAttribute(htmlObjdescriptionObj.descriptionParagraph, 'innerHTML', subProjectDataObj.project_description)
+      generateDescriptString(htmlObjdescriptionObj.projInfo, subProjectDataObj)
+    }
+
+    function generateDescriptString(infoParagraph, subProjectDataObj) {
+      let collaboratorLink = ''
+      if (subProjectDataObj.Collaborator === 'empty') {
+
+        subProjectDataObj.Collaborator = ''
+        let letInfoString = [subProjectDataObj.Mediums, subProjectDataObj.Year].join('<br>')
+        infoParagraph.innerHTML = letInfoString
+        return
+
+      } else {
+        collaboratorLink = document.createElement('a')
+        collaboratorLink.href = subProjectDataObj.Collaborator_Link
+        collaboratorLink.innerHTML = subProjectDataObj.Collaborator
+        collaboratorLink.target = '_blank'
+        let textNode = 'Made in collaboration with '
+
+        let letInfoString = [subProjectDataObj.Mediums, subProjectDataObj.Year].join('<br>') + '<br>' + textNode
+        infoParagraph.innerHTML = letInfoString
+        infoParagraph.appendChild(collaboratorLink)
+      }
+
+
+    }
+
+    function setImgObjContent(imgObj, linkProp, linkPropLarge, subProjectDataObj) {
+
+      let displayImage = imgObj.dispImage
+      let lightBoxLink = imgObj.lightBoxLink
+      let paddingContainer = displayImage.parentNode.parentNode.parentNode
+      if (subProjectDataObj[linkProp] == 'empty') {
+        $(paddingContainer).width(0);
+        $(paddingContainer).height(0);
+      }
+      if (subProjectDataObj[linkProp] !== 'empty') {
+        setElemAttribute(displayImage, 'src', subProjectDataObj[linkProp])
+        setElemAttribute(lightBoxLink, 'href', subProjectDataObj[linkPropLarge])
+        $(paddingContainer).css('height', 'fit-content')
+      }
+    }
+
+    function setSubProjectContent(htmlObj, subProjectDataObj) {
+
+      if (subProjectDataObj.Picture_Link_1_Small !== 'empty') {
+        setElemAttribute(htmlObj.imgObj1.dispImage, 'src', subProjectDataObj.Picture_Link_1_Small)
+
+      }
+      if (subProjectDataObj.Picture_Link_2_Small !== 'empty') {
+        setElemAttribute(htmlObj.imgObj2.dispImage, 'src', subProjectDataObj.Picture_Link_2_Small)
+      }
+      if (subProjectDataObj.Picture_Link_3_Small !== 'empty') {
+        setElemAttribute(htmlObj.imgObj3.dispImage, 'src', subProjectDataObj.Picture_Link_3_Small)
+        setElemAttribute(htmlObj.imgObj3.dispImage, 'src', subProjectDataObj.Picture_Link_3_Small)
+      } else {
+        // $(htmlObj.imgObj3.paddingContainer).height(0)
+      }
+
+      htmlObj.imgCount = subProjectDataObj.imgCount
+    }
+
+    function pullUProjectGalleryDesktop(e, windowOffset) {
+      console.log(window.screen.height);
+      // let testPorp = window.innerHeight * .06 * -1;
+
+      // let testPorp2 = window.innerHeight * .02 * -1;
+      // console.log('TESTPORP', testPorp)
+      // console.log('offset', e.target.parentNode.offsetTop)
+      // console.log('windowinnerheight', window.innerHeight);
+      // console.log('20%', window.innerHeight * .2);
+      // console.log('20% form top', window.innerHeight - (window.innerHeight));
+      // console.log('TESTPORP', testPorp)
+      // $('#projectTextNames').animate({
+      //   'top': ((e.target.parentNode.offsetTop * -1) - windowOffset)
+      // }, 2000, 'easeInOutCirc', function() {
+      $('#projectTextNames').animate({
+        'top': ((e.target.parentNode.offsetTop * -1) - windowOffset)
+      }, 2000, function() {
+        $(projectSection).css('pointer-events', 'all')
+        $('#galleryCloseButton').css('opacity', 1)
+        $(mainWrapperElem).css('display', 'flex')
+      //   // $(projectSection).css('transform', 'translate3d(0px, '+ (-50)+'px, 0px)')
+      //   // $(projectSection).css('transform', 'translate3d(0px, ' + (testPorp) + 'px, 0px)')
+      })
+    }
+
+    function pullUpProjectGalleryMobile(e) {
+      $(mainWrapperElem).animate({
+        'top': 0
+      }, 3000, 'easeOutQuad');
+      // $('#mainContentSection').animate({'top':0}, 3000, 'easeOutQuad');
+      $(projectSection).css('pointer-events', 'all')
+      $(projectSection).css('height', '100%')
+      $(mainWrapperElem).css('display', 'flex')
+      $(mainWrapperElem).css('height', '100%')
+      $(projectNav).css('display', 'flex')
+    }
+
+    function pullUpProjectGallery(e) {
+      let windowOffset;
+      if (window.screen.height >= 1080) {
+        windowOffset = -50
+      }
+      if (window.screen.height < 1080) {
+        windowOffset = 15
+        $('#sectionContainer').css('top', '3%')
+      }
+
+      $(window).scrollTop($('#navbar').offset().top);
+      $(projectSection).animate({
+        'opacity': 1
+      });
+
+      if (w > mobileWidth) {
+        pullUProjectGalleryDesktop(e, windowOffset)
+      } else {
+        pullUpProjectGalleryMobile(e)
+      }
+    }
+
+    function elevateProjectnNavZIndex(e) {
+      $('.projectNameContainer').each(function() {
+        $(this).css('zIndex', 0)
+      })
+      $(e.target.parentNode).css('zIndex', 30)
+    }
+
+    function returnCorrespondingProjectDataObj(e) {
+      let projectDataObjToFind = {}
+
+      let clickedName = e.target.innerHTML
+      activeProjectNavText = e.target;
+      projectDataObjToFind = parentObjCol.filter(obj => {
+        return obj.id === clickedName
+      })[0]
+
+      return projectDataObjToFind
+    }
+
+    // function showBottomImage(hidden, visible) {
+    //   $(hidden).css('zIndex', 1)
+    //   $(visible).css('zIndex', 0)
+    //   // $(visible).css('display', 'none')
+    //   $(hidden).css('display', 'flex')
+    //   $(visible).width('0')
+    //   $(hidden).animate({
+    //     'width': '100%',
+    //     height: '100%'
+    //   }, function() {
+    //     $(visible).width('0')
+    //     // $(visible).height('0')
+    //   })
+    // }
+    //
+    // function showTopImage(hidden, visible) {
+    //   $(hidden).css({zIndex: 0})
+    //   $(visible).css({zIndex: 1})
+    //   // $(hidden).css('display', 'none')
+    //   $(visible).css('display', 'flex')
+    //   $(visible).css('color', 'rgb(0, 0, 0)')
+    //   $(visible).animate({
+    //     width: '100%',
+    //     height: '100%'
+    //   }, function() {
+    //     $(hidden).width('0')
+    //     $(hidden).height('0')
+    //   })
+    // }
+
+    function showBottomDescription(hidden, visible) {
+      $(hidden).css({
+        zIndex: 1
+      })
+      $(hidden).css('display', 'flex')
+      if ($(hidden).hasClass('hiddenDescriptionDiv')) {
+        console.log('hiddden had class');
+        $(hidden).toggleClass('hiddenDescriptionDiv')
+      }
+      if ($(visible).hasClass('hiddenDescriptionDiv') == false){
+        $(visible).toggleClass('hiddenDescriptionDiv')
+      }
+
+      // $(visible).toggleClass('hiddenDescriptionDiv')
+      // if (w < mobileWidth) {
+      $(hidden).height('100%')
+      $(visible).height(0)
+      // }
+    }
+
+    function showTopDescription(hidden, visible) {
+      $(visible).toggleClass('hiddenDescriptionDiv')
+      $(hidden).toggleClass('hiddenDescriptionDiv')
+      $(hidden).css({
+        zIndex: 0
+      })
+      $(visible).css('display', 'flex')
+      // if (w < mobileWidth) {
+      $(visible).height('100%')
+      $(hidden).height(0)
+      // }
+    }
+
+    function blurItem(ele, startRadius, endRadius) {
+      // Generic function to set blur radius of $ele
+      var setBlur = function(ele, radius) {
+          // console.log('RADIUS', radius)
+          // console.log(radius);
+          $(ele).css({
+            "-webkit-filter": "blur(" + radius + "px)",
+            '-moz-filter': "blur(" + radius + "px)",
+            "filter": "blur(" + radius + "px)",
+            // '-o-filter': "blur("+radius+"px)",
+            // '-ms-filter': "blur("+radius+"px)",
+            // 'pointer-events': 'none'
+          });
+        },
+
+        // Generic function to tween blur radius
+        tweenBlur = function(ele, startRadius, endRadius) {
+          $({
+            blurRadius: startRadius
+          }).animate({
+            blurRadius: endRadius
+          }, {
+            duration: 500,
+            easing: 'swing', // or "linear"
+            // use jQuery UI or Easing plugin for more options
+            step: function() {
+              setBlur(ele, this.blurRadius);
+            },
+            callback: function() {
+              // Final callback to set the target blur radius
+              // jQuery might not reach the end value
+              setBlur(ele, endRadius);
             }
-          })
-        }
+          });
+        };
+      tweenBlur(ele, startRadius, endRadius)
+    }
 
-        var navButton = document.getElementById('navButton');
-        navButton.addEventListener('mouseup', showHamburgerNavSection)
+    function filterBlurNonSelected(selectedProject, shouldBlur) {
 
-        var mobileWidth = 768
-        var mobileNavVisible = false;
+      if (shouldBlur == true) {
+        let parentId = selectedProject.parentNode.id
+        $('.projectNameContainer').each(function(index, obj) {
 
-        function showHamburgerNavSection() {
-          console.log('hamburger clicked');
-
-          if (w < mobileWidth && mobileNavVisible == false) {
-            $('#navBarListContainer').animate({'right': '0%'}, 500, 'easeOutCirc')
-            $('#innerNavButtonCircle').animate({height: 13, width: 13}, 500, 'easeOutQuad')
-          }
-
-          if (w < mobileWidth && mobileNavVisible == true) {
-            $('#navBarListContainer').animate({'right': '-100%'})
-            $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutSine')
-          }
-          mobileNavVisible = !mobileNavVisible
-        }
-
-        var realProjObjs = generateObjectFromSpreadData(projectAssetSheetURL).then(function(returnData) {
-          projectNames = generateNavBarContents(returnData)
-
-          for (var i = 0; i < parentObjCol.length; i++) {
-            let curParentObj = parentObjCol[i]
-            let projObj = generateProjectStructure(curParentObj.id, i, realProjObjs[i])
-            allProjObjs.push(projObj);
-          }
-          if (w > mobileWidth){
-            enableLightBoxes(true)
-          } else{
-            enableLightBoxes(false)
-          }
-        });
-        var aboutPage = generateObjectFromSpreadData(aboutAssetSheetURL).then(function(returnData){setCVLink(returnData)});
-
-        function closeMobileNav(){
-          $('#navBarListContainer').animate({'right': '-100%'})
-          $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutCirc')
-          newCloseButton.removeEventListener('click', closeProject)
-          $(newCloseButton).toggleClass('activeCloseButton')
-          navButton.addEventListener('mouseup', showHamburgerNavSection)
-          $(newCloseButton).animate({opacity: 0})
-        }
-
-        function desktopGalleryCloseAnimation(){
-          $('.heroImage').each(function(index, galleryImage){
-            let delayMult = index;
-            $(galleryImage).delay(delayMult*100).animate({opacity: 0}, 1000, 'easeOutQuad')
-          })
-
-          filterBlurNonSelected('empty', false)
-          $(mainWrapperElem).animate({scrollLeft: $(mainWrapperElem).offset().left}, 0);
-          $(projectSection).stop().animate({
-             opacity:0}, 500, 'easeOutCirc', function(){
-              $('#projectTextNames').animate({'top': '0'}, 800, 'easeInOutCirc')
-              if (document.getElementById('tempVideo') !== null) {
-                $('#tempVideo').remove()
-              }
-
-            });
-          $(projectSection).css('pointer-events', 'none')
-
-          $('.heroImage').each(function(){
-            $(this).animate({opacity: 0})
-          })
-        }
-
-        function mobileGalleryCloseAnimation(){
-          $('#navBarListContainer').animate({'right': '-100%'})
-          $('#innerNavButtonCircle').animate({height: 9, width: 9}, 500, 'easeOutCirc')
-          newCloseButton.removeEventListener('click', closeProject)
-          $(newCloseButton).toggleClass('activeCloseButton')
-          navButton.addEventListener('mouseup', showHamburgerNavSection)
-          $(newCloseButton).animate({opacity: 0})
-          $(mainWrapperElem).animate({opacity: 0}, 300,'easeInQuad', function(){
-            $('#tempVideo').remove()
-            $('#projectTextNames').animate({'top': '0'}, 500, 'easeOutSine')
-          })
-          $(projectSection).css('pointer-events', 'none')
-          $(galleryCloseButton).animate({opacity: 0})
-          setTimeout(function(){
-            $('#mainContentSection').scrollTop(0);
-          }, 500);
-        }
-
-        function closeProject(){
-          $(projectSection).css('height', '0%')
-          if (w < mobileWidth && mobileNavVisible == true) {
-              closeMobileNav()
-          }
-          else if (w  > mobileWidth){
-             desktopGalleryCloseAnimation()
-          }
-          else if (w < mobileWidth){
-              mobileGalleryCloseAnimation()
-            }
-        }
-
-        for (var i = 0; i < 5; i++) {
-          let newSect = generateSection(sectionContainer, i)
-          projHTMLObjSections.push(newSect)
-        }
-
-        function makeVideoPlayerObj(parentElem, videoLink, index){
-          let iframeElem = createClassIdAppend(parentElem, 'video', 'iframe_'+index)
-          setElemAttribute(iframeElem, 'src', videoLink)
-          setElemAttribute(iframeElem, 'width', 1067)
-          setElemAttribute(iframeElem, 'height', 600)
-          setElemAttribute(iframeElem, 'frameborder', 0)
-          setElemAttribute(iframeElem, 'allow', 'autoplay; fullscreen')
-          iframeElem.onload = function(){console.log('Iframe got LOADED');}
-          let videoObj = {
-            'iframeElem': iframeElem
-          }
-
-          return videoObj;
-
-
-        }
-        //OBJ CREATION
-        function generateDescriptionObj(parentElem, index) {
-          let descriptionDiv = createClassIdAppend(parentElem, 'div', 'descriptionDiv', 'descriptionDiv_' + index)
-          let sectionTitle = createClassIdAppend(descriptionDiv, 'H2', 'project__title', 'title_' + index)
-          let projInfo = createClassIdAppend(descriptionDiv, 'P', 'projInfo','projInfo_'+index)
-          let descriptionParagraph = createClassIdAppend(descriptionDiv, 'P', 'descriptionParagraph', 'descriptionParagraph_' + index)
-
-          let descriptionObj = {
-            'descriptionDiv': descriptionDiv,
-            'descriptionParagraph': descriptionParagraph,
-            'sectionTitle': sectionTitle,
-            'projInfo': projInfo
-          }
-
-          return descriptionObj;
-        }
-
-        function onProjectImageLoad(e){
-
-          let loadedImage = e.target;
-          let parentContainer = loadedImage.parentNode.parentNode;
-
-          let imgWidth = $(e.target).width()
-          let paddingContainer = loadedImage.parentNode.parentNode.parentNode;
-
-          let currentTotalWidth = $(sectionContainer).width()
-          completedImgLoads++
-
-          setTimeout(()=>{
-          if (completedImgLoads == numPicsToLoad) {
-              totalWidth= 0;
-              let z = 0;
-              $('.section').each(function(index){
-                z = z +1;
-                if (z < curSubProjects.length+2){
-                  totalWidth += parseInt($(this).outerWidth(true),10)+500;
-                  $(loadedImage).delay(z*500).animate({opacity: 1}, 1000, 'easeOutQuad')
-
-                }
-              });
-              $(firstMainWrapperChild).css('padding-right', 0)
-              if ($(window).width() > mobileWidth){
-                let imgWidth = $(loadedImage).outerWidth()
-                $(paddingContainer).width(imgWidth)
-                  $(sectionContainer).width(totalWidth)
-                  let newTotalWidth = $(sectionContainer).width()
-                  $(mainWrapperElem.firstChild).css('padding-right', 0)
-                }
-              if ($(window).width() < mobileWidth){
-                $('#sectionContainer').height(totalHeight);
-                $(mainWrapper).height(totalHeight);
-                $(mainWrapper.firstChild).height(totalHeight);
-
-              }
-          }
-          if ($(window).width() > mobileWidth) {
-            let newTotalWidth = $(sectionContainer).width()
-          }
-          // }
-
-
-          }, 3000)
-        }
-
-        function generateImageObj(parentElem, index, propName) {
-          let imagesContainer = createClassIdAppend(parentElem, 'span', 'singleImageContainer', 'singleImageContainer_' + index)
-          let lightBoxLink = createClassIdAppend(imagesContainer, 'a', 'lightBoxLink', 'lightBoxLink_' + index)
-          let dispImage = createClassIdAppend(lightBoxLink, 'img', 'heroImage', 'lightBoxImage_' + index)
-
-          dispImage.setAttribute('data-lightbox', "data/FishKill_2.jpg")
-          dispImage.setAttribute('data-title', 'myCaption')
-          dispImage.setAttribute('src', 'data/FishKill_Hero.jpg')
-          dispImage.setAttribute('alt', 'Ayla Gizlice Art')
-          dispImage.addEventListener("load", onProjectImageLoad);
-
-          lightBoxLink.setAttribute('data-lightbox', 'roadtrip')
-          lightBoxLink.setAttribute('href', 'https://images.unsplash.com/photo-1500322969630-a26ab6eb64cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')
-
-          let imgObj = {
-            'singleImageContainer': imagesContainer,
-            'lightBoxLink': lightBoxLink,
-            'dispImage': dispImage,
-          }
-
-          return imgObj;
-
-        }
-
-        function generateNavBarContents(allObjs) {
-          let allNames = [];
-          let uniqueNames = [];
-
-          for (var i = 0; i < allObjs.length; i++) {
-            let curObj = allObjs[i]
-            if (curObj.category !== 'Main') {
-              allNames.push(curObj.category)
+          if (obj.id !== parentId) {
+            if (activeBrowser == 'Firefox') {
+              $(obj).css('-webkit-text-stroke', '1px rgb(193, 193, 193)')
+              $(obj).css('opacity', 0)
+              console.log('should change stroke collaboration');
             } else {
-              allNames.push(curObj.project_name)
-            }
-          }
-
-          uniqueNames = remove_duplicates(allNames)
-
-          for (var i = 0; i < uniqueNames.length; i++) {
-            let curUnique = uniqueNames[i]
-            let set = []
-            let parentHolderObj = {}
-            parentHolderObj.id = curUnique;
-            for (var j = 0; j < allObjs.length; j++) {
-              let curProjObj = allObjs[j]
-
-              getImageCountForSubProject(curProjObj)
-              if (curProjObj.category === curUnique) {
-
-                set.push(curProjObj)
-              }
-            }
-            parentHolderObj.group = set;
-            parentObjCol.push(parentHolderObj)
-          }
-
-          return uniqueNames
-        }
-
-        function getImageCountForSubProject(subProject) {
-          let imgCount = 0;
-
-          if (subProject.Picture_Link_1_Small !== 'empty') {
-            imgCount += 1;
-          }
-          if (subProject.Picture_Link_2_Small !== 'empty') {
-            imgCount += 1;
-          }
-          if (subProject.Picture_Link_3_Small !== 'empty') {
-            imgCount += 1;
-          } else {}
-          subProject.imgCount = imgCount
-        }
-
-        function generateProjectStructure(projName, index, projData) {
-          let projectBar = document.getElementById('projectTextNames');
-          let projectNameContainer = createClassIdAppend(projectBar, 'span', 'projectNameContainer', 'projectNameContainer_'+index)
-          let projectNavText = createClassIdAppend(projectNameContainer, 'P', 'projectNameText', 'projectTextHolder')
-          $(projectNavText).toggleClass('projectNameHoverClass')
-          setElemAttribute(projectNavText, 'innerHTML', projName)
-          projectNavText.addEventListener('click', handleProjNavClick)
-
-          let projectObj = {
-            'projName': projName,
-            'projectNavText': projectNavText,
-            'projData': projData
-          }
-
-          return projectObj;
-        }
-
-        function generateSection(parent, index) {
-          let section = createClassIdAppend(parent, 'section', 'section', 'section_' + index)
-          let sectionElementContainer = createClassIdAppend(section, 'div', 'sectionElementContainer', 'sectionElementContainer_' + index)
-          let descriptionPaddingContainer = createClassIdAppend(sectionElementContainer, 'div', 'descriptionPaddingContainer', 'descriptionPaddingContainer_'+index)
-
-          let descriptionObj = generateDescriptionObj(descriptionPaddingContainer, index)
-          let descriptionObjHidden = generateDescriptionObj(descriptionPaddingContainer, index)
-          let imgDiv = createClassIdAppend(sectionElementContainer, 'div', 'img_div', 'img_div' + index)
-
-          let imageContainerPadding1 = createClassIdAppend(imgDiv, 'div', 'imageContainerPadding', 'imageContainerPadding1_'+index)
-          let imageContainerPadding2 = createClassIdAppend(imgDiv, 'div', 'imageContainerPadding', 'imageContainerPadding2_'+index)
-          let imageContainerPadding3 = createClassIdAppend(imgDiv, 'div', 'imageContainerPadding', 'imageContainerPadding3_'+index)
-
-
-          let imgObj1 = generateImageObj(imageContainerPadding1, index, 'Picture_Link_1')
-          let imgObj2 = generateImageObj(imageContainerPadding2, index, 'Picture_Link_2')
-          let imgObj3 = generateImageObj(imageContainerPadding3, index, 'Picture_Link_3')
-
-          let imgObj1Hidden = generateImageObj(imageContainerPadding1, index, 'Picture_Link_1_Hidden')
-          let imgObj2Hidden = generateImageObj(imageContainerPadding2, index, 'Picture_Link_2_Hidden')
-          let imgObj3Hidden = generateImageObj(imageContainerPadding3, index, 'Picture_Link_3_Hidden')
-
-          section.setAttribute('data-js', 'section')
-          $(descriptionObjHidden.descriptionDiv).toggleClass('hiddenDescriptionDiv')
-          $(imgObj1Hidden.singleImageContainer).width(0)
-          setElemAttribute(imgObj1Hidden.dispImage, 'src', 'data/FishKill_Hero_Inverted.jpg')
-          $(imgObj2Hidden.singleImageContainer).width(0)
-          setElemAttribute(imgObj2Hidden.dispImage, 'src', 'data/FishKill_Hero_Inverted.jpg')
-          $(imgObj3Hidden.singleImageContainer).width(0)
-          setElemAttribute(imgObj3Hidden.dispImage, 'src', 'data/FishKill_Hero_Inverted.jpg')
-
-
-          let projHTMLObj = {
-            'index': index,
-            'sectionElementContainer': sectionElementContainer,
-            'section': section,
-            'imgDiv': imgDiv,
-            'imgObj1': imgObj1,
-            'imgObj2': imgObj2,
-            'imgObj3': imgObj3,
-            'imgObj1Hidden': imgObj1Hidden,
-            'imgObj2Hidden': imgObj2Hidden,
-            'imgObj3Hidden': imgObj3Hidden,
-            'descriptionObj': descriptionObj,
-            'descriptionObjHidden': descriptionObjHidden,
-            'visible': true
-          }
-
-          return projHTMLObj;
-        }
-
-        function setDescriptionContent(htmlObjdescriptionObj, subProjectDataObj){
-          setElemAttribute(htmlObjdescriptionObj.sectionTitle, 'innerHTML', subProjectDataObj.project_name)
-          setElemAttribute(htmlObjdescriptionObj.descriptionParagraph, 'innerHTML', subProjectDataObj.project_description)
-          generateDescriptString(htmlObjdescriptionObj.projInfo, subProjectDataObj)
-        }
-
-        function generateDescriptString(infoParagraph, subProjectDataObj){
-          let collaboratorLink = ''
-          if (subProjectDataObj.Collaborator === 'empty') {
-
-            subProjectDataObj.Collaborator = ''
-            let letInfoString = [subProjectDataObj.Mediums, subProjectDataObj.Year].join('<br>')
-            infoParagraph.innerHTML = letInfoString
-            return
-
-          } else {
-            collaboratorLink = document.createElement('a')
-            collaboratorLink.href = subProjectDataObj.Collaborator_Link
-            collaboratorLink.innerHTML = subProjectDataObj.Collaborator
-            collaboratorLink.target = '_blank'
-            let textNode = 'Made in collaboration with '
-
-            let letInfoString = [subProjectDataObj.Mediums, subProjectDataObj.Year].join('<br>') + '<br>' + textNode
-            infoParagraph.innerHTML = letInfoString
-            infoParagraph.appendChild(collaboratorLink)
-            }
-
-
-        }
-
-        function setImgObjContent(imgObj, linkProp, linkPropLarge, subProjectDataObj){
-
-          let displayImage = imgObj.dispImage
-          let lightBoxLink = imgObj.lightBoxLink
-          let paddingContainer = displayImage.parentNode.parentNode.parentNode
-          if (subProjectDataObj[linkProp] == 'empty') {
-
-            $(paddingContainer).width(0);
-            $(paddingContainer).height(0);
-          }
-          if (subProjectDataObj[linkProp] !== 'empty') {
-            setElemAttribute(displayImage, 'src', subProjectDataObj[linkProp])
-            setElemAttribute(lightBoxLink, 'href', subProjectDataObj[linkPropLarge])
-            $(paddingContainer).css('height', 'fit-content')
-          }
-        }
-
-        function setSubProjectContent(htmlObj, subProjectDataObj) {
-
-          if (subProjectDataObj.Picture_Link_1_Small !== 'empty') {
-            setElemAttribute(htmlObj.imgObj1.dispImage, 'src', subProjectDataObj.Picture_Link_1_Small)
-
-          }
-          if (subProjectDataObj.Picture_Link_2_Small !== 'empty') {
-            setElemAttribute(htmlObj.imgObj2.dispImage, 'src', subProjectDataObj.Picture_Link_2_Small)
-          }
-          if (subProjectDataObj.Picture_Link_3_Small !== 'empty') {
-            setElemAttribute(htmlObj.imgObj3.dispImage, 'src', subProjectDataObj.Picture_Link_3_Small)
-            setElemAttribute(htmlObj.imgObj3.dispImage, 'src', subProjectDataObj.Picture_Link_3_Small)
-          } else {
-            // $(htmlObj.imgObj3.paddingContainer).height(0)
-          }
-
-          htmlObj.imgCount = subProjectDataObj.imgCount
-        }
-
-        function pullUProjectGalleryDesktop(e, windowOffset){
-          // $(mainWrapperElem).animate({'top':50}, 3000, 'easeOutQuad');
-          // let testOffset = $(mainWrapperElem).offset()
-          // let testOffset = $(mainWrapperElem).offset()
-          // console.log('top off', testOffset.top);
-          // console.log('TOP OFFSET', $(mainWrapperElem).offsetTop);
-          // $(mainWrapperElem).transition({y: '-50px'}, 'slow')
-
-          $('#projectTextNames').animate({'top': ((e.target.parentNode.offsetTop*-1)-windowOffset)}, 2000, 'easeInOutCirc', function(){
-          // $('#projectTextNames').css({y: (e.target.parentNode.offsetTop*-1)-windowOffset})
-          // let amount = (e.target.parentNode.offsetTop*-1)-windowOffset
-          // $('#projectTextNames').css('transform', 'translate(0px,' + amount + 'px)')
-          // $('#projectTextNames').css('transform', 'translate3d(0px,' + amount + 'px, 0px)')
-
-          // console.log('translate(0px,' + amount + 'px)');
-            // console.log('E.TARGET.PARENTNODE.OFFSETTOP*-1', e.target.parentNode.offsetTop*-1)
-              // setTimeout(function(){$(mainWrapperElem).css({y: '-100px'})}, 1000)
-              // $(mainWrapperElem).transition({y: '-200px'}, 1000)
-              // $(mainWrapperElem).css({y: '-200px'})
-              // setTimeout(()=>{$(mainWrapperElem).css('transform', 'translate(0px, -50px)')}, 500)
-              $(mainWrapperElem).css('transform', 'translate(0px, -50px)')
-              $(projectSection).css('pointer-events', 'all')
-              $(projectSection).css('height', '100%')
-              $('#galleryCloseButton').animate({'opacity':'1'})
-              $(mainWrapperElem).css('display', 'flex')
-              $(mainWrapperElem).css('height', '100%')
-              $(projectNav).css('display', 'flex')
-
-          })
-        }
-
-        function pullUpProjectGalleryMobile(e){
-          $(mainWrapperElem).animate({'top':0}, 3000, 'easeOutQuad');
-          $('#mainContentSection').animate({'top':0}, 3000, 'easeOutQuad');
-          $(projectSection).css('pointer-events', 'all')
-          $(projectSection).css('height', '100%')
-          $(mainWrapperElem).css('display', 'flex')
-          $(mainWrapperElem).css('height', '100%')
-          $(projectNav).css('display', 'flex')
-        }
-
-        function pullUpProjectGallery(e){
-          let windowOffset;
-          console.log('screen height', window.screen.height);
-          if (window.screen.height >= 1080){
-            windowOffset = -50
-          }
-          if (window.screen.height < 1080){
-            windowOffset = 5
-          }
-
-          $(window).scrollTop($('#navbar').offset().top);
-          $(projectSection).animate({'opacity':1});
-
-          if (w > mobileWidth) {
-              pullUProjectGalleryDesktop(e, windowOffset)
-          } else {
-              pullUpProjectGalleryMobile(e)
-          }
-        }
-
-        function elevateProjectnNavZIndex(e){
-          $('.projectNameContainer').each(function(){
-            $(this).css('zIndex', 0)
-          })
-          $(e.target.parentNode).css('zIndex', 30)
-        }
-
-        function returnCorrespondingProjectDataObj(e){
-          let projectDataObjToFind = {}
-
-          clickedName = e.target.innerHTML
-          activeProjectNavText = e.target;
-          projectDataObjToFind = parentObjCol.filter(obj => {
-              return obj.id === clickedName
-          })[0]
-
-          return projectDataObjToFind
-        }
-
-        function showBottomImage(hidden, visible, dispImage){
-          $(hidden).css('zIndex', 1)
-          $(visible).css('zIndex', 0)
-          $(visible).css('display', 'none')
-          $(hidden).css('display', 'flex')
-          $(visible).width('0')
-          $(hidden).animate({'width': '100%', height: '100%'}, function(){
-            $(visible).width('0')
-            $(visible).height('0')
-          })
-        }
-
-        function showTopImage(hidden, visible, dispImage){
-          $(hidden).css({zIndex: 0})
-          $(visible).css({zIndex: 1})
-          $(hidden).css('display', 'none')
-          $(visible).css('display', 'flex')
-          $(visible).css('color', 'rgb(0, 0, 0)')
-          $(visible).animate({width: '100%', height: '100%'}, function(){
-            $(hidden).width('0')
-            $(hidden).height('0')
-          })
-        }
-
-        function showBottomDescription(hidden, visible){
-          $(hidden).css({zIndex: 1})
-          $(visible).css('display', 'none')
-          $(hidden).css('display', 'flex')
-          $(hidden).toggleClass('hiddenDescriptionDiv')
-          $(visible).toggleClass('hiddenDescriptionDiv')
-        }
-
-        function showTopDescription(hidden, visible){
-          $(visible).toggleClass('hiddenDescriptionDiv')
-          $(hidden).toggleClass('hiddenDescriptionDiv')
-          $(hidden).css({zIndex: 0})
-          $(hidden).css('display', 'none')
-          $(visible).css('display', 'flex')
-        }
-
-        function blurItem(ele, startRadius, endRadius){
-                // Generic function to set blur radius of $ele
-            var setBlur = function(ele, radius) {
-              // console.log('RADIUS', radius)
-              // console.log(radius);
-                    $(ele).css({
-                       "-webkit-filter": "blur("+radius+"px)",
-                        '-moz-filter':  "blur("+radius+"px)",
-                        "filter": "blur("+radius+"px)",
-                        // '-o-filter': "blur("+radius+"px)",
-                        // '-ms-filter': "blur("+radius+"px)",
-                        // 'pointer-events': 'none'
-                   });
-               },
-
-               // Generic function to tween blur radius
-               tweenBlur = function(ele, startRadius, endRadius) {
-                    $({blurRadius: startRadius}).animate({blurRadius: endRadius}, {
-                        duration: 500,
-                        easing: 'swing', // or "linear"
-                                         // use jQuery UI or Easing plugin for more options
-                        step: function() {
-                            setBlur(ele, this.blurRadius);
-                        },
-                        callback: function() {
-                            // Final callback to set the target blur radius
-                             // jQuery might not reach the end value
-                             setBlur(ele, endRadius);
-                        }
-                    });
-                };
-          tweenBlur(ele, startRadius, endRadius)
-        }
-
-        function filterBlurNonSelected(selectedProject, shouldBlur){
-
-           if (shouldBlur == true) {
-             let parentId = selectedProject.parentNode.id
-             $('.projectNameContainer').each(function(index, obj){
-
-               // if (obj.id !== parentId && index < 5) {
-               if (obj.id !== parentId && activeBrowser !== 'Firefox') {
-                    // let testBlurObj = new AnimatedBlur(index, obj, {'steps': 5, 'initialized': true, 'duration':1000} )
-                      // obj.play(AnimatedBlur.BLUR_MODE.BLUR)
-                     // blurItem(obj, 0, 5)
-                     $(obj).css('pointer-events', 'none')
-                     $(obj).addClass('projectNameContainer-blur')
-               }
-             })
-           }
-          else {
-            $('.projectNameContainer').each(function(index, obj){
-                blurItem(obj, 5, 0)
-                $(obj).css('pointer-events', 'all')
-              })
-            }
-          }
-
-        function handleProjNavClick(e) {
-          $(newCloseButton).animate({opacity: 1})
-
-          document.querySelector('#mobileProjectNameDisplay').innerHTML = e.target.innerHTML
-          newCloseButton.addEventListener('click', closeProject)
-          navButton.removeEventListener('mouseup', showHamburgerNavSection)
-          $('#innerNavButtonCircle').animate({height: 0, width: 0}, 500, 'easeOutCirc', function () {
-            $(newCloseButton).addClass('activeCloseButton')
-          })
-
-
-          curActiveSectionWidth = 0;
-          totalHeight = 0;
-          numPicsToLoad = 0;
-          completedImgLoads = 0;
-          let curTotalSectionsWrapperWidth = $(mainWrapperElem).width()
-          $(sectionContainer).scrollLeft(1000)
-          $(mainWrapperElem).animate({opacity: 1}, 1000,'easeInQuad')
-
-
-          let parentContainer = document.querySelector('#projectTextNames');
-          let clickedProjNav = e.target;
-          $(clickedProjNav).css('zIndex', 100)
-          let curProjectObj = returnCorrespondingProjectDataObj(e)
-          curSubProjects = curProjectObj.group
-          let parentId = clickedProjNav.parentNode.id
-
-          filterBlurNonSelected(clickedProjNav, true)
-          // setTimeout(pullUpProjectGallery(e), 1000)
-          pullUpProjectGallery(e)
-          elevateProjectnNavZIndex(e)
-
-          for (var i = 0; i < projHTMLObjSections.length; i++) {
-            let curHTMLSect = projHTMLObjSections[i]
-            let firstImageContainer = curHTMLSect.imgObj1.singleImageContainer
-            let secondImageContainer = curHTMLSect.imgObj2.singleImageContainer;
-            let thirdImageContainer = curHTMLSect.imgObj3.singleImageContainer;
-
-            let firstImage = curHTMLSect.imgObj1.dispImage
-            let secondImage = curHTMLSect.imgObj2.dispImage
-            let thirdImage = curHTMLSect.imgObj3.dispImage
-
-            let firstLightBoxLink = curHTMLSect.imgObj1.lightBoxLink
-            let firstLightBoxLinkHidden = curHTMLSect.imgObj1Hidden.lightBoxLink
-
-            let secondLightBoxLink = curHTMLSect.imgObj2.lightBoxLink
-            let secondLightBoxLinkHidden = curHTMLSect.imgObj2Hidden.lightBoxLink
-
-            let thirdLightBoxLink = curHTMLSect.imgObj3.lightBoxLink
-            let thirdLightBoxLinkHidden = curHTMLSect.imgObj3Hidden.lightBoxLink
-
-            let descriptionDiv = curHTMLSect.descriptionObj.descriptionDiv
-            let imgDiv = curHTMLSect.imgDiv;
-            let hiddenDescriptionDiv = curHTMLSect.descriptionObjHidden.descriptionDiv
-            let hiddenDescriptionDivParagraph = curHTMLSect.descriptionObjHidden.descriptionParagraph
-
-            if (i < curSubProjects.length) {
-
-              let curSubProjObj = curSubProjects[i]
-              $(curHTMLSect.section).css('display', 'flex')
-              curHTMLSect.imgCount = curSubProjObj.imgCount
-
-              numPicsToLoad = numPicsToLoad + curSubProjObj.imgCount
-
-
-              console.log(bottomVisible);
-              if (bottomVisible == false){
-                setElemAttribute(firstLightBoxLink, 'href', curSubProjObj.Picture_Link_1_Large)
-                setElemAttribute(secondLightBoxLink, 'href', curSubProjObj.Picture_Link_2_Large)
-                setElemAttribute(thirdLightBoxLink, 'href', curSubProjObj.Picture_Link_3_Large)
-
-                showBottomDescription(hiddenDescriptionDiv, descriptionDiv)
-
-                setImgObjContent(curHTMLSect.imgObj1Hidden, 'Picture_Link_1_Small', 'Picture_Link_1_Large', curSubProjObj)
-                setImgObjContent(curHTMLSect.imgObj2Hidden, 'Picture_Link_2_Small', 'Picture_Link_2_Large', curSubProjObj)
-                setImgObjContent(curHTMLSect.imgObj3Hidden, 'Picture_Link_3_Small', 'Picture_Link_3_Large', curSubProjObj)
-
-                showBottomImage(curHTMLSect.imgObj1Hidden.singleImageContainer, firstImageContainer, firstImage)
-                showBottomImage(curHTMLSect.imgObj2Hidden.singleImageContainer, secondImageContainer, secondImage)
-                showBottomImage(curHTMLSect.imgObj3Hidden.singleImageContainer, thirdImageContainer, thirdImage)
-
-                setDescriptionContent(curHTMLSect.descriptionObjHidden, curSubProjObj)
-
-              }
-              if (bottomVisible == true){
-                setElemAttribute(firstLightBoxLink, 'href', curSubProjObj.Picture_Link_1_Large)
-                setElemAttribute(secondLightBoxLink, 'href', curSubProjObj.Picture_Link_2_Large)
-                setElemAttribute(secondLightBoxLink, 'href', curSubProjObj.Picture_Link_3_Large)
-
-                showTopDescription(hiddenDescriptionDiv,descriptionDiv)
-
-                setImgObjContent(curHTMLSect.imgObj1, 'Picture_Link_1_Small', 'Picture_Link_1_Large', curSubProjObj)
-                setImgObjContent(curHTMLSect.imgObj2, 'Picture_Link_2_Small', 'Picture_Link_2_Large', curSubProjObj)
-                setImgObjContent(curHTMLSect.imgObj3, 'Picture_Link_3_Small', 'Picture_Link_3_Large', curSubProjObj)
-
-                showTopImage(curHTMLSect.imgObj1Hidden.singleImageContainer, firstImageContainer, firstImage)
-                showTopImage(curHTMLSect.imgObj2Hidden.singleImageContainer, secondImageContainer, secondImage)
-
-                setDescriptionContent(curHTMLSect.descriptionObj, curSubProjObj)
-              }
-              if (curSubProjObj.Video_Link !== 'empty' && curHTMLSect.imgCount == 0){
-                console.log('had not images but had video');
-                console.log(curSubProjObj.Video_Link);
-                let videoEmbedElem = curSubProjObj.Video_Link
-
-
-                // let myVideoObj = makeVideoPlayerObj(firstImageContainer, curSubProjObj.Video_Link, i)
-                firstImageContainer.parentNode.parentNode.insertAdjacentHTML('afterend', '<iframe title="vimeo-player" id = "tempVideo" src="https://player.vimeo.com/video/329954553?title=0&byline=0&portrait=0" width="1000" height="auto" frameborder="0" allowfullscreen></iframe>')
-                $(imgDiv.firstChild).css('width', 1000)
-                $('#imageContainerPadding1_2').css('width', 1000)
-                $(imgDiv).width('0')
-                totalWidth = totalWidth + 1000
-              }
-
-            } else {
-              $(curHTMLSect.section).fadeOut()
-
-            }
-          }
-          bottomVisible = !bottomVisible
-        }
-
-        function enableLightBoxes(activeBool) {
-          if (activeBool == true) {
-            $('.lightBoxLink').each((index, obj)=>{
-              $(obj).css('pointer-events', 'all')
-            })
-          } else {
-            $('.lightBoxLink').each((index, obj)=>{
               $(obj).css('pointer-events', 'none')
-            })
-          }
-        }
-
-        //DOM ANIMATION
-        function fadeInOut(elemArray, inOrOut, min, max) {
-          for (var i = 0; i < elemArray.length; i++) {
-            let curElem = elemArray[i]
-
-            if (inOrOut = 'in') {
-              $(curElem).fadeIn(randomInteger(min, max))
+              $(obj).addClass('projectNameContainer-blur')
             }
-            if (inOrOut = 'out') {
-              $(curElem).fadeOut(randomInteger(min, max))
-            }
+
           }
-        }
+        })
+      } else {
 
-        function revealProjectSection() {
-          console.log('got here!');
-          let test = document.getElementsByClassName('projectNameContainer');
-          console.log('TEST', test)
-
-          $('.projectNameContainer').each(function(){
-            // console.log('change opacity!');
-              $(this).delay(delay).animate({
-                  opacity:1
-              },1000, 'easeOutQuad');
-              delay += 200;
-          });
-         // console.log('got down lower');
-          $(activePageSection).css('-webkit-text-fill-color', 'black')
-          $('#navContainer').addClass('emptyNavContainer')
-          $(landingArea).fadeOut('slow')
-          $(projectNav).css('display', 'flex')
-
-          if (landingArea.getAttribute('isVisible') === 'true') {
-            $(landingArea).css({
-            })
-            $(projectSection).fadeIn('slow')
-              .css({
-              })
-              .animate({
-                top: 130
-              }, 800, function() {});
-            landingArea.setAttribute('isVisible', 'false')
+        $('.projectNameContainer').each(function(index, obj) {
+          if (activeBrowser == 'Firefox') {
+            $(obj).css('-webkit-text-stroke', 'rgb(0,0,0)')
           } else {
-            $(landingArea).css({
-              height: '1600px'
-            })
-            $(projectSection).fadeIn()
-              .css({
-              })
-              .animate({
-                top: 2000
-              }, 800, function() {});
-            landingArea.setAttribute('isVisible', 'true')
+            $(obj).removeClass('projectNameContainer-blur')
+            $(obj).css('pointer-events', 'all')
           }
-        }
+        })
+      }
+    }
 
-        //UTILS
-        function createClassIdAppend(parentElem, htmlType, className, idName) {
+    function handleProjNavClick(e) {
+      // console.log('should do click thing');
+      galleryActive = true;
+      $(newCloseButton).animate({
+        opacity: 1
+      })
 
-          let testPar = parentElem
-          let elementToAdd = document.createElement(htmlType);
-          elementToAdd.setAttribute('class', className);
-          elementToAdd.setAttribute('id', idName);
-          if (testPar == null) {
-            return;
-          }
-          testPar.appendChild(elementToAdd);
-          return elementToAdd;
-        }
+      document.querySelector('#mobileProjectNameDisplay').innerHTML = e.target.innerHTML
+      newCloseButton.addEventListener('click', closeProject)
+      navButton.removeEventListener('mouseup', showHamburgerNavSection)
+      $('#innerNavButtonCircle').animate({
+        height: 0,
+        width: 0
+      }, 500, 'easeOutCirc', function() {
+        $(newCloseButton).addClass('activeCloseButton')
+      })
+      $(projectSection).css('pointer-events', 'all')
 
-        function initializePlugins() {
-          lightbox.option({
-            // 'resizeDuration': 100,
-            'download': false,
-            'share': false,
-            'showImageNumberLabel': false,
-            'disableScrolling': true,
-            'positionFromTop': 25
-          });
+      curActiveSectionWidth = 0;
+      totalHeight = 0;
+      numPicsToLoad = 0;
+      completedImgLoads = 0;
+      let curTotalSectionsWrapperWidth = $(mainWrapperElem).width()
+      $(sectionContainer).scrollLeft(1000)
+      $(mainWrapperElem).animate({
+        opacity: 1
+      }, 1000, 'easeInQuad')
 
-        }
 
-        function remove_duplicates(arr) {
-          var obj = {};
-          var ret_arr = [];
-          for (var i = 0; i < arr.length; i++) {
-            obj[arr[i]] = true;
-          }
-          for (var key in obj) {
-            ret_arr.push(key);
-          }
-          return ret_arr;
-        }
+      let parentContainer = document.querySelector('#projectTextNames');
+      let clickedProjNav = e.target;
+      $(clickedProjNav).css('zIndex', 100)
+      let curProjectObj = returnCorrespondingProjectDataObj(e)
+      curSubProjects = curProjectObj.group
+      let parentId = clickedProjNav.parentNode.id
 
-        function findParentObjById(property, needle, haystack) {
-          let needle2 = haystack.filter(obj => {
-            return obj[property] === needle2;
-          })[0];
-        }
+      if (w > mobileWidth) {
+        filterBlurNonSelected(clickedProjNav, true)
+      }
+      pullUpProjectGallery(e)
+      elevateProjectnNavZIndex(e)
+      console.log('got here!!')
+      // for (var i = 0; i < projHTMLObjSections.length; i++) {
+      for (var i = 0; i < projHTMLObjSections.length; i++) {
+        console.log('PROJHTMLOBJSECTIONS.LENGTH', projHTMLObjSections.length)
+        let curHTMLSect = projHTMLObjSections[i]
+        console.log('CURHTMLSECT', curHTMLSect)
+        // console.log('CURHTMLSECT', curHTMLSect)
+        // console.log(curSubProjects.length);
+        console.log('CURSUBPROJECTS.LENGTH', curSubProjects.length)
+        if (i<curSubProjects.length) {
+          $(curHTMLSect.section).css('width', 'fit-content')
+          // console.log('CONDITION PASSED')
+          let curSubProj = curSubProjects[i]
+          console.log(i);
 
-        function setElemAttribute(elem, attr, content) {
-          elem[attr] = content
-        }
+          // console.log(curHTMLSect.descriptionObj);
+          // console.log('CURSUBPROJ', curSubProj)
+          // console.log(curSubProj.Picture_Link_1);
+          setDescriptionContent(curHTMLSect.descriptionObj, curSubProj)
+          let imgArrInfo = [curSubProj.Picture_Link_1_Small, curSubProj.Picture_Link_2_Small, curSubProj.Picture_Link_3_Small]
+          imgArrInfo.map((src, i)=>{
 
-        function setElemStyleAttribute(elem, styleAttr, value) {
-          elem.style[styleAttr] = value;
-        }
-
-        function randomInteger(min, max) {
-          return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
-        function checkBrowser(){
-            c = navigator.userAgent.search("Chrome");
-            f = navigator.userAgent.search("Firefox");
-            m8 = navigator.userAgent.search("MSIE 8.0");
-            m9 = navigator.userAgent.search("MSIE 9.0");
-            if (c > -1) {
-                browser = "Chrome";
-            } else if (f > -1) {
-                browser = "Firefox";
-            } else if (m9 > -1) {
-                browser ="MSIE 9.0";
-            } else if (m8 > -1) {
-                browser ="MSIE 8.0";
+            let curImgObj = curHTMLSect.imgArr[i]
+            if (src === 'empty') {
+              // console.log('should not display');
+              $(curImgObj.dispImage.parentNode.parentNode).css('width', 0)
+            } else {
+              curImgObj.dispImage.src = src;
+              curImgObj.dispImage.style.opacity = 1;
+              $(curImgObj.dispImage.parentNode.parentNode).css('width', 'fit-content')
+              // $(curImgObj.dispImage).load(()=>{console.log(curImgObj.dispImage.clientWidth);})
+              curImgObj.dispImage.addEventListener('load', function(){console.log(curImgObj.dispImage.width);})
+              $('#sectionContainer').css('opacity', 1)
             }
-            return browser;
+          })
+
+        } else {
+          $(curHTMLSect.section).css('width', 0)
+          // projHTMLObjSections
         }
 
-      </script>
+        // let curSubProj = curProjectObj[i]
+        // console.log(curProjectObj);
+        // console.log(curSubProj);
+          // console.log(curHTMLSect);
+          // console.log(curProjectObj);
 
-      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin = "anonymous" SameSite = 'None'></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js" crossorigin = "anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" crossorigin = "anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js" crossorigin = "anonymous"></script>
-      <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/Draggable-latest-beta.js" charset="utf-8" ></script>
-      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-      <script src="plugins/lightgallery.min.js"></script>
-      <script src="navbar.js" charset="utf-8"></script>
 
-      <script src="horizontalScroll.js" charset="utf-8"></script>
 
-  </body>
+      }
+      //   let firstImageContainer = curHTMLSect.imgObj1.singleImageContainer
+      //   let secondImageContainer = curHTMLSect.imgObj2.singleImageContainer;
+      //   let thirdImageContainer = curHTMLSect.imgObj3.singleImageContainer;
+      //
+      //   let firstImage = curHTMLSect.imgObj1.dispImage
+      //   let secondImage = curHTMLSect.imgObj2.dispImage
+      //   let thirdImage = curHTMLSect.imgObj3.dispImage
+      //
+      //   let firstLightBoxLink = curHTMLSect.imgObj1.lightBoxLink
+      //   // let firstLightBoxLinkHidden = curHTMLSect.imgObj1Hidden.lightBoxLink
+      //
+      //   let secondLightBoxLink = curHTMLSect.imgObj2.lightBoxLink
+      //   // let secondLightBoxLinkHidden = curHTMLSect.imgObj2Hidden.lightBoxLink
+      //
+      //   let thirdLightBoxLink = curHTMLSect.imgObj3.lightBoxLink
+      //   // let thirdLightBoxLinkHidden = curHTMLSect.imgObj3Hidden.lightBoxLink
+      //
+      //   let descriptionDiv = curHTMLSect.descriptionObj.descriptionDiv
+      //   let imgDiv = curHTMLSect.imgDiv;
+      //   // let hiddenDescriptionDiv = curHTMLSect.descriptionObjHidden.descriptionDiv
+      //   // let hiddenDescriptionDivParagraph = curHTMLSect.descriptionObjHidden.descriptionParagraph
+      //
+      //   if (i < curSubProjects.length) {
+      //
+      //     let curSubProjObj = curSubProjects[i]
+      //     $(curHTMLSect.section).css('display', 'flex')
+      //     curHTMLSect.imgCount = curSubProjObj.imgCount
+      //
+      //     numPicsToLoad = numPicsToLoad + curSubProjObj.imgCount
+      //
+      //
+      //     console.log(bottomVisible);
+      //     if (bottomVisible == false) {
+      //       setElemAttribute(firstLightBoxLink, 'href', curSubProjObj.Picture_Link_1_Large)
+      //       setElemAttribute(secondLightBoxLink, 'href', curSubProjObj.Picture_Link_2_Large)
+      //       setElemAttribute(thirdLightBoxLink, 'href', curSubProjObj.Picture_Link_3_Large)
+      //
+      //       // showBottomDescription(hiddenDescriptionDiv, descriptionDiv)
+      //
+      //       // setImgObjContent(curHTMLSect.imgObj1Hidden, 'Picture_Link_1_Small', 'Picture_Link_1_Large', curSubProjObj)
+      //       // setImgObjContent(curHTMLSect.imgObj2Hidden, 'Picture_Link_2_Small', 'Picture_Link_2_Large', curSubProjObj)
+      //       // setImgObjContent(curHTMLSect.imgObj3Hidden, 'Picture_Link_3_Small', 'Picture_Link_3_Large', curSubProjObj)
+      //
+      //       // showBottomImage(curHTMLSect.imgObj1Hidden.singleImageContainer, firstImageContainer, firstImage)
+      //       // showBottomImage(curHTMLSect.imgObj2Hidden.singleImageContainer, secondImageContainer, secondImage)
+      //       // showBottomImage(curHTMLSect.imgObj3Hidden.singleImageContainer, thirdImageContainer, thirdImage)
+      //
+      //       setDescriptionContent(curHTMLSect.descriptionObj, curSubProjObj)
+      //       // setDescriptionContent(curHTMLSect.descriptionObjHidden, curSubProjObj)
+      //
+      //     }
+      //     if (bottomVisible == true) {
+      //       setElemAttribute(firstLightBoxLink, 'href', curSubProjObj.Picture_Link_1_Large)
+      //       setElemAttribute(secondLightBoxLink, 'href', curSubProjObj.Picture_Link_2_Large)
+      //       setElemAttribute(secondLightBoxLink, 'href', curSubProjObj.Picture_Link_3_Large)
+      //
+      //       // showTopDescription(hiddenDescriptionDiv, descriptionDiv)
+      //
+      //       setImgObjContent(curHTMLSect.imgObj1, 'Picture_Link_1_Small', 'Picture_Link_1_Large', curSubProjObj)
+      //       setImgObjContent(curHTMLSect.imgObj2, 'Picture_Link_2_Small', 'Picture_Link_2_Large', curSubProjObj)
+      //       setImgObjContent(curHTMLSect.imgObj3, 'Picture_Link_3_Small', 'Picture_Link_3_Large', curSubProjObj)
+      //
+      //       // showTopImage(curHTMLSect.imgObj1Hidden.singleImageContainer, firstImageContainer, firstImage)
+      //       // showTopImage(curHTMLSect.imgObj2Hidden.singleImageContainer, secondImageContainer, secondImage)
+      //
+      //       // setDescriptionContent(curHTMLSect.descriptionObj, curSubProjObj)
+      //       setDescriptionContent(curHTMLSect.descriptionObj, curSubProjObj)
+      //     }
+      //     if (curSubProjObj.Video_Link !== 'empty' && curHTMLSect.imgCount == 0) {
+      //       console.log('had not images but had video');
+      //       console.log(curSubProjObj.Video_Link);
+      //       let videoEmbedElem = curSubProjObj.Video_Link
+      //
+      //
+      //       // let myVideoObj = makeVideoPlayerObj(firstImageContainer, curSubProjObj.Video_Link, i)
+      //       firstImageContainer.parentNode.parentNode.insertAdjacentHTML('afterend',
+      //         '<iframe title="vimeo-player" id = "tempVideo" src="https://player.vimeo.com/video/329954553?title=0&byline=0&portrait=0 SameSite ="Secure" width="1000" height="auto" frameborder="0" allowfullscreen></iframe>')
+      //       $(imgDiv.firstChild).css('width', 1000)
+      //       $('#imageContainerPadding1_2').css('width', 1000)
+      //       $(imgDiv).width('0')
+      //       totalWidth = totalWidth + 1000
+      //     }
+      //
+      //   } else {
+      //     $(curHTMLSect.section).fadeOut()
+      //
+      //   }
+      // }
+      // bottomVisible = !bottomVisible
+    }
 
-  </html>
+    function enableLightBoxes(activeBool) {
+      if (activeBool == true) {
+        $('.lightBoxLink').each((index, obj) => {
+          $(obj).css('pointer-events', 'all')
+        })
+      } else {
+        $('.lightBoxLink').each((index, obj) => {
+          $(obj).css('pointer-events', 'none')
+        })
+      }
+    }
+
+    //DOM ANIMATION
+    function fadeInOut(elemArray, inOrOut, min, max) {
+      for (var i = 0; i < elemArray.length; i++) {
+        let curElem = elemArray[i]
+
+        if (inOrOut = 'in') {
+          $(curElem).fadeIn(randomInteger(min, max))
+        }
+        if (inOrOut = 'out') {
+          $(curElem).fadeOut(randomInteger(min, max))
+        }
+      }
+    }
+
+    function revealProjectSection() {
+      console.log('should reveal project section!');
+      let test = document.getElementsByClassName('projectNameContainer');
+      let delay = 0;
+      $('.projectNameContainer').each(function() {
+        $(this).delay(delay).animate({
+          opacity: 1
+        }, 1000, 'easeOutQuad');
+        delay += 200;
+      });
+
+      $(activePageSection).css('-webkit-text-fill-color', 'black')
+      $('#navContainer').addClass('emptyNavContainer')
+      $(projectNav).css('display', 'flex')
+
+      // if (landingArea.getAttribute('isVisible') === 'true') {
+      //   $(projectSection).animate({opacity:1})
+      //   landingArea.setAttribute('isVisible', 'false')
+      // }
+      $('#activePageSection').prop('onclick', closeProject)
+    }
+
+    //UTILS
+    function createClassIdAppend(parentElem, htmlType, className, idName) {
+
+      let testPar = parentElem
+      let elementToAdd = document.createElement(htmlType);
+      elementToAdd.setAttribute('class', className);
+      elementToAdd.setAttribute('id', idName);
+      if (testPar == null) {
+        return;
+      }
+      testPar.appendChild(elementToAdd);
+      return elementToAdd;
+    }
+
+    function initializePlugins() {
+      lightbox.option({
+        // 'resizeDuration': 100,
+        'download': false,
+        'share': false,
+        'showImageNumberLabel': false,
+        'disableScrolling': true,
+        'positionFromTop': 25
+      });
+
+    }
+
+    function remove_duplicates(arr) {
+      var obj = {};
+      var ret_arr = [];
+      for (var i = 0; i < arr.length; i++) {
+        obj[arr[i]] = true;
+      }
+      for (var key in obj) {
+        ret_arr.push(key);
+      }
+      return ret_arr;
+    }
+
+    function findParentObjById(property, needle, haystack) {
+      let needle2 = haystack.filter(obj => {
+        return obj[property] === needle2;
+      })[0];
+    }
+
+    function setElemAttribute(elem, attr, content) {
+      elem[attr] = content
+    }
+
+    function setElemStyleAttribute(elem, styleAttr, value) {
+      elem.style[styleAttr] = value;
+    }
+
+    function randomInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function checkBrowser() {
+      let browserValue = ''
+      let c = navigator.userAgent.search("Chrome");
+      let f = navigator.userAgent.search("Firefox");
+      let m8 = navigator.userAgent.search("MSIE 8.0");
+      let m9 = navigator.userAgent.search("MSIE 9.0");
+      if (c > -1) {
+        browserValue = "Chrome";
+      } else if (f > -1) {
+        browserValue = "Firefox";
+      } else if (m9 > -1) {
+        browserValue = "MSIE 9.0";
+      } else if (m8 > -1) {
+        browserValue = "MSIE 8.0";
+      }
+      return browserValue;
+    }
+  </script>
+
+  <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin = "secure" SameSite = 'Secure'></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js" crossorigin="anonymous"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/Draggable-latest-beta.js" charset="utf-8"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+  <script src="plugins/lightgallery.min.js"></script>
+  <script src="navbar.js" charset="utf-8"></script>
+
+  <script src="horizontalScroll.js" charset="utf-8"></script>
+
+</body>
+
+</html>

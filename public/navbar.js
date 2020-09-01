@@ -1,9 +1,11 @@
 // var navButton = document.getElementById('navButton');
 // navButton.addEventListener('mouseup', showHamburgerNavSection)
+window.app = {};
 
-var mobileWidth = 768
+const mobileWidth = 768
 var hamburgerVisible = false;
 var cvLinkElem = document.getElementById('cvLink');
+
 function showHamburgerNavSection() {
   console.log('hamburger clicked');
 
