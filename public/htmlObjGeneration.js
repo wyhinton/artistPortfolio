@@ -17,7 +17,6 @@ export function generateSection(parent, index) {
   let descriptionPaddingContainer = createClassIdAppend(sectionElementContainer, 'div', 'descriptionPaddingContainer', 'descriptionPaddingContainer_'+index)
 
   let descriptionObj = generateDescriptionObj(descriptionPaddingContainer, index)
-  // let descriptionObjHidden = generateDescriptionObj(descriptionPaddingContainer, index)
   let imgDiv = createClassIdAppend(sectionElementContainer, 'div', 'img_div', 'img_div' + index)
 
   let imageContainerPadding1 = createClassIdAppend(imgDiv, 'div', 'imageContainerPadding', 'imageContainerPadding1_'+index)
@@ -29,17 +28,10 @@ export function generateSection(parent, index) {
   let imgObj2 = generateImageObj(imageContainerPadding2, index, 'Picture_Link_2')
   let imgObj3 = generateImageObj(imageContainerPadding3, index, 'Picture_Link_3')
   let imgObjArr = [imgObj1, imgObj2, imgObj3]
-  // let imgObj1Hidden = generateImageObj(imageContainerPadding1, index, 'Picture_Link_1_Hidden')
-  // let imgObj2Hidden = generateImageObj(imageContainerPadding2, index, 'Picture_Link_2_Hidden')
-  // let imgObj3Hidden = generateImageObj(imageContainerPadding3, index, 'Picture_Link_3_Hidden')
+
+  let videoObj = generateVideoObj(sectionElementContainer, index)
 
   section.setAttribute('data-js', 'section')
-  // $(descriptionObjHidden.descriptionDiv).toggleClass('hiddenDescriptionDiv')
-  // $(imgObj1Hidden.singleImageContainer).width(0)
-  // $(imgObj2Hidden.singleImageContainer).width(0)
-  // $(imgObj3Hidden.singleImageContainer).width(0)
-
-
   let projHTMLObj = {
     'index': index,
     'sectionElementContainer': sectionElementContainer,
@@ -48,12 +40,9 @@ export function generateSection(parent, index) {
     'imgObj1': imgObj1,
     'imgObj2': imgObj2,
     'imgObj3': imgObj3,
-    'imgArr': imgObjArr, 
-    // 'imgObj1Hidden': imgObj1Hidden,
-    // 'imgObj2Hidden': imgObj2Hidden,
-    // // 'imgObj3Hidden': imgObj3Hidden,
+    'imgArr': imgObjArr,
     'descriptionObj': descriptionObj,
-    // 'descriptionObjHidden': descriptionObjHidden,
+    'videoObj': videoObj,
     'visible': true
   }
 
@@ -76,6 +65,18 @@ function generateDescriptionObj(parentElem, index) {
   return descriptionObj;
 }
 
+function generateVideoObj(parentElem, index){
+  let videoDiv = createClassIdAppend(parentElem, 'div',  'videoDiv', 'videoDiv_'+index)
+  let myiframe = createClassIdAppend(videoDiv, 'iframe', 'videoIframe', 'videoIframe_'+index)
+  // myiframe.src = "https://player.vimeo.com/video/329954553"
+  // <iframe title="vimeo-player" src="https://player.vimeo.com/video/329954553" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+  let videoObj = {
+    videoDiv:  videoDiv,
+    videoiFrame: myiframe,
+  }
+  return videoObj;
+}
+
 function generateImageObj(parentElem, index, propName) {
   let imagesContainer = createClassIdAppend(parentElem, 'div', 'singleImageContainer', 'singleImageContainer_' + index)
   let lightBoxLink = createClassIdAppend(imagesContainer, 'a', 'lightBoxLink', 'lightBoxLink_' + index)
@@ -84,7 +85,6 @@ function generateImageObj(parentElem, index, propName) {
   dispImage.setAttribute('data-lightbox', "data/FishKill_2.jpg")
   dispImage.setAttribute('data-title', 'myCaption')
   dispImage.setAttribute('alt', 'Ayla Gizlice Art')
-  // dispImage.addEventListener("load", onProjectImageLoad);
 
   lightBoxLink.setAttribute('data-lightbox', 'roadtrip')
   lightBoxLink.setAttribute('href', 'https://images.unsplash.com/photo-1500322969630-a26ab6eb64cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')
@@ -102,13 +102,11 @@ function generateImageObj(parentElem, index, propName) {
 export function generateProjectStructure(projName, index, projData) {
   let projectBar = document.getElementById('projectTextNames');
   let projectNameContainer = createClassIdAppend(projectBar, 'span', 'projectNameContainer', 'projectNameContainer_'+index)
-  let projectNavText = createClassIdAppend(projectNameContainer, 'P', 'projectNameText', 'projectTextHolder')
-  $(projectNavText).toggleClass('projectNameHoverClass')
-  projectNavText.innerHTML = projName
+  $(projectNameContainer).toggleClass('projectNameHoverClass')
+  projectNameContainer.innerHTML = projName
 
   let projectObj = {
     'projName': projName,
-    'projectNavText': projectNavText,
     'projData': projData
   }
 

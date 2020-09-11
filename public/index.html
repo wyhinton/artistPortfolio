@@ -53,8 +53,11 @@
     /* max-height: 100vh; */
     overflow: hidden;
     scroll-behavior: smooth;
+    /* scrollbar-width: none; 0 */
+
 
   }
+
 
   #mainHolder {
     background-color: rgb(255, 186, 68);
@@ -229,8 +232,9 @@
     padding-top: 10px;
     transition: background-color .5s ease-out;
     position: absolute;
-    display: none;
+    display: flex;
     z-index: 5;
+    opacity: 0;
     transition: height .5s ease-out;
     top: 100px;
     flex-direction: column;
@@ -318,8 +322,10 @@
     width: max-content;
     z-index: 5;
     display: flex;
-    width: fit-content !important;
-    top: 1 %;
+    /* width: fit-content !important; */
+    /* top: 1 %; */
+    min-width: min-content;
+    padding-top: 1vh;
   }
 
   .sectionElementContainer {
@@ -387,7 +393,8 @@
     /* display: none; */
     display: block;
     z-index: 200;
-    transition: height .4s ease-out, transform 2s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: opacity .75s ease-out;
+    /* transition: height .4s ease-out, transform 2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease-out;  */
   }
 
   .singleImageContainer {
@@ -450,7 +457,7 @@
     right: 6px;
     z-index: 30;
     color: #7b7b7b;
-    opacity: 0;
+    opacity: 1;
     transition: opacity .5s ease-out;
     transition: color .5s ease-out;
   }
@@ -485,6 +492,13 @@
     position: relative;
     height: 200px;
     transition: all .25s ease-out;
+    margin: 0;
+    line-height: initial;
+    -webkit-text-stroke: 1px black;
+    color: rgb(208, 208, 208);
+    font-size: 9vw;
+    /* position: absolute; */
+    bottom: 0;
   }
 
   .projectNameContainer-blur {
@@ -523,9 +537,7 @@
     display: grid;
     word-break: break-word;
     top: 64px;
-    /* transform: translate(0,0); */
-    transform: translate3d(0, 0, 0);
-    transition: transform .5s ease-out;
+    transition: transform 1s ease-out;
     padding-bottom: 50px;
   }
 
@@ -629,6 +641,19 @@
   }
   #innerNavButtonCircle{
     background-color: red;
+  }
+
+  .videoDiv{
+    display: none;
+    max-height: 600px;
+    padding-right: 50px;
+  }
+
+  .videoIframe{
+    width: 1080px;
+    height: 100%;
+    border: none;
+    padding-top: 40px;
   }
 </style>
 
@@ -743,6 +768,7 @@
     var w;
     var activeBrowser;
 
+    var newOffsetAmount;
     $(document).ready(function() {
 
       generateBlankGallerySections(5)
@@ -812,7 +838,8 @@
         $('#projectTextNames').fadeIn()
         $('body').css('background-color', 'rgb(208, 208, 208)')
       }
-      addListenerToClass('.projectNameText', handleProjNavClick)
+      // addListenerToClass('.projectNameText', handleProjNavClick)
+      addListenerToClass('.projectNameContainer', handleProjNavClick)
 
     });
 
@@ -933,22 +960,14 @@
         })
       }
 
-      // $('.heroImage').each(function(index, galleryImage) {
-      //   let delayMult = index;
-      //   $(galleryImage).delay(delayMult * 100).animate({
-      //     opacity: 0
-      //   }, 1000, 'easeOutQuad')
-      // })
 
       filterBlurNonSelected('empty', false)
-      $(projectSection).css('transform', 'translate3d(0px, ' + (transformOffset) + 'px, 0px)')
+      document.querySelector('#mainContentSection').style.opacity = 0;
 
       $(projectSection).stop().animate({
-        opacity: 0
       }, 500, 'easeOutCirc', function() {
-        $('#projectTextNames').animate({
-          'top': '0'
-        }, 800, 'easeInOutCirc')
+        let closeOffset = 'translateY('+0 +'px)'
+        document.querySelector('#projectTextNames').style.transform = closeOffset;
         if (document.getElementById('tempVideo') !== null) {
           $('#tempVideo').remove()
         }
@@ -998,6 +1017,7 @@
       galleryActive = false;
       // $(projectSection).css('height', '0%')
       $(projectSection).css('pointer-events', 'none')
+      $('#mainContentSection').css('pointer-events', 'none')
       if (w < mobileWidth && mobileNavVisible == true) {
         console.log('got to this point');
         closeMobileNav()
@@ -1050,61 +1070,12 @@
     }
 
     function onProjectImageLoad(e) {
-      // console.log('got loaded!');
       let loadedImage = e.target;
-      // console.log(e.target);
-      // console.log(loadedImage.style.width);
-
-      // $(loadedImage).on('load', function(img){console.log(img);})
-      // console.log(loadedImage.clientWidth);
       let parentContainer = loadedImage.parentNode.parentNode;
 
       let imgWidth = $(e.target).width()
       let paddingContainer = loadedImage.parentNode.parentNode.parentNode;
-      // setTimeout(()=>{
-      //   parentContainer.width = loadedImage.clientWidth
-      // , 2000)
       let currentTotalWidth = $(sectionContainer).width()
-      // completedImgLoads++
-      // setTimeout(() => {
-      //   if (completedImgLoads == numPicsToLoad) {
-      //     totalWidth = 0;
-      //     let z = 0;
-      //     $('.section').each(function(index) {
-      //       z = z + 1;
-      //       if (z < curSubProjects.length + 2) {
-      //         totalWidth += parseInt($(this).outerWidth(true), 10) + 500;
-      //         $(loadedImage).delay(z * 500).animate({
-      //           opacity: 1
-      //         }, 1000, 'easeOutQuad')
-      //         // parentContainer.style.width = imgWidth;
-      //         // parentContainer.style.width = imgWidth;
-      //         console.log(parentContainer.style.width);
-      //       }
-      //     });
-      //     $(firstMainWrapperChild).css('padding-right', 0)
-      //     if ($(window).width() > mobileWidth) {
-      //       let imgWidth = $(loadedImage).scrollWidth
-      //       $(paddingContainer).width(imgWidth)
-      //       console.log('IMGWIDTH', imgWidth)
-      //       $(sectionContainer).width(totalWidth)
-      //       let newTotalWidth = $(sectionContainer).width()
-      //       // $(mainWrapperElem.firstChild).css('padding-right', 0)
-      //     }
-      //     if ($(window).width() < mobileWidth) {
-      //       $('#sectionContainer').height(totalHeight);
-      //       $(mainWrapper).height(totalHeight);
-      //       $(mainWrapper.firstChild).height(totalHeight);
-      //
-      //     }
-      //   }
-      //   if ($(window).width() > mobileWidth) {
-      //     let newTotalWidth = $(sectionContainer).width()
-      //   }
-      //   // }
-      //
-      //
-      // }, 3000)
     }
 
     function generateImageObj(parentElem, index, propName) {
@@ -1181,9 +1152,7 @@
       subProject.imgCount = imgCount
     }
 
-
     function setDescriptionContent(htmlObjdescriptionObj, subProjectDataObj) {
-      console.log(htmlObjdescriptionObj);
       setElemAttribute(htmlObjdescriptionObj.sectionTitle, 'innerHTML', subProjectDataObj.project_name)
       setElemAttribute(htmlObjdescriptionObj.descriptionParagraph, 'innerHTML', subProjectDataObj.project_description)
       generateDescriptString(htmlObjdescriptionObj.projInfo, subProjectDataObj)
@@ -1250,26 +1219,14 @@
 
     function pullUProjectGalleryDesktop(e, windowOffset) {
       console.log(window.screen.height);
-      // let testPorp = window.innerHeight * .06 * -1;
+      newOffsetAmount = (((e.target.offsetTop * -1)-50) - windowOffset)
+      let newOffsetString = 'translateY(' + newOffsetAmount + 'px)'
+      document.querySelector('#projectTextNames').style.transform = newOffsetString
+      console.log(document.querySelector('#projectTextNames').style.transform)
 
-      // let testPorp2 = window.innerHeight * .02 * -1;
-      // console.log('TESTPORP', testPorp)
-      // console.log('offset', e.target.parentNode.offsetTop)
-      // console.log('windowinnerheight', window.innerHeight);
-      // console.log('20%', window.innerHeight * .2);
-      // console.log('20% form top', window.innerHeight - (window.innerHeight));
-      // console.log('TESTPORP', testPorp)
-      // $('#projectTextNames').animate({
-      //   'top': ((e.target.parentNode.offsetTop * -1) - windowOffset)
-      // }, 2000, 'easeInOutCirc', function() {
       $('#projectTextNames').animate({
-        'top': ((e.target.parentNode.offsetTop * -1) - windowOffset)
       }, 2000, function() {
         $(projectSection).css('pointer-events', 'all')
-        $('#galleryCloseButton').css('opacity', 1)
-        $(mainWrapperElem).css('display', 'flex')
-      //   // $(projectSection).css('transform', 'translate3d(0px, '+ (-50)+'px, 0px)')
-      //   // $(projectSection).css('transform', 'translate3d(0px, ' + (testPorp) + 'px, 0px)')
       })
     }
 
@@ -1292,7 +1249,7 @@
       }
       if (window.screen.height < 1080) {
         windowOffset = 15
-        $('#sectionContainer').css('top', '3%')
+        $('#sectionContainer').css('top', '0%')
       }
 
       $(window).scrollTop($('#navbar').offset().top);
@@ -1311,7 +1268,7 @@
       $('.projectNameContainer').each(function() {
         $(this).css('zIndex', 0)
       })
-      $(e.target.parentNode).css('zIndex', 30)
+      $(e.target).css('zIndex', 30)
     }
 
     function returnCorrespondingProjectDataObj(e) {
@@ -1430,7 +1387,7 @@
     function filterBlurNonSelected(selectedProject, shouldBlur) {
 
       if (shouldBlur == true) {
-        let parentId = selectedProject.parentNode.id
+        let parentId = selectedProject.id
         $('.projectNameContainer').each(function(index, obj) {
 
           if (obj.id !== parentId) {
@@ -1464,7 +1421,6 @@
       $(newCloseButton).animate({
         opacity: 1
       })
-
       document.querySelector('#mobileProjectNameDisplay').innerHTML = e.target.innerHTML
       newCloseButton.addEventListener('click', closeProject)
       navButton.removeEventListener('mouseup', showHamburgerNavSection)
@@ -1482,10 +1438,11 @@
       completedImgLoads = 0;
       let curTotalSectionsWrapperWidth = $(mainWrapperElem).width()
       $(sectionContainer).scrollLeft(1000)
-      $(mainWrapperElem).animate({
-        opacity: 1
-      }, 1000, 'easeInQuad')
 
+      setInterval(function() {
+      mainWrapperElem.style.opacity = 1;
+      }, 2000)
+      clearInterval()
 
       let parentContainer = document.querySelector('#projectTextNames');
       let clickedProjNav = e.target;
@@ -1499,146 +1456,42 @@
       }
       pullUpProjectGallery(e)
       elevateProjectnNavZIndex(e)
-      console.log('got here!!')
-      // for (var i = 0; i < projHTMLObjSections.length; i++) {
+
       for (var i = 0; i < projHTMLObjSections.length; i++) {
-        console.log('PROJHTMLOBJSECTIONS.LENGTH', projHTMLObjSections.length)
         let curHTMLSect = projHTMLObjSections[i]
-        console.log('CURHTMLSECT', curHTMLSect)
-        // console.log('CURHTMLSECT', curHTMLSect)
-        // console.log(curSubProjects.length);
-        console.log('CURSUBPROJECTS.LENGTH', curSubProjects.length)
         if (i<curSubProjects.length) {
           $(curHTMLSect.section).css('width', 'fit-content')
-          // console.log('CONDITION PASSED')
           let curSubProj = curSubProjects[i]
-          console.log(i);
-
-          // console.log(curHTMLSect.descriptionObj);
-          // console.log('CURSUBPROJ', curSubProj)
-          // console.log(curSubProj.Picture_Link_1);
           setDescriptionContent(curHTMLSect.descriptionObj, curSubProj)
           let imgArrInfo = [curSubProj.Picture_Link_1_Small, curSubProj.Picture_Link_2_Small, curSubProj.Picture_Link_3_Small]
           imgArrInfo.map((src, i)=>{
-
             let curImgObj = curHTMLSect.imgArr[i]
+            // console.log(curHTMLSect);
+            console.log(curSubProj);
+            if (curSubProj.Video_Link !== 'empty') {
+              console.log('has a video');
+              // curHT
+              curHTMLSect.videoObj.videoDiv.style.display = "block"
+              curHTMLSect.videoObj.videoiFrame.src = curSubProj.Video_Link
+            }
             if (src === 'empty') {
-              // console.log('should not display');
               $(curImgObj.dispImage.parentNode.parentNode).css('width', 0)
             } else {
               curImgObj.dispImage.src = src;
               curImgObj.dispImage.style.opacity = 1;
               $(curImgObj.dispImage.parentNode.parentNode).css('width', 'fit-content')
-              // $(curImgObj.dispImage).load(()=>{console.log(curImgObj.dispImage.clientWidth);})
-              curImgObj.dispImage.addEventListener('load', function(){console.log(curImgObj.dispImage.width);})
               $('#sectionContainer').css('opacity', 1)
             }
           })
 
         } else {
           $(curHTMLSect.section).css('width', 0)
-          // projHTMLObjSections
         }
-
-        // let curSubProj = curProjectObj[i]
-        // console.log(curProjectObj);
-        // console.log(curSubProj);
-          // console.log(curHTMLSect);
-          // console.log(curProjectObj);
-
 
 
       }
-      //   let firstImageContainer = curHTMLSect.imgObj1.singleImageContainer
-      //   let secondImageContainer = curHTMLSect.imgObj2.singleImageContainer;
-      //   let thirdImageContainer = curHTMLSect.imgObj3.singleImageContainer;
-      //
-      //   let firstImage = curHTMLSect.imgObj1.dispImage
-      //   let secondImage = curHTMLSect.imgObj2.dispImage
-      //   let thirdImage = curHTMLSect.imgObj3.dispImage
-      //
-      //   let firstLightBoxLink = curHTMLSect.imgObj1.lightBoxLink
-      //   // let firstLightBoxLinkHidden = curHTMLSect.imgObj1Hidden.lightBoxLink
-      //
-      //   let secondLightBoxLink = curHTMLSect.imgObj2.lightBoxLink
-      //   // let secondLightBoxLinkHidden = curHTMLSect.imgObj2Hidden.lightBoxLink
-      //
-      //   let thirdLightBoxLink = curHTMLSect.imgObj3.lightBoxLink
-      //   // let thirdLightBoxLinkHidden = curHTMLSect.imgObj3Hidden.lightBoxLink
-      //
-      //   let descriptionDiv = curHTMLSect.descriptionObj.descriptionDiv
-      //   let imgDiv = curHTMLSect.imgDiv;
-      //   // let hiddenDescriptionDiv = curHTMLSect.descriptionObjHidden.descriptionDiv
-      //   // let hiddenDescriptionDivParagraph = curHTMLSect.descriptionObjHidden.descriptionParagraph
-      //
-      //   if (i < curSubProjects.length) {
-      //
-      //     let curSubProjObj = curSubProjects[i]
-      //     $(curHTMLSect.section).css('display', 'flex')
-      //     curHTMLSect.imgCount = curSubProjObj.imgCount
-      //
-      //     numPicsToLoad = numPicsToLoad + curSubProjObj.imgCount
-      //
-      //
-      //     console.log(bottomVisible);
-      //     if (bottomVisible == false) {
-      //       setElemAttribute(firstLightBoxLink, 'href', curSubProjObj.Picture_Link_1_Large)
-      //       setElemAttribute(secondLightBoxLink, 'href', curSubProjObj.Picture_Link_2_Large)
-      //       setElemAttribute(thirdLightBoxLink, 'href', curSubProjObj.Picture_Link_3_Large)
-      //
-      //       // showBottomDescription(hiddenDescriptionDiv, descriptionDiv)
-      //
-      //       // setImgObjContent(curHTMLSect.imgObj1Hidden, 'Picture_Link_1_Small', 'Picture_Link_1_Large', curSubProjObj)
-      //       // setImgObjContent(curHTMLSect.imgObj2Hidden, 'Picture_Link_2_Small', 'Picture_Link_2_Large', curSubProjObj)
-      //       // setImgObjContent(curHTMLSect.imgObj3Hidden, 'Picture_Link_3_Small', 'Picture_Link_3_Large', curSubProjObj)
-      //
-      //       // showBottomImage(curHTMLSect.imgObj1Hidden.singleImageContainer, firstImageContainer, firstImage)
-      //       // showBottomImage(curHTMLSect.imgObj2Hidden.singleImageContainer, secondImageContainer, secondImage)
-      //       // showBottomImage(curHTMLSect.imgObj3Hidden.singleImageContainer, thirdImageContainer, thirdImage)
-      //
-      //       setDescriptionContent(curHTMLSect.descriptionObj, curSubProjObj)
-      //       // setDescriptionContent(curHTMLSect.descriptionObjHidden, curSubProjObj)
-      //
-      //     }
-      //     if (bottomVisible == true) {
-      //       setElemAttribute(firstLightBoxLink, 'href', curSubProjObj.Picture_Link_1_Large)
-      //       setElemAttribute(secondLightBoxLink, 'href', curSubProjObj.Picture_Link_2_Large)
-      //       setElemAttribute(secondLightBoxLink, 'href', curSubProjObj.Picture_Link_3_Large)
-      //
-      //       // showTopDescription(hiddenDescriptionDiv, descriptionDiv)
-      //
-      //       setImgObjContent(curHTMLSect.imgObj1, 'Picture_Link_1_Small', 'Picture_Link_1_Large', curSubProjObj)
-      //       setImgObjContent(curHTMLSect.imgObj2, 'Picture_Link_2_Small', 'Picture_Link_2_Large', curSubProjObj)
-      //       setImgObjContent(curHTMLSect.imgObj3, 'Picture_Link_3_Small', 'Picture_Link_3_Large', curSubProjObj)
-      //
-      //       // showTopImage(curHTMLSect.imgObj1Hidden.singleImageContainer, firstImageContainer, firstImage)
-      //       // showTopImage(curHTMLSect.imgObj2Hidden.singleImageContainer, secondImageContainer, secondImage)
-      //
-      //       // setDescriptionContent(curHTMLSect.descriptionObj, curSubProjObj)
-      //       setDescriptionContent(curHTMLSect.descriptionObj, curSubProjObj)
-      //     }
-      //     if (curSubProjObj.Video_Link !== 'empty' && curHTMLSect.imgCount == 0) {
-      //       console.log('had not images but had video');
-      //       console.log(curSubProjObj.Video_Link);
-      //       let videoEmbedElem = curSubProjObj.Video_Link
-      //
-      //
-      //       // let myVideoObj = makeVideoPlayerObj(firstImageContainer, curSubProjObj.Video_Link, i)
-      //       firstImageContainer.parentNode.parentNode.insertAdjacentHTML('afterend',
-      //         '<iframe title="vimeo-player" id = "tempVideo" src="https://player.vimeo.com/video/329954553?title=0&byline=0&portrait=0 SameSite ="Secure" width="1000" height="auto" frameborder="0" allowfullscreen></iframe>')
-      //       $(imgDiv.firstChild).css('width', 1000)
-      //       $('#imageContainerPadding1_2').css('width', 1000)
-      //       $(imgDiv).width('0')
-      //       totalWidth = totalWidth + 1000
-      //     }
-      //
-      //   } else {
-      //     $(curHTMLSect.section).fadeOut()
-      //
-      //   }
-      // }
-      // bottomVisible = !bottomVisible
     }
+
 
     function enableLightBoxes(activeBool) {
       if (activeBool == true) {
