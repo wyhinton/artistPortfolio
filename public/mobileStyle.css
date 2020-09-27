@@ -1,0 +1,148 @@
+@media (max-width: 768px) {
+  .main-wrapper {
+    width: 100vw;
+    overflow: auto;
+    padding-top: 10px;
+    position: absolute;
+    display: block;
+    z-index: 5;
+    transition: height .5s ease-out;
+    height: fit-content !important;
+    padding-bottom: 100px !important;
+    background-color: lightgrey !important;
+    top: 20%;
+  }
+
+  #mainContentSection {
+    position: absolute;
+    overflow: scroll !important;
+    width: 100% !important;
+    transition: height .4s ease-out;
+    /* display: none; */
+    opacity: 0;
+    top: 1vh !important;
+
+
+  }
+  #projectTextNames{
+    height: 50vh !important;
+  }
+  #myGalleryRange{
+    display: none;
+  }
+  .sectionElementContainer {
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+
+  .heroImage {
+    padding: 0px !important;
+    width: 100% !important;
+    height: auto !important;
+
+
+  }
+  #projectNavContainer {
+    z-index: 0 !important;
+    position: absolute !important;
+    top: 25% !important;
+  }
+  .main-wrapper :first-child{
+    padding-right: 0 !important;
+  }
+  #navContainer{
+    z-index: 0;
+  }
+  #mobileProjectNameDisplay{
+    display: block;
+  }
+  .closeButton{
+    top: 0vh; 
+  }
+
+
+  #sectionContainer {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    width: 100% !important;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    height: fit-content !important;
+    transform: translateY(0%) !important;
+
+  }
+
+  .descriptionParagraph {
+    position: initial !important;
+  }
+
+  .projectNameContainer {
+    height: 50px !important;
+  }
+
+  .project__title {
+    margin-top: 0 !important;
+  }
+
+  .descriptionDiv {
+    max-width: 95% !important;
+    width: 100% !important;
+  }
+
+  .hiddenDescriptionDiv {
+    position: initial !important
+  }
+
+  .img_div {
+    padding: 0px !important;
+    width: 100vw !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .imageContainerPadding {
+    padding-top: 0px !important;
+    width: 100% !important;
+    min-height: 0px !important;
+  }
+
+  .singleImageContainer {
+    width: 95% !important;
+    /* padding: 0px !important; */
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-top: 0px !important;
+    padding-bottom: 10px !important;
+    position: initial !important;
+    margin: auto !important;
+
+  }
+
+  .descriptionPaddingContainer {
+    padding-bottom: 0px !important;
+    padding-right: 23px !important;
+    padding-left: 10px !important;
+    background-color: lightgray;
+  }
+
+  #tempVideo {
+    width: 100vw !important;
+    padding-bottom: 50px !important;
+
+  }
+
+  .section {
+    height: fit-content !important;
+    padding-bottom: 35px !important;
+  }
+
+  .landingVideo {
+    object-fit: contain !important;
+  }
+
+  .body {
+    overflow: visible;
+  }
+}
