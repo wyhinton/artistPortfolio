@@ -26,6 +26,7 @@ function setCVLink(aboutProjectObjArray) {
   let link = firstObj.CV_Link
   cvLink.href = link;
 }
+
 function pageLinkSetup(){
   $('.pageLink').each(function(){
     console.log(this.id);

@@ -156,8 +156,10 @@
     color: grey;
     /* webkit-stroke-outline */
     /* -webkit-text-stroke: 1px black; */
-    font-family: 'Pragati Narrow'
+    font-family: 'Pragati Narrow';
+    font-size: 30px;
   }
+
 </style>
 
 
@@ -165,7 +167,7 @@
   <h1 id="seoH1">Contact</h1>
 
   <label type="check" class="navbar__hamburger-btn">
-    <i class="fas fa-circle" id='navButton'>
+    <i id = "navButton">
       <div id='innerNavButtonCircle'></div>
 
       <i class="fas fa-times" id='newCloseButton' aria-hidden="true" onclick='closeProject()'></i>
@@ -187,7 +189,7 @@
   </div>
   <div class="bodyDiv">
     <h1 class='pageTitle'>Contact</h1>
-    <h2>agizlice1@gmail.com</h2>
+    <h2 id = "email" >agizlice1@gmail.com</h2>
     <canvas id="c" width="300" height="300"></canvas>
     <div class="sectionContainer kwes-form">
       <form class='kwes-form' action="https://getform.io/f/156fd3b2-59b7-411b-ac03-6d41698a1cf5" method="POST" id='contactform'>
@@ -201,8 +203,12 @@
     </div>
 
   </div>
-  <script>
+  <script type = "module">
+
+
     pageLinkSetup()
+
+
     var navButton = document.getElementById('navButton');
     navButton.addEventListener('mouseup', showHamburgerNavSection)
     var h = $(window).height(); // height

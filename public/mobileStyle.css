@@ -12,17 +12,23 @@
     background-color: lightgrey !important;
     top: 20%;
   }
-
+  .scrollTopButton{
+    height: 20px;
+    width: 20px;
+    position: fixed;
+    bottom: 3vw;
+    right: 3vw;
+    z-index: 100;
+    display: block !important;
+    background-image: url("data/arrow_upward-24px.svg")
+  }
   #mainContentSection {
     position: absolute;
     overflow: scroll !important;
     width: 100% !important;
     transition: height .4s ease-out;
-    /* display: none; */
     opacity: 0;
     top: 1vh !important;
-
-
   }
   #projectTextNames{
     height: 50vh !important;
@@ -39,8 +45,13 @@
     padding: 0px !important;
     width: 100% !important;
     height: auto !important;
-
-
+  }
+  .videoDiv{
+    padding-right: 0px;
+  }
+  .videoIframe{
+    width: 95vw;
+    height: 52vw;
   }
   #projectNavContainer {
     z-index: 0 !important;
@@ -51,13 +62,13 @@
     padding-right: 0 !important;
   }
   #navContainer{
-    z-index: 0;
+    z-index: 1;
   }
   #mobileProjectNameDisplay{
     display: block;
   }
   .closeButton{
-    top: 0vh; 
+    top: 0vh;
   }
 
 

@@ -67,8 +67,10 @@ nav ul li a:hover {
 }
 .navBarSection{
   position: fixed;
-  z-index: 10;
+  z-index: 100;
 }
+
+
 #navContainer{
   position: absolute;
   top: 0;
@@ -119,13 +121,16 @@ nav ul li a:hover {
       position: absolute;
       position: absolute;
       font-size: 10px;
-      width: 9px;
+      width: 30px;
+      height: 30px;
       top: 6px;
       right: 6px;
-      height: 9px;
-      border-radius: 6px;
-      background-color: rgb(33, 116, 107);
+      height: 24px;
+      width: 23px;
+      background-color: rgb(255 255 255 / 0%);
+      background-repeat: no-repeat;
       opacity: 1;
+      background-image: url("data/menu-24px.svg");
     }
     .fa-circle-o{
       color: black;

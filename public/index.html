@@ -36,7 +36,6 @@
   <script src="dataFetch.js" charset="utf-8"></script>
   <script src="plugins/easingScript.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.css">
-  <script src="plugins/transit.min.js" charset="utf-8"></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Pragati+Narrow" as="style">
@@ -55,11 +54,9 @@
   <h1 id='seoH1'> Ayla Gizlice Artwork></h1>
   <label type="check" class="navbar__hamburger-btn">
     <i  id='navButton'>
-      <!-- <div id = 'navButton'> -->
       <div id="navSymbolContainer">
         <div id='innerNavButtonCircle'></div> <i class="fas fa-times" id='newCloseButton' aria-hidden="true"></i>
       </div>
-      <!-- </div> -->
     </i>
   </label>
   <div id="topGradientContainer"></div>
@@ -88,8 +85,10 @@
 
   </div>
   <div id='mainContentSection' class='testHeightEasingClass'>
-           <input type="range" min="0" max="100" value="0" class="slider" id="myGalleryRange">
+
+   <input type="range" min="0" max="100" value="0" class="slider" id="myGalleryRange">
     <div class="testholder" id='testHolder'>
+      <div class="scrollTopButton" id="scrollTopButton"></div>
       <div class="closeButton" id='galleryCloseButton'></div>
       <div class="main-wrapper" data-js="main-wrapper">
 
@@ -104,27 +103,26 @@
       </div>
     </div>
   </div>
-  <!-- <div id="bottomGradient"> -->
 
   </div>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYL235LN22"></script>
 
 
-  <!-- MAIN SCRIPT-->
   <script type='module'>
     import { generateSection,  generateProjectStructure} from './htmlObjGeneration.js'
     import { checkBrowser, createClassIdAppend, loopIntroVideo, setElemAttribute, addListenerToClass } from './utils.js'
     import { setDescriptionContent, generateDescriptString } from './projDescriptions.js'
-
+    import { galleryScroll } from './gallery.js'
     const projectAssetSheetURL = 'https://spreadsheets.google.com/feeds/cells/1ctMIVgrlfw0s9tYHcwuLuGjnrzI1YCaESEF18C4sIxM/1/public/full?alt=json'
     const aboutAssetSheetURL = 'https://spreadsheets.google.com/feeds/cells/17-59RkABiXT4-odN7PGxUOVX1CWOBQb3t-SzqBkG5q0/1/public/full?alt=json'
+    const mobileWidth = 768
 
     var projectNames = []
     var allProjObjs = [];
     var curSubProjects = []
     var projHTMLObjSections = [];
     var parentObjCol = [];
+
 
     //NAV ELEMENTS
     var projectNav = document.getElementById('projectHolder');
@@ -162,10 +160,9 @@
     var w;
     var activeBrowser;
 
-    var newOffsetAmount;
+    export var newOffsetAmount;
     $(document).ready(function() {
       generateBlankGallerySections(5)
-      projectsNavCloseFunctionality()
       loopIntroVideo('#landingVideo')
 
       activeBrowser = checkBrowser()
@@ -180,6 +177,7 @@
       $('#activePageSection').mouseup(revealProjectSection)
       $('#innerNavButtonCircle').mouseup(closeProject)
       $('#galleryCloseButton').mouseup(closeProject)
+      $('#scrollTopButton').mouseup(scrollTopMobileGallery)
       $('.heroImage').each(function() {
           $(this).on("load", onProjectImageLoad);
       })
@@ -195,26 +193,9 @@
         projHTMLObjSections.push(newSect)
       }
     }
+
     document.querySelector('#myGalleryRange').addEventListener('input',galleryScroll);
-    function galleryScroll(e){
-      console.log(e.target.value);
-      let rangeVal = e.target.value
-      // var scrollPercent = 100 * $(mainWrapperElem).scrollTop() / ($(mainWrapperElem).height() - $(containeR).height());
-      // $(mainWrapperElem).scrollLeft(0)
-      let rangePercent = rangeVal/100;
-      let toMoveWidth = $('#sectionContainer').outerWidth() + 100;
-      let toMove = toMoveWidth * rangePercent
-      $(mainWrapperElem).scrollLeft(toMove)
-      console.log(toMove);
 
-
-      // $(sectionContainer).scrollLeft = rangeVal * 100;
-      // $(sectionContainer).offset.left = rangeVal * 100;
-      // console.log(  $(mainWrapperElem).scrollLeft );
-      // sectionContainer
-      // mainWrapperElem).offset().left
-
-    }
 
     function mobileDesktop(ifMobile, ifDesktop) {
       if (w < mobileWidth) {
@@ -267,8 +248,8 @@
       }, 1000)
     }
 
-    function projectsNavCloseFunctionality() {
-
+    function scrollTopMobileGallery(){
+      $(projectSection).animate({scrollTop: 0 })
     }
 
     $(window).resize(function(e) {
@@ -318,10 +299,9 @@
 
     function showHamburgerNavSection() {
       console.log('hamburger clicked');
-
       if (w < mobileWidth && mobileNavVisible == false) {
         $('#navBarListContainer').animate({'right': '0%'}, 500, 'easeOutCirc')
-        $('#innerNavButtonCircle').animate({height: 13,width: 13}, 500, 'easeOutQuad')
+        // $('#innerNavButtonCircle').animate({height: 13,width: 13}, 500, 'easeOutQuad')
       }
 
       if (w < mobileWidth && mobileNavVisible == true) {
@@ -329,8 +309,8 @@
           'right': '-100%'
         })
         $('#innerNavButtonCircle').animate({
-          height: 9,
-          width: 9
+          // height: 9,
+          // width: 9
         }, 500, 'easeOutSine')
       }
       mobileNavVisible = !mobileNavVisible
@@ -341,8 +321,8 @@
         'right': '-100%'
       })
       $('#innerNavButtonCircle').animate({
-        height: 9,
-        width: 9
+        // height: 9,
+        // width: 9
       }, 500, 'easeOutCirc')
       newCloseButton.removeEventListener('click', closeProject)
       $(newCloseButton).toggleClass('activeCloseButton')
@@ -380,12 +360,14 @@
     }
 
     function mobileGalleryCloseAnimation() {
+      $('#logoMark').css('opacity', 1)
+      $('#scrollTopButton').css('opacity', 0)
       $('#sectionContainer').css('display', 'none')
       $(mainWrapperElem).css('display', 'none')
       $('#navBarListContainer').animate({
         'right': '-100%'
       })
-      $('#innerNavButtonCircle').animate({height: 9, width: 30}, 500, 'easeOutCirc')
+      // $('#innerNavButtonCircle').animate({height: 9, width: 30}, 500, 'easeOutCirc')
       newCloseButton.removeEventListener('click', closeProject)
       $(newCloseButton).toggleClass('activeCloseButton')
       navButton.addEventListener('mouseup', showHamburgerNavSection)
@@ -405,21 +387,19 @@
       $('#mainContentSection').css('pointer-events', 'none')
       if (w < mobileWidth && mobileNavVisible == true) {
         closeMobileNav()
-       console.log('got here!!!1');
         mobileGalleryCloseAnimation()
       } else if (w > mobileWidth) {
         $(projectSection).css('pointer-events', 'none')
         desktopGalleryCloseAnimation()
         enableLightBoxes(false)
       } else if (w < mobileWidth) {
-        console.log('no got ehre!!!');
         $(projectSection).css('pointer-events', 'none')
         enableLightBoxes(false)
         mobileGalleryCloseAnimation()
       }
     }
 
-    //OBJ CREATION
+    //OBJ CREATIONΩ
     function generateDescriptionObj(parentElem, index) {
       let descriptionDiv = createClassIdAppend(parentElem, 'div', 'descriptionDiv', 'descriptionDiv_' + index)
       let sectionTitle = createClassIdAppend(descriptionDiv, 'H2', 'project__title', 'title_' + index)
@@ -496,41 +476,6 @@
       subProject.imgCount = imgCount
     }
 
-    function setImgObjContent(imgObj, linkProp, linkPropLarge, subProjectDataObj) {
-
-      let displayImage = imgObj.dispImage
-      let lightBoxLink = imgObj.lightBoxLink
-      let paddingContainer = displayImage.parentNode.parentNode.parentNode
-      if (subProjectDataObj[linkProp] == 'empty') {
-        $(paddingContainer).width(0);
-        $(paddingContainer).height(0);
-      }
-      if (subProjectDataObj[linkProp] !== 'empty') {
-        setElemAttribute(displayImage, 'src', subProjectDataObj[linkProp])
-        setElemAttribute(lightBoxLink, 'href', subProjectDataObj[linkPropLarge])
-        $(paddingContainer).css('height', 'fit-content')
-      }
-    }
-
-    function setSubProjectContent(htmlObj, subProjectDataObj) {
-
-      if (subProjectDataObj.Picture_Link_1_Small !== 'empty') {
-        setElemAttribute(htmlObj.imgObj1.dispImage, 'src', subProjectDataObj.Picture_Link_1_Small)
-
-      }
-      if (subProjectDataObj.Picture_Link_2_Small !== 'empty') {
-        setElemAttribute(htmlObj.imgObj2.dispImage, 'src', subProjectDataObj.Picture_Link_2_Small)
-      }
-      if (subProjectDataObj.Picture_Link_3_Small !== 'empty') {
-        setElemAttribute(htmlObj.imgObj3.dispImage, 'src', subProjectDataObj.Picture_Link_3_Small)
-        setElemAttribute(htmlObj.imgObj3.dispImage, 'src', subProjectDataObj.Picture_Link_3_Small)
-      } else {
-        // $(htmlObj.imgObj3.paddingContainer).height(0)
-      }
-
-      htmlObj.imgCount = subProjectDataObj.imgCount
-    }
-
     function pullUProjectGalleryDesktop(e, windowOffset) {
       newOffsetAmount = (((e.target.offsetTop * -1)-50) - windowOffset)
       let newOffsetString = 'translateY(' + newOffsetAmount + 'px)'
@@ -544,6 +489,9 @@
     }
 
     function pullUpProjectGalleryMobile(e) {
+      $('#logoMark').css('opacity', 0)
+      $('#scrollTopMobileGallery').css('opacity', 1)
+      $('#scrollTopButton').css('opacity', 1)
       $(mainWrapperElem).animate({'top': 0}, 3000, 'easeOutQuad');
       $(mainWrapperElem).css({
         display: "flex",
@@ -558,9 +506,7 @@
       $(projectNav).css('display', 'flex')
       let height = 0;
       $("section").each(function(){
-        console.log($(this).outerHeight());
         height = height + $(this).height()
-        // console.log(height);
       })
     }
 
@@ -644,8 +590,9 @@
 
           if (obj.id !== parentId) {
             if (activeBrowser == 'Firefox') {
-              $(obj).css('-webkit-text-stroke', '1px rgb(193, 193, 193)')
-              $(obj).css('opacity', 0)
+              console.log('got hereeeeeee!!!');
+              console.log(obj);
+              obj.style.opacity = 0;
             } else {
               $(obj).css('pointer-events', 'none')
               $(obj).addClass('projectNameContainer-blur')
@@ -657,7 +604,7 @@
 
         $('.projectNameContainer').each(function(index, obj) {
           if (activeBrowser == 'Firefox') {
-            $(obj).css('-webkit-text-stroke', 'rgb(0,0,0)')
+            // $(obj).css('-webkit-text-stroke', 'rgb(0,0,0)')
           } else {
             $(obj).removeClass('projectNameContainer-blur')
             $(obj).css('pointer-events', 'all')
@@ -709,11 +656,12 @@
 
 
     }
+
     function manageGalleryContent (gallerySections, subSections){
       for (var i = 0; i < gallerySections.length; i++) {
         let curHTMLSect = gallerySections[i]
         if (i<curSubProjects.length) {
-          $(curHTMLSect.section).css('width', 'fit-content')
+          $(curHTMLSect.section).css('width', 'auto')
           let curSubProj = subSections[i]
           setDescriptionContent(curHTMLSect.descriptionObj, curSubProj)
           let imgArrInfo = [curSubProj.Picture_Link_1_Small, curSubProj.Picture_Link_2_Small, curSubProj.Picture_Link_3_Small]
@@ -730,8 +678,8 @@
             } else {
               curImgObj.dispImage.src = src;
               curImgObj.dispImage.style.opacity = 1;
-              $(curImgObj.dispImage.parentNode.parentNode.parentNode).css('display', 'blockab')
-              $(curImgObj.dispImage.parentNode.parentNode).css('width', 'fit-content')
+              $(curImgObj.dispImage.parentNode.parentNode.parentNode).css('display', 'block')
+              $(curImgObj.dispImage.parentNode.parentNode).css('width', 'auto')
               $(curImgObj.dispImage.parentNode.parentNode).css('display', 'block')
               $('#sectionContainer').css('opacity', 1)
             }
@@ -756,7 +704,6 @@
 
     //DOM ANIMATION
     function revealProjectSection() {
-      console.log('should reveal project section!');
       let test = document.getElementsByClassName('projectNameContainer');
       let delay = 0;
       $('.projectNameContainer').each(function() {
@@ -805,7 +752,6 @@
 
   </script>
 
-  <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin = "secure" SameSite = 'Secure'></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js" crossorigin="anonymous"></script>
