@@ -5,12 +5,10 @@
 ### Projects Page 🖌
 
 ![Projects Page](/animation.gif)
-
-
  ---
 
 ### Mobile Layout 📱
-![Mobile](https://lh3.googleusercontent.com/pw/ACtC-3f_jLSDB2OC254kZHp6kL2NETqk9UuGblLBMX8l45pgWcqCqYLkYESR2n2peSkCovUeu9jKW65df3jataEkqcGpKsELM1jXdwFZzClwJffgcjcIFWN_dyTnAnAOh0qdGtynqRotf8fG6nU-Q-Kf6x0=w322-h572-no?authuser=1)
+![Mobile](/mobile.gif)
 
 ### About Page 👤
 
