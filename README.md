@@ -4,11 +4,14 @@
  ---
 ### Projects Page 🖌
 
-!️[Projects Page](/animation.gif)
-![About Page](/animation.gif)
+![Projects Page](/animation.gif)
 
 
  ---
+
+### Mobile Layout 📱
+![Mobile](https://lh3.googleusercontent.com/pw/ACtC-3f_jLSDB2OC254kZHp6kL2NETqk9UuGblLBMX8l45pgWcqCqYLkYESR2n2peSkCovUeu9jKW65df3jataEkqcGpKsELM1jXdwFZzClwJffgcjcIFWN_dyTnAnAOh0qdGtynqRotf8fG6nU-Q-Kf6x0=w322-h572-no?authuser=1)
+
 ### About Page 👤
 
 ![About Page](https://lh3.googleusercontent.com/pw/ACtC-3e6Ivl2n2ePuWLYCxSAckNkZz_yxuZ8lctPup3kCDakkANyluZq8dPGHdmKuD2AEEmk4Ldpf2Y3orddVu-1nZwbOdlUg6D9j8x8GAMwOw3fbR015WoUGI85BhDNpze9jk6P56HCaBS6nJqcQ7eN1sE=w1565-h978-no?authuser=1)
