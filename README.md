@@ -1,4 +1,4 @@
-# Protfolio Site for Ayla Gizlice
+# www.ayla-gizlice.com
  [www.ayla-gizlice.com](https://ayla-gizlice.com/)
  Portfolio site for artist multi-media artist Ayla Gizlice. Implements a touch-enabled, side-scrolling photo gallery, animated menu, contact form, and a google spreadsheets based backend that allows Ayla to quickly customize the content without writing any code herself. Hosted with Firebase.
 
