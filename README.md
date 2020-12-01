@@ -5,6 +5,7 @@
 ### Projects Page 🖌
 
 !️[Projects Page](/animation.gif)
+![About Page](/animation.gif)
 
 
  ---
