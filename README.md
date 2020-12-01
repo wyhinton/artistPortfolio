@@ -4,7 +4,7 @@
  ---
 ### Projects Page 🖌
 
-!️[Projects Page](https://lh3.googleusercontent.com/pw/ACtC-3cy0RbSYLiXLeauXKCuY_AeUKSqVSs4GmR4CsvKctjGjjZrZ7dQGsM2nzYKDRyUWR_rNFoDOhe8irv5MtJ1jFLcR8EdmfQQ8Wfj7yINLzVb6zo1KGLCLyl7R74U0nAPLxTxn5crmGd7-H8EjLwQz7k=w960-h601-no?authuser=1)
+!️[Projects Page](/animation.gif)
 
 
  ---
