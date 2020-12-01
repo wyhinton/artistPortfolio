@@ -4,7 +4,7 @@
  ---
 ### Projects Page 🖌
 
-!️[Projects Page](https://lh3.googleusercontent.com/pw/ACtC-3dUYQ7U-VxHTH5QF7w1fdzf6t9VNe0lft23nTQn4LT-K7WrSM9C4nafdzCs9e1gkZAFUEYIl8KPscIIArxYevZ19k3uzsei6g0qw4zsyHh_TojnitkHdHAcXrTiNR2fm78IFGoUNm5_a-pzbnVy-J8=w1080-h676-no?authuser=1)
+!️[Projects Page](https://lh3.googleusercontent.com/pw/ACtC-3cy0RbSYLiXLeauXKCuY_AeUKSqVSs4GmR4CsvKctjGjjZrZ7dQGsM2nzYKDRyUWR_rNFoDOhe8irv5MtJ1jFLcR8EdmfQQ8Wfj7yINLzVb6zo1KGLCLyl7R74U0nAPLxTxn5crmGd7-H8EjLwQz7k=w960-h601-no?authuser=1)
 
 
  ---
