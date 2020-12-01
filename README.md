@@ -1,9 +1,9 @@
 # www.ayla-gizlice.com
  [www.ayla-gizlice.com](https://ayla-gizlice.com/)
- Portfolio site for artist multi-media artist Ayla Gizlice. Implements a touch-enabled, side-scrolling photo gallery, animated menu, contact form, and a google spreadsheets based backend that allows Ayla to quickly customize the content without writing any code herself. Hosted with Firebase.
+ **Portfolio site for artist multi-media artist Ayla Gizlice. Implements a touch-enabled, side-scrolling photo gallery, animated menu, contact form, and a google spreadsheets based backend that allows Ayla to quickly customize the content without writing any code herself. Hosted with Firebase.**
 
  ---
-#[www.ayla-gizlice.com](https://ayla-gizlice.com/)
+# [www.ayla-gizlice.com](https://ayla-gizlice.com/)
 
  ---
  ![About Page](https://lh3.googleusercontent.com/pw/ACtC-3e6Ivl2n2ePuWLYCxSAckNkZz_yxuZ8lctPup3kCDakkANyluZq8dPGHdmKuD2AEEmk4Ldpf2Y3orddVu-1nZwbOdlUg6D9j8x8GAMwOw3fbR015WoUGI85BhDNpze9jk6P56HCaBS6nJqcQ7eN1sE=w1565-h978-no?authuser=1)
